@@ -1,0 +1,24 @@
+# Dependências
+node_modules/
+.pnp
+.pnp.js
+
+# Vercel
+.vercel
+
+# Arquivos de sistema e SO
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# IDE e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Variáveis de ambiente
+.env
+.env.local
+.env.*.local
