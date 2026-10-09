@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
-<title>Política de Privacidad y Términos · PataCerta</title>
-<link rel="icon" type="image/png" sizes="32x32" href="assets/web/favicon-32.png">
+<title>Política de Privacidad (LGPD) · PataCerta</title>
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,6 +17,7 @@
   --muted: #6B7280;
   --line: #E5E7EB;
   --soft: #F9FAFB;
+  --soft-hover: #F3F4F6;
   --red: #DC2626;
   --radius: 12px;
   --gutter: clamp(16px, 5vw, 24px);
@@ -32,28 +33,42 @@ body {
 }
 a { color: var(--txt); text-decoration: underline; text-underline-offset: 3px; }
 a:hover { color: var(--red); }
-.wrap { width: 100%; max-width: calc(680px + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
+.wrap { width: 100%; max-width: calc(720px + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
 
-header { height: 64px; display: flex; align-items: center; border-bottom: 1px solid var(--line); }
+header { height: 70px; display: flex; align-items: center; justify-content: center; }
+header .wrap { display: flex; align-items: center; justify-content: center; text-align: center; }
 .logo { display: inline-flex; align-items: center; gap: 7px; font-weight: 800; font-size: 19px; letter-spacing: -.02em; text-decoration: none; color: #111827; }
 .logo svg { width: 22px; height: 22px; color: var(--red); }
 
 main { padding: 40px 0 60px; }
 .kicker { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
-h1 { font-size: clamp(28px, 7vw, 36px); font-weight: 800; letter-spacing: -.03em; line-height: 1.2; margin-bottom: 8px; }
+h1 { font-size: clamp(28px, 6vw, 36px); font-weight: 800; letter-spacing: -.03em; line-height: 1.2; margin-bottom: 10px; }
 .meta { font-size: 14px; color: var(--muted); margin-bottom: 32px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
 
 h2 { font-size: 20px; font-weight: 700; letter-spacing: -.01em; margin: 32px 0 12px; color: #111827; }
 p { margin-bottom: 16px; color: #374151; font-size: 15.5px; }
-ul { list-style: disc; padding-left: 20px; margin-bottom: 16px; color: #374151; font-size: 15.5px; }
-li { margin-bottom: 6px; }
+ul, ol { padding-left: 22px; margin-bottom: 18px; color: #374151; font-size: 15.5px; }
+li { margin-bottom: 8px; }
 
-.box { background: var(--soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; margin: 24px 0; }
-.box p { margin-bottom: 0; }
+.box { background: var(--soft); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 24px; margin: 24px 0; }
+.box h3 { font-size: 16.5px; font-weight: 700; margin-bottom: 8px; color: #111827; }
+.box p { margin-bottom: 8px; }
+.box p:last-child { margin-bottom: 0; }
 
-footer { padding: 32px 0 48px; border-top: 1px solid var(--line); text-align: center; font-size: 13px; color: var(--muted); }
-footer nav { display: flex; justify-content: center; gap: 20px; margin-bottom: 12px; }
-footer nav a { text-decoration: none; font-weight: 500; }
+footer { padding: 40px 0 48px; border-top: 1px solid var(--line); text-align: center; font-size: 13px; color: var(--muted); background: #fafafa; }
+footer nav { display: flex; justify-content: center; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+footer nav a { text-decoration: none; font-weight: 600; color: #374151; }
+footer nav a:hover { color: var(--red); }
+.seller-info { margin-bottom: 12px; font-size: 12.5px; color: #4B5563; line-height: 1.6; }
+.seller-info strong { color: #111827; }
+.disclaimer { font-size: 12px; color: #6B7280; max-width: 600px; margin: 0 auto 12px; line-height: 1.5; }
+.copy { font-size: 12px; color: #9CA3AF; }
+
+@media (max-width: 640px) {
+  header { height: auto; padding: 14px 0; }
+  header .wrap { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .top-nav { gap: 10px; }
+}
 </style>
 </head>
 <body>
@@ -68,54 +83,82 @@ footer nav a { text-decoration: none; font-weight: 500; }
 </header>
 
 <main class="wrap">
-  <p class="kicker">Legal</p>
-  <h1>Política de Privacidad y Términos de Uso</h1>
-  <p class="meta">Última actualización: Enero de 2026</p>
+  <p class="kicker">Privacidad y Protección de Datos</p>
+  <h1>Política de Privacidad</h1>
+  <p class="meta">Última actualización: Enero de 2026 · Cumplimiento de la Ley General de Protección de Datos (LGPD) y normativas internacionales de privacidad</p>
 
-  <p>En <b>PataCerta</b>, nos comprometemos a proteger y respetar tu privacidad. Esta política explica cómo recopilamos, utilizamos y protegemos la información personal que nos proporcionas al utilizar nuestro sitio web y adquirir nuestros programas de adiestramiento canino.</p>
+  <p>En <b>PataCerta</b>, operada por <b>PATACERTA EDUCAÇÃO DIGITAL LTDA</b>, nos tomamos muy en serio la seguridad y la privacidad de tu información personal. Esta Política de Privacidad describe de manera transparente qué datos recopilamos, cómo los usamos, las bases legales que nos respaldan y tus derechos como titular de la información.</p>
 
-  <h2>1. Información que recopilamos</h2>
-  <p>Al interactuar con nuestro sitio o realizar una compra, podemos recopilar los siguientes datos:</p>
+  <h2>1. Datos Personales que Recopilamos</h2>
+  <p>Al navegar por nuestro sitio web, participar en nuestras evaluaciones o adquirir nuestros planes, recopilamos las siguientes categorías de datos:</p>
   <ul>
-    <li><b>Datos del perro y rutina:</b> Nombre, edad, tamaño, raza y comportamientos indicados en el cuestionario interactivo para personalizar tu plan.</li>
-    <li><b>Información de contacto y compra:</b> Nombre completo, correo electrónico y número de teléfono proporcionados durante el proceso de pago.</li>
-    <li><b>Datos técnicos de navegación:</b> Dirección IP, tipo de dispositivo, navegador y datos anónimos de navegación para optimizar la velocidad y experiencia de usuario.</li>
+    <li><b>Datos de identificación y contacto:</b> Nombre completo, dirección de correo electrónico y número de teléfono proporcionados durante el proceso de pago o soporte.</li>
+    <li><b>Datos de compra y transacción:</b> Método de pago elegido, confirmación de la pasarela de pagos, fecha, hora e historial del pedido (no almacenamos números de tarjeta de crédito ni códigos de seguridad en nuestros servidores).</li>
+    <li><b>Datos del perro y cuestionario interactivo:</b> Nombre, edad, tamaño, raza, tipo de vivienda y comportamiento seleccionado para la personalización de tu programa educativo.</li>
+    <li><b>Datos técnicos y de navegación:</b> Dirección IP, tipo de navegador, sistema operativo y cookies técnicas para garantizar la seguridad y fluidez de la plataforma.</li>
   </ul>
 
-  <h2>2. Uso de la información</h2>
-  <p>Tus datos son utilizados exclusivamente para:</p>
+  <h2>2. Finalidades del Tratamiento de Datos</h2>
+  <p>Tus datos personales se utilizan exclusivamente para los siguientes propósitos legítimos:</p>
   <ul>
-    <li>Generar y enviar tu plan de adiestramiento canino personalizado de 4 semanas.</li>
-    <li>Procesar el pago de forma segura a través de plataformas autorizadas y enviar tus credenciales de acceso al correo electrónico.</li>
-    <li>Brindar soporte al cliente y responder dudas sobre el programa o la garantía.</li>
-    <li>Mejorar el contenido educativo y la funcionalidad de nuestro sitio web.</li>
+    <li><b>Entrega del producto digital:</b> Generar y enviar el enlace de acceso, usuario y materiales educativos personalizados a tu correo electrónico.</li>
+    <li><b>Soporte y atención al cliente:</b> Responder a tus dudas, atender solicitudes de asistencia técnica y procesar solicitudes de garantía y reembolso.</li>
+    <li><b>Facturación y seguridad transaccional:</b> Validar compras y prevenir transacciones fraudulentas a través de nuestras pasarelas de pago autorizadas.</li>
+    <li><b>Comunicaciones operativas:</b> Envío de notificaciones transaccionales sobre el estado de tu pedido o actualizaciones relevantes del servicio contratado.</li>
   </ul>
 
+  <h2>3. Bases Legales (Art. 7º, LGPD)</h2>
+  <p>El tratamiento de tus datos personales se sustenta en las bases legales establecidas por la legislación aplicable:</p>
+  <ul>
+    <li><b>Ejecución de contrato (Art. 7º, V, LGPD):</b> Necesario para procesar tu compra, liberar tu acceso al programa y brindar el soporte acordado.</li>
+    <li><b>Cumplimiento de obligación legal o regulatoria (Art. 7º, II, LGPD):</b> Emisión de comprobantes tributarios y conservación de registros obligatorios.</li>
+    <li><b>Consentimiento del titular (Art. 7º, I, LGPD):</b> Cuando nos autorizas voluntariamente a enviarte información adicional o responder a tus consultas directas.</li>
+  </ul>
+
+  <h2>4. Compartimiento Seguro de Datos</h2>
+  <p>PataCerta <b>nunca vende, alquila ni comercializa</b> tus datos personales con terceros para fines publicitarios. Únicamente compartimos la información estrictamente necesaria con proveedores tecnológicos de confianza bajo estrictos acuerdos de confidencialidad:</p>
+  <ul>
+    <li><b>Procesadores y pasarelas de pago:</b> Para procesar tus pagos de forma encriptada bajo estándares PCI-DSS y encriptación SSL de 256 bits.</li>
+    <li><b>Proveedores de infraestructura y alojamiento en la nube:</b> Servidores seguros para hospedar la plataforma y gestionar el envío automatizado de correos transaccionales.</li>
+  </ul>
+
+  <h2>5. Tus Derechos como Titular</h2>
+  <p>Tienes derecho a solicitar en cualquier momento:</p>
+  <ul>
+    <li>Confirmación de la existencia del tratamiento de tus datos.</li>
+    <li>Acceso a los datos que conservamos sobre ti.</li>
+    <li>Corrección de datos incompletos, inexactos o desactualizados.</li>
+    <li>Eliminación de tus datos personales, dentro de los límites permitidos por las leyes fiscales y comerciales.</li>
+  </ul>
+
+  <h2>6. Contacto del Oficial de Privacidad (DPO)</h2>
   <div class="box">
-    <p><b>Compromiso de seguridad:</b> Nunca vendemos, alquilamos ni transferimos tus datos personales a terceros con fines publicitarios. Toda la información de pago es procesada con encriptación SSL de 256 bits.</p>
+    <h3>Canal de Privacidad y DPO</h3>
+    <p>Para ejercer cualquiera de tus derechos de privacidad o resolver dudas sobre esta política, puedes comunicarte directamente con nuestro Responsable de Protección de Datos (DPO):</p>
+    <p><b>Correo del DPO:</b> <a href="mailto:privacidade@patacerta.com">privacidade@patacerta.com</a></p>
+    <p><b>Canal de Soporte General:</b> <a href="mailto:suporte@patacerta.com">suporte@patacerta.com</a></p>
+    <p><b>Razón Social:</b> PATACERTA EDUCAÇÃO DIGITAL LTDA (CNPJ: 00.000.000/0001-00)</p>
   </div>
-
-  <h2>3. Pagos y seguridad</h2>
-  <p>Las transacciones financieras se procesan a través de plataformas de pago líderes certificadas (como Hotmart y procesadores locales como PSE, Nequi y tarjetas). PataCerta no almacena información de tarjetas de crédito o datos bancarios en sus servidores.</p>
-
-  <h2>4. Garantía incondicional de 7 días</h2>
-  <p>Todos nuestros programas cuentan con una garantía de satisfacción incondicional de 7 días a partir de la fecha de compra. Si dentro de este periodo no estás completamente satisfecho con el contenido o los resultados, puedes solicitar la devolución del 100% de tu dinero directamente en la plataforma de pago o escribiendo a nuestro <a href="soporte.html">Centro de Soporte</a>.</p>
-
-  <h2>5. Descargo de responsabilidad</h2>
-  <p>Los métodos de PataCerta son programas educativos orientados a la educación y mejora de la convivencia con perros en el hogar. Los resultados pueden variar según la constancia y aplicación de cada tutor. Este contenido educativo no reemplaza la consulta veterinaria ni la intervención médica presencial cuando sea necesaria.</p>
-
-  <h2>6. Contacto y ejercicio de derechos</h2>
-  <p>Puedes solicitar la actualización, rectificación o eliminación de tus datos de nuestra base en cualquier momento contactándonos a través de nuestra página de <a href="soporte.html">Soporte al Comprador</a>.</p>
 </main>
 
 <footer>
   <div class="wrap">
     <nav>
       <a href="index.html">Inicio</a>
-      <a href="soporte.html">Soporte al comprador</a>
-      <a href="privacidad.html">Privacidad y Términos</a>
+      <a href="soporte.html">Soporte</a>
+      <a href="reembolso.html">Política de Reembolso</a>
+      <a href="privacidad.html">Política de Privacidad</a>
+      <a href="terminos.html">Términos de Uso</a>
     </nav>
-    <p>© 2026 PataCerta · Todos los derechos reservados.</p>
+    <div class="seller-info">
+      <strong>PATACERTA EDUCAÇÃO DIGITAL LTDA</strong> · CNPJ: 00.000.000/0001-00<br>
+      Av. Paulista, 1000, Bela Vista · São Paulo/SP – Brasil · CEP 01310-100<br>
+      Atención al Cliente: <a href="mailto:suporte@patacerta.com" style="text-decoration:none;color:inherit;font-weight:600;">suporte@patacerta.com</a>
+    </div>
+    <p class="disclaimer">
+      Contenido educacional. Los resultados pueden variar de un perro a otro según la constancia y aplicación del método. Este programa no sustituye la consulta médico-veterinaria cuando sea necesaria.
+    </p>
+    <p class="copy">© 2026 PataCerta · Todos los direitos reservados.</p>
   </div>
 </footer>
 

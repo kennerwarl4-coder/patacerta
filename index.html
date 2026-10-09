@@ -6,19 +6,19 @@
 <meta name="theme-color" content="#ffffff">
 <title>PataCerta · Plan de adiestramiento personalizado</title>
 <meta name="description" content="Responde en 2 minutos y recibe un plan de adiestramiento de 10 minutos al día, hecho a la medida para tu perro.">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/web/favicon-32.png">
-<link rel="icon" type="image/png" sizes="512x512" href="assets/web/favicon-512.png">
-<link rel="apple-touch-icon" href="assets/web/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/brand/favicon-512.png">
+<link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Un plan de adiestramiento hecho para tu perro">
 <meta property="og:description" content="Responde en 2 minutos y recibe un plan de solo 10 minutos al día.">
-<meta property="og:image" content="assets/web/og-share.jpg">
+<meta property="og:image" content="assets/brand/og-share.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="preload" as="image" href="assets/web/quiz-inicio.jpg">
+<link rel="preload" as="image" href="assets/quiz/quiz-inicio.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -128,7 +128,7 @@ ul, ol { list-style: none; }
 /* =========================================================
    QUIZ HEADER & PANTALLAS
    ========================================================= */
-.qhead { position: sticky; top: 0; z-index: 10; background: #fff; border-bottom: 1px solid var(--line); }
+.qhead { position: sticky; top: 0; z-index: 10; background: #fff; border: none; box-shadow: none; }
 .qhead-in { height: 60px; display: flex; align-items: center; justify-content: center; position: relative; }
 .back {
   position: absolute; left: -10px; top: 10px; width: 40px; height: 40px; border-radius: 10px;
@@ -138,7 +138,7 @@ ul, ol { list-style: none; }
 .back[hidden] { display: none; }
 .progress { height: 4px; background: var(--line); overflow: hidden; }
 .progress span { display: block; height: 100%; width: 0; background: var(--red); transition: width .35s ease; }
-.qhead.sem-progresso .progress { visibility: hidden; }
+.qhead.sem-progresso .progress { height: 0; visibility: hidden; }
 
 .screen { padding: clamp(24px, 6vw, 44px) 0 48px; animation: fadeIn .25s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
@@ -175,6 +175,101 @@ ul, ol { list-style: none; }
 @media (hover: hover) {
   .opt:hover { border-color: #9CA3AF; }
   .opt.sel:hover { border-color: #111827; }
+}
+
+/* Opciones con imagen — grid responsivo */
+.opts-img {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.opt-img {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+  overflow: hidden;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color .15s, box-shadow .15s, transform .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.opt-img-media {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--soft);
+  flex-shrink: 0;
+}
+.opt-img-media img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  padding: 6%;
+  box-sizing: border-box;
+  transition: transform .3s ease;
+}
+.opt-img-empty {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--muted);
+}
+.opt-img-empty svg { width: 32px; height: 32px; opacity: .35; }
+.opt-img-label {
+  padding: 9px 8px 11px;
+  font-size: clamp(11.5px, 3.2vw, 13.5px);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--txt);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.opt-img.sel {
+  border-color: #111827;
+  box-shadow: inset 0 0 0 1.5px #111827;
+}
+.opt-img.sel .opt-img-media img { transform: scale(1.06); }
+.opt-img.sel .opt-img-label { color: #111827; }
+@media (hover: hover) {
+  .opt-img:hover { border-color: #9CA3AF; }
+  .opt-img:hover .opt-img-media img { transform: scale(1.03); }
+  .opt-img.sel:hover { border-color: #111827; }
+}
+
+/* Badge ao vivo */
+.badge-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--red);
+  color: #fff;
+  font-weight: 800;
+  font-size: clamp(12px, 3.5vw, 13.5px);
+  padding: 8px 16px;
+  border-radius: 999px;
+  letter-spacing: -.01em;
+  margin-bottom: 14px;
+}
+.badge-live-dot {
+  width: 8px; height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  flex: none;
+  animation: livePulse 1.3s ease-in-out infinite;
+}
+@keyframes livePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .4; transform: scale(.65); }
 }
 
 .field {
@@ -224,7 +319,7 @@ ul, ol { list-style: none; }
 /* =========================================================
    PÁGINA DE VENTAS
    ========================================================= */
-.shead { height: 64px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--line); }
+.shead { height: 64px; display: flex; align-items: center; justify-content: center; border: none; box-shadow: none; }
 .sec { padding: clamp(40px, 10vw, 68px) 0; }
 .sec + .sec { border-top: 1px solid var(--line); }
 .h2 { font-size: clamp(23px, 6.6vw, 32px); line-height: 1.2; font-weight: 800; letter-spacing: -.025em; margin-bottom: 20px; }
@@ -292,13 +387,69 @@ ul, ol { list-style: none; }
 img.produto { display: block; width: 100%; height: auto; object-fit: cover; background: var(--soft); }
 
 /* Bonos */
-.bonus { display: flex; flex-direction: column; }
-.bonus li { display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--line); }
-.bonus li:first-child { padding-top: 0; }
-.bonus li:last-child { border-bottom: 0; padding-bottom: 0; }
-.tag { font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--red); }
-.bonus h3 { font-size: 16px; font-weight: 700; margin-top: 2px; }
-.bonus p { font-size: 14px; color: var(--muted); margin-top: 2px; }
+.bonus { display: flex; flex-direction: column; gap: 16px; }
+.bonus-card {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+.bonus-media {
+  width: 90px;
+  flex: none;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: #fff;
+}
+.bonus-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.bonus-info {
+  flex: 1;
+  min-width: 0;
+}
+.bonus-info .tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 2px;
+}
+.bonus-info h3 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.bonus-info p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 4px;
+  line-height: 1.4;
+}
+@media (max-width: 420px) {
+  .bonus-card {
+    gap: 14px;
+    padding: 12px;
+  }
+  .bonus-media {
+    width: 76px;
+  }
+  .bonus-info h3 {
+    font-size: 15px;
+  }
+  .bonus-info p {
+    font-size: 13px;
+  }
+}
 
 /* Testimonios */
 .depos { display: flex; flex-direction: column; gap: 12px; }
@@ -384,10 +535,23 @@ img.produto { display: block; width: 100%; height: auto; object-fit: cover; back
 .ps b { font-weight: 800; }
 
 /* Footer */
-.foot { padding: 36px 0 calc(40px + var(--safe-b)); border-top: 1px solid var(--line); text-align: center; font-size: 13px; color: var(--muted); }
-.foot nav { display: flex; justify-content: center; gap: 20px; margin-bottom: 14px; }
-.foot nav a { color: #111827; font-weight: 500; text-decoration: none; }
-.foot p + p { margin-top: 10px; }
+.foot { padding: 36px 0 calc(40px + var(--safe-b)); border-top: 1px solid var(--line); text-align: center; font-size: 13px; color: var(--muted); background: #fafafa; }
+.foot nav { display: flex; justify-content: center; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+.foot nav a { color: #374151; font-weight: 600; text-decoration: none; font-size: 13px; }
+.foot nav a:hover { color: var(--red); }
+.foot .seller-info { margin: 12px 0; font-size: 12.5px; color: #4B5563; line-height: 1.6; }
+.foot .seller-info strong { color: #111827; }
+.foot .seller-info a { color: inherit; text-decoration: none; font-weight: 600; }
+.foot .disclaimer { font-size: 12px; color: #6B7280; max-width: 620px; margin: 0 auto 10px; line-height: 1.5; }
+.foot .copy { font-size: 12px; color: #9CA3AF; }
+
+.garantia-link { margin-top: 14px; font-size: 14.5px; }
+.garantia-link a { color: var(--red); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.garantia-link a:hover { opacity: .85; }
+
+.shead { min-height: 64px; display: flex; align-items: center; justify-content: center; background: #fff; padding: 12px 0; text-align: center; border: none; box-shadow: none; }
+.shead .wrap-sales { display: flex; align-items: center; justify-content: center; width: 100%; }
+.shead .logo { margin: 0 auto; }
 
 /* Responsivo */
 @media (max-width: 360px) {
@@ -429,12 +593,20 @@ const CONFIG = {
   CHECKOUT_BASICO:  "",   // ej.: "https://pay.hotmart.com/XXXX?off=basico"
   CHECKOUT_PREMIUM: "",   // ej.: "https://pay.hotmart.com/XXXX?off=premium"
   VSL_EMBED_URL:    "",   // Enlace de video embed
-  TERMOS_URL:       "#",
+  TERMOS_URL:       "terminos.html",
   PRIVACIDADE_URL:  "privacidad.html",
+  REEMBOLSO_URL:    "reembolso.html",
   SOPORTE_URL:      "soporte.html",
   PIXEL_ID:         "",   // Meta Pixel ID
 
   MONEDA: "COP",
+
+  EMPRESA: {
+    razaoSocial: "PATACERTA EDUCAÇÃO DIGITAL LTDA",
+    cnpj: "00.000.000/0001-00",
+    endereco: "Av. Paulista, 1000, Bela Vista · São Paulo/SP – Brasil · CEP 01310-100",
+    email: "suporte@patacerta.com",
+  },
 
   PARAMS_REPASSAR: ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "src", "sck"],
   PARAM_NOME: "nombre_perro",
@@ -451,10 +623,10 @@ const PLANOS = {
   basico: {
     nome: "Básico",
     subtitulo: "Para empezar",
-    preco: "$39.900 COP",
+    preco: "US$ 7,99",
     periodo: "pago único",
-    valor: 39900,
-    porDia: "Menos de $1.400 al día",
+    valor: 7.99,
+    porDia: "Menos de $0,30 al día",
     itens: [
       "Plan de 4 semanas estructurado para {nome}",
       "Videos cortos de 10 minutos al día",
@@ -474,10 +646,10 @@ const PLANOS = {
   premium: {
     nome: "Premium",
     subtitulo: "El más completo",
-    preco: "$59.900 COP",
+    preco: "US$ 11,99",
     periodo: "pago único",
-    valor: 59900,
-    porDia: "Solo $2.000 al día",
+    valor: 11.99,
+    porDia: "Solo $0,40 al día",
     itens: [
       "Todo lo del plan Básico para {nome}",
       "Ejercicios para los otros comportamientos",
@@ -496,6 +668,64 @@ const PLANOS = {
 /* =====================================================================
    3) BASE CONDUCTUAL & DIAGNÓSTICOS PROFUNDOS
    ===================================================================== */
+const IMG_COMPORTAMENTO = {
+  "Tira de la correa":                     "assets/quiz/comportamento/comportamento_tira_de_la_correa.png",
+  "Ladra demasiado":                       "assets/quiz/comportamento/comportamento_ladra_demasiado.png",
+  "Hace pipí o popó en el lugar equivocado": "assets/quiz/comportamento/comportamento_pipi_popo_lugar_equivocado.png",
+  "Destruye objetos":                      "assets/quiz/comportamento/comportamento_destroi_objetos.png",
+  "Salta sobre las personas":              "assets/quiz/comportamento/comportamento_salta_sobre_pessoas.png",
+  "Llora cuando se queda solo":            "assets/quiz/comportamento/comportamento_llora_se_queda_solo.png",
+  "Mordisquea manos y objetos jugando":    "assets/quiz/comportamento/comportamento_mordisca_maos_objetos.png",
+  "Gruñe o intenta morder":                "assets/quiz/comportamento/comportamento_grunhe_tenta_morder.png",
+};
+
+const IMG_PORTE = {
+  "Pequeño (hasta 10 kg)":  "assets/quiz/porte/pata_certa_cachorro_pequeno.png",
+  "Mediano (10 a 25 kg)":   "assets/quiz/porte/pata_certa_cachorro_medio.png",
+  "Grande (25 a 45 kg)":    "assets/quiz/porte/pata_certa_cachorro_grande.png",
+  "Gigante (más de 45 kg)": "assets/quiz/porte/pata_certa_cachorro_gigante.png",
+};
+
+const IMG_IDADE = {
+  "Cachorro (hasta 6 meses)":  "assets/quiz/idade/idade_cachorro_ate_6_meses.png",
+  "Joven (de 6 a 18 meses)":   "assets/quiz/idade/idade_cachorro_joven_6_18_meses.png",
+  "Adulto (de 1,5 a 7 años)": "assets/quiz/idade/idade_cachorro_adulto_15_7_anos.png",
+  "Senior (más de 7 años)":   "assets/quiz/idade/idade_cachorro_senior_mais_7_anos.png",
+};
+
+const IMG_ENERGIA = {
+  "Muy activo e inquieto la mayor parte del día":   "assets/quiz/energia/energia_muito_ativo_inquieto.png",
+  "Energía moderada (se activa en paseos y juego)": "assets/quiz/energia/energia_moderada_paseos_juego.png",
+  "Tranquilo y dormilón":                           "assets/quiz/energia/energia_tranquilo_dormilon.png",
+};
+
+const IMG_MORADIA = {
+  "Apartamento o conjunto cerrado": "assets/quiz/moradia/moradia_apartamento_conjunto_fechado.png",
+  "Casa con patio":                 "assets/quiz/moradia/moradia_casa_com_patio.png",
+  "Casa sin patio":                 "assets/quiz/moradia/moradia_casa_sem_patio.png",
+};
+
+const IMG_TENTOU = {
+  "Con videos y consejos de internet":    "assets/quiz/correcao/correcao_videos_conselhos_internet.png",
+  "Regaños y llamados de atención":       "assets/quiz/correcao/correcao_reganos_chamados_atencao.png",
+  "Con un adiestrador o clases":           "assets/quiz/correcao/correcao_adestrador_aulas.png",
+  "Aún no he intentado un método formal": "assets/quiz/correcao/correcao_sem_metodo_formal.png",
+};
+
+const IMG_TEMPO = {
+  "10 minutos al día":     "assets/quiz/tempo/tempo_10_minutos_dia.png",
+  "15 a 20 minutos al día": "assets/quiz/tempo/tempo_15_20_minutos_dia.png",
+  "Más de 20 minutos":      "assets/quiz/tempo/tempo_mais_20_minutos_dia.png",
+};
+
+const IMG_OBJETOS = {
+  "Zapatos, ropa y medias":             "assets/quiz/objetos/objetos_morde_sapatos_roupa_meias.png",
+  "Muebles, patas de sillas y cojines": "assets/quiz/objetos/objetos_morde_moveis_cadeiras_cojines.png",
+  "Cables, paredes o puertas":          "assets/quiz/objetos/objetos_morde_cables_paredes_puertas.png",
+  "Cualquier objeto a su alcance":       "assets/quiz/objetos/objetos_morde_qualquer_objeto_alcance.png",
+};
+
+
 const COMPORTAMENTOS = {
   "Tira de la correa": {
     perfil: "Explorador Inquieto",
@@ -693,7 +923,7 @@ const INICIO = {
   selo: "Evaluación canina · 2 minutos",
   titulo: 'Descubre el plan de adiestramiento ideal para <span class="red hl">tu perro</span>',
   subtitulo: 'Responde unas preguntas sobre su rutina y recibe un plan personalizado de <span class="hl">solo 10 minutos al día</span>.',
-  imagem: "assets/web/quiz-inicio.jpg",
+  imagem: "assets/quiz/quiz-inicio.jpg",
   imagemAlt: "Plan de adiestramiento de 10 minutos al día para tu perro",
   botao: "Empezar la evaluación",
   nota: "Toma 2 minutos · Sin registro previo",
@@ -716,10 +946,12 @@ const INICIO = {
    ===================================================================== */
 const TEXTOS = {
   confianca: ["Pago seguro", "PSE, Nequi y Tarjetas", "Acceso inmediato"],
+  imagemPagamentos: "assets/sales/pata_certa_pagamentos_logos_nomes.png",
+  imagemGarantia: "assets/sales/pata_certa_selo_garantia_7_dias.png",
   heroTopo: "El plan de {nome} está listo.",
   heroTitulo: '{nome} <span class="hl">{resultado}</span>.',
   heroSub: "Solo 10 minutos de entrenamiento al día.",
-  imagemHero: "assets/capa-lp.png", // imagen editorial para la página de texto
+  imagemHero: "assets/sales/capa-lp.png", // imagen editorial para la página de texto
   heroBotao: "Quiero el plan de {nome}",
   dorTitulo: "¿Te suena esta escena?",
   dorTexto: "Si te viste en al menos una de estas situaciones, este plan fue hecho para ti.",
@@ -741,7 +973,7 @@ const TEXTOS = {
   comoTitulo: "Cómo funciona",
   compTitulo: "Sin plan × con plan",
   recebeTitulo: "Lo que recibes",
-  imagemProduto: "assets/web/product-mockup.jpg",
+  imagemProduto: "assets/sales/product-mockup-corrected.png",
   bonusTitulo: "Bonos incluidos con el plan Premium",
   bonusRotulo: "Bono",
   depoTitulo: "Lo que dicen otros dueños",
@@ -750,7 +982,7 @@ const TEXTOS = {
   planoInclui: "Incluye",
   planoBonusTag: "+{n} bonos",
   planoBonusTitulo: "{n} bonos incluidos de regalo",
-  planoSeguro: "Pago seguro · PSE, Nequi, Tarjetas y Efecty",
+  planoSeguro: "Pago seguro · Tarjeta, PayPal y Pix",
   kickers: {
     dor: "El problema", causa: "La causa", resumo: "Tu plan",
     como: "El método", recebe: "Qué incluye", bonus: "De regalo", comp: "La diferencia", depo: "Testimonios",
@@ -763,9 +995,11 @@ const TEXTOS = {
   faqTitulo: "Preguntas frecuentes",
   psTexto: "<b>P.D.</b> Son solo 10 minutos al día y tienes 7 días de garantía incondicional. Si no te gusta, te devolvemos tu dinero. Todo el riesgo es nuestro.",
   psBotao: "Empezar el plan de {nome}",
-  rodapeTermos: "Términos",
-  rodapePrivacidade: "Privacidad",
-  rodapeAviso: "Los resultados pueden variar de un perro a otro según la constancia. El plan no reemplaza la atención veterinaria cuando sea necesaria.",
+  rodapeTermos: "Términos de Uso",
+  rodapePrivacidade: "Política de Privacidad",
+  rodapeReembolso: "Política de Reembolso",
+  rodapeSuporte: "Soporte al Comprador",
+  rodapeAviso: "Contenido educacional. Los resultados pueden variar de un perro a otro según la constancia y aplicación del método. El plan no reemplaza la atención médico-veterinaria cuando sea necesaria.",
 };
 
 const PASSOS = [
@@ -804,11 +1038,31 @@ const RECEBE = [
 ];
 
 const BONUS = [
-  { titulo: "Guía de premios caseros", texto: "Recetas sencillas y saludables para usar como recompensa en el entrenamiento." },
-  { titulo: "Checklist del paseo tranquilo", texto: "El paso a paso para salir de casa sin tirones ni estrés." },
-  { titulo: "Clase extra: primeros comandos", texto: "Sentado, quieto y acudir al llamado, explicados de forma simple." },
-  { titulo: "Guía de socialización", texto: "Cómo presentar a tu perro a personas y otros perros con calma." },
-  { titulo: "Juegos para gastar energía en casa", texto: "Ideas sencillas para cansar la mente de tu perro en días sin salida." },
+  {
+    titulo: "Guía de premios caseros",
+    texto: "Recetas sencillas y saludables para usar como recompensa en el entrenamiento.",
+    imagem: "assets/sales/capa_bono_01_guia_premios_caseros.png",
+  },
+  {
+    titulo: "Checklist del paseo tranquilo",
+    texto: "El paso a paso para salir de casa sin tirones ni estrés.",
+    imagem: "assets/sales/capa_bono_02_checklist_paseo_tranquilo.png",
+  },
+  {
+    titulo: "Clase extra: primeros comandos",
+    texto: "Sentado, quieto y acudir al llamado, explicados de forma simple.",
+    imagem: "assets/sales/capa_bono_03_clase_primeros_comandos.png",
+  },
+  {
+    titulo: "Guía de socialización",
+    texto: "Cómo presentar a tu perro a personas y otros perros con calma.",
+    imagem: "assets/sales/capa_bono_04_guia_socializacion.png",
+  },
+  {
+    titulo: "Juegos para gastar energía en casa",
+    texto: "Ideas sencillas para cansar la mente de tu perro en días sin salida.",
+    imagem: "assets/sales/capa_bono_05_juegos_gastar_energia.png",
+  },
 ];
 
 const DEPOIMENTOS = [
@@ -835,7 +1089,7 @@ const DEPOIMENTOS = [
 const FAQ = [
   {
     p: "¿Cómo recibo el acceso?",
-    r: "En cuanto se confirme el pago, recibirás las credenciales de acceso de forma inmediata en el correo que uses al comprar.",
+    r: "La entrega es 100% digital e inmediata. En cuanto se confirme el pago, recibirás automáticamente las credenciales de acceso en el correo electrónico que utilizaste al comprar para ingresar a la plataforma.",
   },
   {
     p: "¿Qué medios de pago están disponibles?",
@@ -855,7 +1109,7 @@ const FAQ = [
   },
   {
     p: "¿Y si no funciona con mi perro?",
-    r: "Tienes 7 días de garantía incondicional. Si no estás conforme, te devolvemos el 100% de tu dinero.",
+    r: "Tienes 7 días de garantía incondicional. Si no estás conforme, te devolvemos el 100% de tu dinero en hasta 7 días hábiles. Consulta nuestra <a href='reembolso.html' target='_blank' rel='noopener'>Política de Reembolso</a> completa.",
   },
 ];
 
@@ -951,6 +1205,27 @@ function tpl(texto) {
     .replace(/\{nome\}/g, n ? esc(n) : (hembra ? "tu perra" : "tu perro"));
 }
 
+function renderFooterHtml() {
+  return `
+  <footer class="foot">
+    <div class="wrap-sales">
+      <nav>
+        <a href="${esc(CONFIG.SOPORTE_URL)}" target="_blank" rel="noopener">Soporte</a>
+        <a href="${esc(CONFIG.REEMBOLSO_URL)}" target="_blank" rel="noopener">Política de Reembolso</a>
+        <a href="${esc(CONFIG.PRIVACIDADE_URL)}" target="_blank" rel="noopener">Política de Privacidad</a>
+        <a href="${esc(CONFIG.TERMOS_URL)}" target="_blank" rel="noopener">Términos de Uso</a>
+      </nav>
+      <div class="seller-info">
+        <strong>${esc(CONFIG.EMPRESA.razaoSocial)}</strong> · CNPJ: ${esc(CONFIG.EMPRESA.cnpj)}<br>
+        ${esc(CONFIG.EMPRESA.endereco)}<br>
+        Atención / Soporte: <a href="mailto:${esc(CONFIG.EMPRESA.email)}">${esc(CONFIG.EMPRESA.email)}</a>
+      </div>
+      <p class="disclaimer">${TEXTOS.rodapeAviso}</p>
+      <p class="copy">© ${CONFIG.ANO} PataCerta · Todos los derechos reservados.</p>
+    </div>
+  </footer>`;
+}
+
 /* =====================================================================
    10) MOTOR DE ETAPAS INTELIGENTES (RAMIFICACIÓN)
    ===================================================================== */
@@ -979,6 +1254,8 @@ function obtenerEtapasDinamicas() {
         "Adulto (de 1,5 a 7 años)",
         "Senior (más de 7 años)"
       ],
+      imagemMap: IMG_IDADE,
+      imagemClasse: "opt-img--porte",
     },
     {
       id: "porte", tipo: "escolha",
@@ -989,6 +1266,8 @@ function obtenerEtapasDinamicas() {
         "Grande (25 a 45 kg)",
         "Gigante (más de 45 kg)"
       ],
+      imagemMap: IMG_PORTE,
+      imagemClasse: "opt-img--porte",
     },
     {
       id: "raca", tipo: "raca",
@@ -999,11 +1278,13 @@ function obtenerEtapasDinamicas() {
       id: "foco", tipo: "escolha",
       pergunta: "¿Qué comportamiento de {nome} quieres resolver primero?",
       opcoes: OPCOES_COMPORTAMENTO,
+      imagemMap: IMG_COMPORTAMENTO,
     },
     {
       id: "detalhe_foco", tipo: "escolha",
       pergunta: () => tpl(COMPORTAMENTOS[state.foco] ? COMPORTAMENTOS[state.foco].perguntaProfunda : "¿En qué momento ocurre con más frecuencia?"),
       opcoes: () => (COMPORTAMENTOS[state.foco] ? COMPORTAMENTOS[state.foco].opcoesProfundas : ["Todos los días", "A veces", "Situaciones puntuales"]),
+      imagemMap: () => state.foco === "Destruye objetos" ? IMG_OBJETOS : null,
     },
     {
       id: "info_diagnostico", tipo: "info",
@@ -1018,6 +1299,8 @@ function obtenerEtapasDinamicas() {
         "Energía moderada (se activa en paseos y juego)",
         "Tranquilo y dormilón",
       ],
+      imagemMap: IMG_ENERGIA,
+      imagemClasse: "opt-img--porte",
     },
     {
       id: "moradia", tipo: "escolha",
@@ -1027,6 +1310,8 @@ function obtenerEtapasDinamicas() {
         "Casa con patio",
         "Casa sin patio",
       ],
+      imagemMap: IMG_MORADIA,
+      imagemClasse: "opt-img--porte",
     },
     {
       id: "tentou", tipo: "escolha",
@@ -1037,11 +1322,15 @@ function obtenerEtapasDinamicas() {
         "Con un adiestrador o clases",
         "Aún no he intentado un método formal",
       ],
+      imagemMap: IMG_TENTOU,
+      imagemClasse: "opt-img--porte",
     },
     {
       id: "tempo", tipo: "escolha",
       pergunta: "¿Cuánto tiempo al día puedes dedicarle al plan?",
       opcoes: ["10 minutos al día", "15 a 20 minutos al día", "Más de 20 minutos"],
+      imagemMap: IMG_TEMPO,
+      imagemClasse: "opt-img--porte",
     },
     {
       id: "carregando", tipo: "carregando",
@@ -1137,6 +1426,9 @@ function telaInicio() {
       <span class="pill"><i></i>${I.selo}</span>
       <h1 class="h1">${I.titulo}</h1>
       <p class="sub">${I.subtitulo}</p>
+      <div style="text-align:center">
+        <span class="badge-live"><span class="badge-live-dot"></span>779 personas haciendo el quiz ahora</span>
+      </div>
       ${img}
       <button class="btn btn-red" data-comecar>${I.botao}</button>
       <p class="inicio-nota">${I.nota}</p>
@@ -1160,7 +1452,40 @@ function telaInicio() {
 function telaEscolha(e) {
   const opcoes = typeof e.opcoes === "function" ? e.opcoes() : e.opcoes;
   const pergunta = typeof e.pergunta === "function" ? e.pergunta() : e.pergunta;
+  const imagemMap = typeof e.imagemMap === "function" ? e.imagemMap() : e.imagemMap;
 
+  if (imagemMap) {
+    // Render como grid de cards com imagem + label
+    const extraClasse = e.imagemClasse || "";
+    qbody.innerHTML = `
+      <section class="screen">
+        <h2 class="q">${tpl(pergunta)}</h2>
+        <div class="opts-img">
+          ${opcoes.map(o => {
+            const img = imagemMap[o];
+            const sel = state[e.id] === o ? " sel" : "";
+            const media = img
+              ? `<div class="opt-img-media"><img src="${esc(img)}" alt="" loading="lazy"></div>`
+              : `<div class="opt-img-empty">${ICON.paw}</div>`;
+            return `<button class="opt-img${sel}" data-v="${esc(o)}">${media}<span class="opt-img-label">${ucfirst(tpl(o))}</span></button>`;
+          }).join("")}
+        </div>
+      </section>`;
+
+    qbody.querySelectorAll(".opt-img").forEach(btn => {
+      btn.onclick = () => {
+        if (travado) return;
+        travado = true;
+        qbody.querySelectorAll(".opt-img").forEach(b => b.classList.remove("sel"));
+        btn.classList.add("sel");
+        registrar(e.id, btn.dataset.v);
+        setTimeout(avancar, 350);
+      };
+    });
+    return;
+  }
+
+  // Render padrão (lista)
   qbody.innerHTML = `
     <section class="screen">
       <h2 class="q">${tpl(pergunta)}</h2>
@@ -1329,7 +1654,11 @@ function renderVendas() {
   const K = TEXTOS.kickers;
 
   app.innerHTML = `
-  <header class="shead">${LOGO}</header>
+  <header class="shead">
+    <div class="wrap-sales">
+      ${LOGO}
+    </div>
+  </header>
 
   <main>
     <!-- =================== A · ATENCIÓN =================== -->
@@ -1411,12 +1740,17 @@ function renderVendas() {
       <div class="wrap-sales">
         <p class="kicker">${K.bonus}</p>
         <h2 class="h2">${TEXTOS.bonusTitulo}</h2>
-        <ul class="bonus">
+        <div class="bonus">
           ${BONUS.map((b, i) => `
-            <li>
-              <div><span class="tag">${TEXTOS.bonusRotulo} #${i + 1}</span><h3>${b.titulo}</h3><p>${b.texto}</p></div>
-            </li>`).join("")}
-        </ul>
+            <div class="bonus-card">
+              ${b.imagem ? `<div class="bonus-media"><img src="${esc(b.imagem)}" alt="${esc(b.titulo)}" width="240" height="320" loading="lazy"></div>` : ""}
+              <div class="bonus-info">
+                <span class="tag">${TEXTOS.bonusRotulo} #${i + 1}</span>
+                <h3>${b.titulo}</h3>
+                <p>${b.texto}</p>
+              </div>
+            </div>`).join("")}
+        </div>
       </div>
     </section>
 
@@ -1461,7 +1795,9 @@ function renderVendas() {
         <div class="planos">
           ${Object.entries(PLANOS).map(([id, p]) => cartaoPlano(id, p)).join("")}
         </div>
-        ${TRUST}
+        ${TEXTOS.imagemPagamentos
+          ? `<div style="text-align:center;margin-top:20px"><img src="${esc(TEXTOS.imagemPagamentos)}" alt="Formas de pago aceptadas" loading="lazy" style="max-width:320px;width:100%;height:auto;margin:0 auto"></div>`
+          : TRUST}
         <p class="nota">${TEXTOS.planosNota}</p>
       </div>
     </section>
@@ -1469,10 +1805,13 @@ function renderVendas() {
     <!-- Garantía -->
     <section class="sec">
       <div class="wrap-sales garantia">
-        <div class="selo-g" aria-hidden="true"><small>${TEXTOS.garantiaSeloTopo}</small><b>7</b><small>${TEXTOS.garantiaSeloBase}</small></div>
+        ${TEXTOS.imagemGarantia
+          ? `<img src="${esc(TEXTOS.imagemGarantia)}" alt="Garantia de 7 dias" width="128" height="128" loading="lazy" style="margin:0 auto 20px;display:block;width:128px;height:auto">`
+          : `<div class="selo-g" aria-hidden="true"><small>${TEXTOS.garantiaSeloTopo}</small><b>7</b><small>${TEXTOS.garantiaSeloBase}</small></div>`}
         <p class="kicker">${K.garantia}</p>
         <h2 class="h2">${TEXTOS.garantiaTitulo}</h2>
         <p class="p">${TEXTOS.garantiaTexto}</p>
+        <p class="garantia-link"><a href="${esc(CONFIG.REEMBOLSO_URL)}" target="_blank" rel="noopener">Consulta nuestra Política de Reembolso completa aquí →</a></p>
       </div>
     </section>
 
@@ -1496,16 +1835,7 @@ function renderVendas() {
     </section>
   </main>
 
-  <footer class="foot">
-    <div class="wrap-sales">
-      <nav>
-        <a href="${esc(CONFIG.SOPORTE_URL)}" target="_blank" rel="noopener">Soporte al comprador</a>
-        <a href="${esc(CONFIG.PRIVACIDADE_URL)}" target="_blank" rel="noopener">Privacidad y Términos</a>
-      </nav>
-      <p>${TEXTOS.rodapeAviso}</p>
-      <p>© ${CONFIG.ANO} PataCerta</p>
-    </div>
-  </footer>`;
+  ${renderFooterHtml()}`;
 
   window.scrollTo(0, 0);
   track("ViewContent", { content_name: "Plan PataCerta", content_category: state.foco });
