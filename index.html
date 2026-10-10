@@ -258,6 +258,7 @@ ul, ol { list-style: none; }
   padding: 8px 16px;
   border-radius: 999px;
   letter-spacing: -.01em;
+  margin-top: 18px;
   margin-bottom: 14px;
 }
 .badge-live-dot {
@@ -1416,6 +1417,43 @@ function registrar(id, valor) {
   }
 }
 
+let liveCountValue = 779;
+let liveCountTimer = null;
+
+function iniciarContadorAoVivo() {
+  if (liveCountTimer) return;
+
+  function proximoCiclo() {
+    // 68% de chance de subir (+1 a +3), 20% de descer (-1), 12% de pausa
+    const rand = Math.random();
+    let delta = 0;
+    if (rand < 0.68) {
+      delta = Math.random() < 0.70 ? 1 : (Math.random() < 0.88 ? 2 : 3);
+    } else if (rand < 0.88) {
+      delta = -1;
+    } else {
+      delta = 0; // Pausa
+    }
+
+    liveCountValue += delta;
+    if (liveCountValue < 760) liveCountValue = 760;
+
+    const el = document.getElementById("liveCount");
+    if (el) {
+      el.textContent = liveCountValue;
+    }
+
+    // Intervalo com variação dinâmica (entre 2.2s e 4.8s, com pausas eventuais de até 6.5s)
+    const proximoTempo = delta === 0
+      ? 3500 + Math.random() * 3000
+      : 2000 + Math.random() * 2600;
+
+    liveCountTimer = setTimeout(proximoCiclo, proximoTempo);
+  }
+
+  liveCountTimer = setTimeout(proximoCiclo, 2200);
+}
+
 function telaInicio() {
   const I = INICIO;
   const img = I.imagem
@@ -1427,7 +1465,7 @@ function telaInicio() {
       <h1 class="h1">${I.titulo}</h1>
       <p class="sub">${I.subtitulo}</p>
       <div style="text-align:center">
-        <span class="badge-live"><span class="badge-live-dot"></span>779 personas haciendo el quiz ahora</span>
+        <span class="badge-live"><span class="badge-live-dot"></span><span id="liveCount">${liveCountValue}</span> personas haciendo el quiz ahora</span>
       </div>
       ${img}
       <button class="btn btn-red" data-comecar>${I.botao}</button>
@@ -1446,6 +1484,7 @@ function telaInicio() {
         <button class="btn btn-red mt-24" data-comecar>${I.botao}</button>
       </div>
     </section>`;
+  iniciarContadorAoVivo();
   qbody.querySelectorAll("[data-comecar]").forEach(b => b.onclick = avancar);
 }
 
