@@ -3,7 +3,7 @@ const { criarCobrancaPix } = require("./_lofypay");
 // Preços fixados no servidor para evitar adulteração no frontend
 const PRECOS_PLANOS = {
   basico: { nome: "Plano Básico PataCerta", valor: 37.00 },
-  premium: { nome: "Plano Premium PataCerta", valor: 57.00 },
+  premium: { nome: "Plano Premium PataCerta", valor: 67.00 },
 };
 
 function validarCpf(cpf) {
