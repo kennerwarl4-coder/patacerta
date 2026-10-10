@@ -3,29 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#111827">
+<meta name="theme-color" content="#EA580C">
 <title>Checkout Seguro · PataCerta</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23DC2626'%3E%3Cellipse cx='6' cy='10' rx='2.1' ry='2.6'/%3E%3Cellipse cx='10' cy='6' rx='2.1' ry='2.7'/%3E%3Cellipse cx='14' cy='6' rx='2.1' ry='2.7'/%3E%3Cellipse cx='18' cy='10' rx='2.1' ry='2.6'/%3E%3Cpath d='M12 11.5c-2.6 0-5.2 3.4-5.2 5.8 0 1.6 1.2 2.4 2.6 2.4 1.1 0 1.7-.6 2.6-.6s1.5.6 2.6.6c1.4 0 2.6-.8 2.6-2.4 0-2.4-2.6-5.8-5.2-5.8z'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
 :root {
-  --bg: #F8FAFC;
-  --card-bg: #FFFFFF;
-  --text-main: #0F172A;
-  --text-muted: #64748B;
-  --border: #E2E8F0;
-  --border-focus: #0F172A;
-  --green: #10B981;
-  --green-dark: #059669;
-  --green-soft: #ECFDF5;
+  --bg: #F3F4F6;
+  --card: #FFFFFF;
+  --txt: #111827;
+  --muted: #6B7280;
+  --line: #E5E7EB;
+  --orange: #EA580C;
+  --green: #00B37E;
+  --green-hover: #009E6F;
+  --pix: #00B494;
   --red: #DC2626;
-  --radius-lg: 18px;
-  --radius-md: 12px;
-  --font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --radius: 12px;
+  --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 *, *::before, *::after {
@@ -36,751 +35,505 @@
 
 body {
   font-family: var(--font);
-  background-color: var(--bg);
-  color: var(--text-main);
-  line-height: 1.5;
+  background: var(--bg);
+  color: var(--txt);
+  line-height: 1.45;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* TOP BAR ALERTA / URGENCIA */
-.urgency-bar {
-  background: #1E293B;
-  color: #F8FAFC;
+/* FAIXA DE TIMER LARANJA (TEXTO CURTO) */
+.timer-bar {
+  background: var(--orange);
+  color: #FFFFFF;
   text-align: center;
-  padding: 9px 16px;
+  padding: 8px 12px;
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: .01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.urgency-bar b {
-  color: #FBBF24;
+.timer-bar b {
   font-weight: 800;
+  letter-spacing: .02em;
 }
 
-/* HEADER PRINCIPAL */
-header.chk-header {
+/* CABEÇALHO LIMPO */
+header.chk-head {
   background: #FFFFFF;
-  border-bottom: 1px solid var(--border);
-  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  padding: 14px 16px;
 }
-.header-inner {
-  max-width: 1040px;
+.head-wrap {
+  max-width: 480px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.brand-link {
+.logo {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  font-size: 20px;
+  gap: 7px;
   font-weight: 800;
-  color: var(--text-main);
+  font-size: 18px;
+  color: var(--txt);
+  text-decoration: none;
 }
-.brand-link svg {
-  width: 24px;
-  height: 24px;
+.logo svg {
+  width: 22px;
+  height: 22px;
   color: var(--red);
 }
-.ssl-tag {
+.ssl-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 12px;
+  gap: 5px;
+  font-size: 11.5px;
   font-weight: 700;
   color: #047857;
   background: #ECFDF5;
   border: 1px solid #A7F3D0;
-  padding: 5px 12px;
+  padding: 4px 10px;
   border-radius: 999px;
 }
-.ssl-tag svg {
-  width: 14px;
-  height: 14px;
+.ssl-pill svg {
+  width: 13px;
+  height: 13px;
 }
 
-/* CONTAINER PRINCIPAL */
-main.chk-main {
-  flex: 1;
-  max-width: 1040px;
+/* CONTAINER CENTRALIZADO (RESPONSIVO PARA CELULAR) */
+main.chk-container {
   width: 100%;
-  margin: 28px auto 48px;
-  padding: 0 16px;
+  max-width: 480px;
+  margin: 16px auto 36px;
+  padding: 0 14px;
+  flex: 1;
 }
 
-.checkout-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-}
-@media (min-width: 860px) {
-  .checkout-grid {
-    grid-template-columns: 1.35fr 1fr;
-    gap: 32px;
-    align-items: start;
-  }
+/* CARDS PADRÃO */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
-/* CARTOES E SEÇÕES */
-.card-box {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
-  margin-bottom: 20px;
-}
-.card-box:last-child {
-  margin-bottom: 0;
-}
-
-/* STEPPER */
-.stepper-nav {
+/* 1) RESUMO NO TOPO */
+.summary-top {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 24px;
 }
-.step-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--text-muted);
-}
-.step-item.active {
-  color: var(--text-main);
-}
-.step-number {
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: #E2E8F0;
-  color: #475569;
-  font-size: 12px;
-  font-weight: 800;
+.prod-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  background: #FEF2F2;
+  border: 1px solid #FEE2E2;
+  color: var(--red);
   display: grid;
   place-items: center;
-  transition: all .2s;
+  flex: none;
 }
-.step-item.active .step-number {
-  background: var(--text-main);
-  color: #FFFFFF;
+.prod-thumb svg {
+  width: 26px;
+  height: 26px;
 }
-.step-item.done .step-number {
-  background: var(--green-dark);
-  color: #FFFFFF;
-}
-.step-line {
+.prod-details {
   flex: 1;
-  height: 2px;
-  background: #E2E8F0;
+  min-width: 0;
+}
+.prod-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--txt);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.prod-sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+.prod-price {
+  text-align: right;
+  flex: none;
+}
+.prod-price b {
+  display: block;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--txt);
+}
+.prod-price span {
+  font-size: 11px;
+  color: #059669;
+  font-weight: 700;
+  background: #ECFDF5;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
-/* TITULO DE ETAPA */
-.section-heading {
+/* TÍTULO DA SEÇÃO */
+.sec-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--txt);
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 17px;
-  font-weight: 800;
-  margin-bottom: 16px;
-  color: var(--text-main);
-}
-.section-heading svg {
-  width: 20px;
-  height: 20px;
-  color: var(--text-muted);
+  gap: 6px;
 }
 
-/* FORMULÁRIO */
-.form-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 14px;
+/* FORMULÁRIO LIMPO */
+.form-group {
+  margin-bottom: 12px;
 }
-.form-field:last-child {
+.form-group:last-child {
   margin-bottom: 0;
 }
-.form-field label {
+.form-group label {
+  display: block;
   font-size: 13px;
-  font-weight: 700;
-  color: #334155;
-  display: flex;
-  justify-content: space-between;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 5px;
 }
-.form-field label span.hint {
-  font-weight: 500;
-  font-size: 11.5px;
-  color: var(--text-muted);
-}
-.input-wrap {
-  position: relative;
-}
-.input-text {
+.form-input {
   width: 100%;
-  height: 48px;
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 0 14px;
+  height: 46px;
+  border: 1px solid #D1D5DB;
+  border-radius: 9px;
+  padding: 0 12px;
   font-family: inherit;
-  font-size: 15px;
-  color: var(--text-main);
+  font-size: 14.5px;
+  color: var(--txt);
   background: #FFFFFF;
   transition: border-color .15s, box-shadow .15s;
 }
-.input-text:focus {
+.form-input:focus {
   outline: none;
-  border-color: var(--text-main);
-  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
+  border-color: #111827;
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.08);
 }
-.input-text.error {
+.form-input.is-invalid {
   border-color: var(--red);
   background: #FEF2F2;
 }
-.field-error-msg {
-  font-size: 12px;
+.err-text {
+  font-size: 11.5px;
   color: var(--red);
-  font-weight: 600;
-  display: none;
+  font-weight: 500;
   margin-top: 3px;
+  display: none;
 }
-.input-text.error ~ .field-error-msg {
+.form-input.is-invalid ~ .err-text {
   display: block;
 }
 
-/* METODO DE PAGAMENTO SELECIONADO */
-.payment-selector-box {
+/* MÉTODO PIX SELECIONADO */
+.pix-badge-box {
   background: #F0FDF4;
-  border: 2px solid var(--green);
-  border-radius: var(--radius-md);
-  padding: 14px 16px;
+  border: 1.5px solid #86EFAC;
+  border-radius: 10px;
+  padding: 12px 14px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
 }
-.payment-left {
+.pix-badge-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
-.payment-pix-icon {
-  width: 34px;
-  height: 34px;
-  background: #00B494;
-  color: #FFFFFF;
-  border-radius: 8px;
-  display: grid;
-  place-items: center;
+.pix-badge-left svg.pix-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--pix);
 }
-.payment-pix-icon svg {
-  width: 20px;
-  height: 20px;
+.pix-badge-left b {
+  font-size: 14px;
+  color: var(--txt);
 }
-.payment-info b {
-  display: block;
-  font-size: 15px;
-  color: var(--text-main);
-}
-.payment-info span {
-  font-size: 12px;
+.pix-tag {
+  font-size: 11px;
+  font-weight: 700;
   color: #047857;
-  font-weight: 600;
-}
-.payment-badge {
   background: #DCFCE7;
-  color: #15803D;
-  font-size: 11.5px;
-  font-weight: 800;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: 999px;
-  border: 1px solid #86EFAC;
 }
 
-/* BOTAO SUBMIT */
-.btn-submit {
+/* BOTÃO DE COMPRA VIBRANTE */
+.btn-pay {
   width: 100%;
-  height: 56px;
-  border: none;
-  border-radius: var(--radius-md);
-  background: linear-gradient(180deg, #10B981 0%, #059669 100%);
+  height: 54px;
+  margin-top: 14px;
+  background: var(--green);
   color: #FFFFFF;
-  font-size: 17px;
+  border: none;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 16px;
   font-weight: 800;
-  letter-spacing: .01em;
+  letter-spacing: -.01em;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(5, 150, 105, 0.32);
-  transition: transform .12s, box-shadow .12s, filter .12s;
+  box-shadow: 0 4px 14px rgba(0, 179, 126, 0.35);
+  transition: background-color .15s, transform .1s;
 }
-.btn-submit:hover {
-  filter: brightness(1.04);
-  box-shadow: 0 10px 24px rgba(5, 150, 105, 0.4);
+.btn-pay:hover {
+  background: var(--green-hover);
 }
-.btn-submit:active {
+.btn-pay:active {
   transform: scale(0.99);
 }
-.btn-submit:disabled {
+.btn-pay:disabled {
   opacity: 0.65;
   cursor: not-allowed;
   transform: none;
-  filter: none;
 }
+.btn-pay svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* SPINNER */
 .spinner {
-  width: 22px;
-  height: 22px;
-  border: 3px solid rgba(255,255,255,0.3);
-  border-top-color: #fff;
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  display: none;
-}
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-.btn-submit.loading .spinner {
-  display: block;
-}
-.btn-submit.loading .btn-text-normal {
-  display: none;
-}
-
-/* SELOS DE SEGURANÇA ABAIXO DO BOTAO */
-.trust-badges-bar {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 16px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-muted);
-}
-.trust-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-.trust-item svg {
-  width: 15px;
-  height: 15px;
-  color: var(--green-dark);
-}
-
-/* LATERAL / RESUMO DO PEDIDO */
-.sidebar-summary {
-  position: sticky;
-  top: 24px;
-}
-.product-card {
-  display: flex;
-  gap: 14px;
-  padding-bottom: 18px;
-  border-bottom: 1px dashed var(--border);
-  margin-bottom: 18px;
-}
-.product-thumb {
-  width: 60px;
-  height: 60px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
-  color: #fff;
-  display: grid;
-  place-items: center;
-  flex: none;
-}
-.product-thumb svg {
-  width: 30px;
-  height: 30px;
-}
-.product-meta h3 {
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--text-main);
-  line-height: 1.25;
-}
-.product-meta p {
-  font-size: 12.5px;
-  color: var(--text-muted);
-  margin-top: 2px;
-}
-
-/* SELETOR DE PLANO (TOGGLE) */
-.plan-toggle-box {
-  background: #F1F5F9;
-  border-radius: var(--radius-md);
-  padding: 4px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px;
-  margin-bottom: 16px;
-}
-.plan-toggle-btn {
-  border: none;
-  background: transparent;
-  padding: 9px 8px;
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 700;
-  color: #475569;
-  cursor: pointer;
-  transition: all .15s;
-}
-.plan-toggle-btn.active {
-  background: #FFFFFF;
-  color: var(--text-main);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-}
-.plan-toggle-btn span.badge-mini {
-  display: inline-block;
-  font-size: 9.5px;
-  background: #DC2626;
-  color: #fff;
-  padding: 1px 5px;
-  border-radius: 999px;
-  margin-left: 4px;
-  vertical-align: middle;
-}
-
-/* ITENS INCLUSOS */
-.included-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  margin-bottom: 18px;
-}
-.included-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-  font-size: 13px;
-  color: #334155;
-  line-height: 1.35;
-}
-.included-list li svg {
-  width: 16px;
-  height: 16px;
-  color: var(--green);
-  flex: none;
-  margin-top: 2px;
-}
-.included-list li.bonus-item {
-  background: #FEF2F2;
-  border: 1px solid #FECACA;
-  padding: 6px 10px;
-  border-radius: 8px;
-  color: #991B1B;
-  font-weight: 600;
-}
-.included-list li.bonus-item svg {
-  color: #DC2626;
-}
-
-/* PREÇO FINAL */
-.price-breakdown {
-  border-top: 1px solid var(--border);
-  padding-top: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.price-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 13.5px;
-  color: var(--text-muted);
-}
-.price-row.total-row {
-  font-size: 17px;
-  font-weight: 800;
-  color: var(--text-main);
-  margin-top: 4px;
-  padding-top: 8px;
-  border-top: 1px dashed var(--border);
-}
-.price-row.total-row b {
-  font-size: 24px;
-  color: #047857;
-}
-
-/* CARD GARANTIA 7 DIAS */
-.guarantee-card {
-  background: #FFFBEB;
-  border: 1px solid #FDE68A;
-  border-radius: var(--radius-md);
-  padding: 14px 16px;
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  margin-top: 16px;
-}
-.guarantee-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: #FEF3C7;
-  color: #B45309;
-  display: grid;
-  place-items: center;
-  flex: none;
-}
-.guarantee-icon svg {
   width: 20px;
   height: 20px;
+  border: 2.5px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  display: none;
 }
-.guarantee-text b {
-  display: block;
-  font-size: 13px;
+@keyframes spin { to { transform: rotate(360deg); } }
+.btn-pay.loading .spinner { display: block; }
+.btn-pay.loading .btn-label { display: none; }
+
+/* SELOS DE SEGURANÇA */
+.trust-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 14px;
+  font-size: 11.5px;
+  color: var(--muted);
+  font-weight: 500;
+}
+.trust-row span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.trust-row svg {
+  width: 14px;
+  height: 14px;
+  color: #059669;
+}
+
+/* GARANTIA 7 DIAS */
+.guarantee-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 12px;
   color: #92400E;
 }
-.guarantee-text p {
-  font-size: 12px;
-  color: #B45309;
-  margin-top: 1px;
+.guarantee-box svg {
+  width: 22px;
+  height: 22px;
+  color: #D97706;
+  flex: none;
 }
 
 /* =========================================================
    ETAPA 2: TELA DO PIX GERADO
    ========================================================= */
-.pix-screen {
+#stepPixArea {
   display: none;
   text-align: center;
 }
-.pix-screen.visible {
+#stepPixArea.active {
   display: block;
-  animation: fadeIn .3s ease-out;
+  animation: fadeIn .25s ease-out;
 }
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-.pix-success-badge {
+.pix-head-logo {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #ECFDF5;
-  border: 1px solid #A7F3D0;
-  color: #047857;
-  font-size: 12.5px;
-  font-weight: 700;
-  padding: 5px 14px;
-  border-radius: 999px;
+  color: var(--pix);
+  font-weight: 800;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.pix-head-logo svg {
+  width: 22px;
+  height: 22px;
+}
+.pix-view-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--txt);
+  margin-bottom: 4px;
+}
+.pix-view-sub {
+  font-size: 13px;
+  color: var(--muted);
   margin-bottom: 12px;
 }
-.pix-success-badge svg {
-  width: 14px;
-  height: 14px;
-}
-.pix-title {
-  font-size: 22px;
-  font-weight: 800;
-  color: var(--text-main);
-  margin-bottom: 6px;
-}
-.pix-sub {
-  font-size: 14px;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-}
 
-/* TIMER PIX */
-.pix-timer-box {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #FEF3C7;
-  border: 1px solid #FDE68A;
-  color: #92400E;
-  font-size: 13px;
-  font-weight: 700;
-  padding: 6px 16px;
-  border-radius: 999px;
-  margin-bottom: 20px;
-}
-.pix-timer-box svg {
-  width: 16px;
-  height: 16px;
-}
-
-/* QR CODE WRAPPER */
-.pix-qr-container {
-  width: 220px;
-  height: 220px;
-  margin: 0 auto 18px;
+.pix-qr-box {
+  width: 190px;
+  height: 190px;
+  margin: 0 auto 12px;
   background: #FFFFFF;
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
 }
-.pix-qr-container img, .pix-qr-container canvas {
+.pix-qr-box img, .pix-qr-box canvas {
   width: 100% !important;
   height: 100% !important;
   display: block;
 }
 
-/* VALOR DO PIX */
-.pix-amount-pill {
-  font-size: 15px;
-  color: var(--text-muted);
-  margin-bottom: 14px;
+.pix-amount-line {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 12px;
 }
-.pix-amount-pill b {
-  font-size: 20px;
-  color: #047857;
+.pix-amount-line b {
+  font-size: 18px;
+  color: var(--txt);
 }
 
-/* COPIA E COLA */
-.pix-copy-box {
-  background: #F1F5F9;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  padding: 8px 12px;
+.copy-input-row {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-  text-align: left;
+  gap: 6px;
+  background: #F3F4F6;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 8px;
+  margin-bottom: 12px;
 }
-.pix-code-input {
+.copy-code-text {
   flex: 1;
-  background: transparent;
   border: none;
+  background: transparent;
   font-family: monospace;
-  font-size: 13px;
-  color: #334155;
+  font-size: 12px;
+  color: #374151;
   outline: none;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
-.btn-copy-pix {
-  background: var(--text-main);
+.btn-copy {
+  background: #111827;
   color: #FFFFFF;
   border: none;
-  padding: 10px 16px;
+  border-radius: 6px;
+  padding: 7px 12px;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color .15s;
+}
+.btn-copy.copied {
+  background: #059669;
+}
+
+.status-live-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #047857;
+  margin-bottom: 10px;
+}
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  animation: pulse 1.2s infinite;
+  flex: none;
+}
+@keyframes pulse {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.7; }
+}
+
+.btn-manual-verify {
+  width: 100%;
+  height: 42px;
+  background: #FFFFFF;
+  border: 1px solid #D1D5DB;
   border-radius: 8px;
   font-family: inherit;
   font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  white-space: nowrap;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  transition: all .2s;
-}
-.btn-copy-pix:hover {
-  background: #000;
-}
-.btn-copy-pix.copied {
-  background: var(--green-dark);
-}
-
-/* STATUS EM TEMPO REAL */
-.pix-status-card {
-  background: #ECFDF5;
-  border: 1px solid #A7F3D0;
-  border-radius: var(--radius-md);
-  padding: 12px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-size: 13.5px;
-  font-weight: 700;
-  color: #065F46;
-  margin-bottom: 14px;
-}
-.pulse-circle {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #10B981;
-  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-  animation: pulseAnim 1.4s infinite;
-  flex: none;
-}
-@keyframes pulseAnim {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-  70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-}
-
-.btn-check-manual {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-muted);
-  padding: 10px 16px;
-  border-radius: var(--radius-md);
-  font-family: inherit;
-  font-size: 13px;
   font-weight: 600;
+  color: #4B5563;
   cursor: pointer;
-  width: 100%;
-  transition: all .15s;
 }
-.btn-check-manual:hover {
-  background: #FFFFFF;
-  color: var(--text-main);
+.btn-manual-verify:hover {
+  background: #F9FAFB;
 }
 
-/* RODAPÉ DO CHECKOUT */
-footer.chk-footer {
-  background: #FFFFFF;
-  border-top: 1px solid var(--border);
-  padding: 24px 16px;
+/* RODAPÉ */
+footer.chk-foot {
   text-align: center;
-  font-size: 12px;
-  color: var(--text-muted);
-  line-height: 1.6;
+  padding: 20px 14px;
+  font-size: 11.5px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  background: #FFFFFF;
   margin-top: auto;
-}
-.footer-links {
-  margin-top: 8px;
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-}
-.footer-links a {
-  color: var(--text-muted);
-  text-decoration: none;
-}
-.footer-links a:hover {
-  text-decoration: underline;
 }
 </style>
 </head>
 <body>
 
-<!-- BARRA DE URGÊNCIA -->
-<div class="urgency-bar">
-  ⚡ Atenção: Condição promocional reservada por <b id="countdownTimerText">14:59</b> minutos
+<!-- FAIXA LARANJA DE URGÊNCIA (TEXTO CURTO) -->
+<div class="timer-bar">
+  ⚡ Oferta reservada por <b id="timerCount">14:59</b> min
 </div>
 
-<!-- HEADER -->
-<header class="chk-header">
-  <div class="header-inner">
-    <a href="index.html" class="brand-link" title="Voltar para a página inicial">
+<!-- CABEÇALHO -->
+<header class="chk-head">
+  <div class="head-wrap">
+    <a href="index.html" class="logo">
       <svg viewBox="0 0 24 24" fill="currentColor">
         <ellipse cx="6" cy="10" rx="2.1" ry="2.6"/>
         <ellipse cx="10" cy="6" rx="2.1" ry="2.7"/>
@@ -790,295 +543,161 @@ footer.chk-footer {
       </svg>
       <span>PataCerta</span>
     </a>
-    <div class="ssl-tag">
+    <div class="ssl-pill">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
         <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
       </svg>
-      <span>Ambiente 100% Seguro</span>
+      <span>Compra Segura</span>
     </div>
   </div>
 </header>
 
-<!-- CONTEÚDO PRINCIPAL -->
-<main class="chk-main">
-  <div class="checkout-grid">
-    
-    <!-- COLUNA DA ESQUERDA: FORMULÁRIO / PIX -->
-    <div class="form-column">
-      
-      <!-- NAVEGADOR DE ETAPAS -->
-      <div class="stepper-nav">
-        <div class="step-item active" id="stepIndicator1">
-          <div class="step-number">1</div>
-          <span>Seus Dados</span>
-        </div>
-        <div class="step-line" id="stepLine"></div>
-        <div class="step-item" id="stepIndicator2">
-          <div class="step-number">2</div>
-          <span>Pagamento PIX</span>
-        </div>
+<!-- CONTEÚDO PRINCIPAL (1 COLUNA RESPONSIVA) -->
+<main class="chk-container">
+
+  <!-- RESUMO DO PEDIDO NO TOPO -->
+  <section class="card">
+    <div class="summary-top">
+      <div class="prod-thumb">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <ellipse cx="6" cy="10" rx="2.1" ry="2.6"/>
+          <ellipse cx="10" cy="6" rx="2.1" ry="2.7"/>
+          <ellipse cx="14" cy="6" rx="2.1" ry="2.7"/>
+          <ellipse cx="18" cy="10" rx="2.1" ry="2.6"/>
+          <path d="M12 11.5c-2.6 0-5.2 3.4-5.2 5.8 0 1.6 1.2 2.4 2.6 2.4 1.1 0 1.7-.6 2.6-.6s1.5.6 2.6.6c1.4 0 2.6-.8 2.6-2.4 0-2.4-2.6-5.8-5.2-5.8z"/>
+        </svg>
+      </div>
+      <div class="prod-details">
+        <div class="prod-title" id="prodTitle">Plano Premium PataCerta</div>
+        <div class="prod-sub" id="prodSub">Acesso Completo + 5 Bônus Inclusos</div>
+      </div>
+      <div class="prod-price">
+        <b id="prodPrice">R$ 67,00</b>
+        <span>PAGAMENTO ÚNICO</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ETAPA 1: DADOS PESSOAIS -->
+  <section class="card" id="stepFormArea">
+    <div class="sec-title">Dados Pessoais</div>
+
+    <form id="formCheckout" novalidate>
+      <div class="form-group">
+        <label for="inputNome">Nome completo</label>
+        <input type="text" id="inputNome" class="form-input" placeholder="Seu nome completo" required autocomplete="name">
+        <div class="err-text">Preencha seu nome completo.</div>
       </div>
 
-      <!-- ETAPA 1: DADOS PESSOAIS -->
-      <section class="card-box" id="stepDadosSection">
-        <div class="section-heading">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
+      <div class="form-group">
+        <label for="inputEmail">E-mail</label>
+        <input type="email" id="inputEmail" class="form-input" placeholder="seuemail@exemplo.com" required autocomplete="email">
+        <div class="err-text">Digite um e-mail válido.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputEmailConfirm">Confirmar e-mail</label>
+        <input type="email" id="inputEmailConfirm" class="form-input" placeholder="Confirme seu e-mail" required autocomplete="email">
+        <div class="err-text">Os e-mails digitados não são iguais.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputCpf">CPF</label>
+        <input type="tel" id="inputCpf" class="form-input" placeholder="000.000.000-00" maxlength="14" required>
+        <div class="err-text">CPF inválido. Digite os 11 números.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="inputWhatsapp">WhatsApp</label>
+        <input type="tel" id="inputWhatsapp" class="form-input" placeholder="(00) 00000-0000" maxlength="15" autocomplete="tel">
+      </div>
+
+      <div class="sec-title" style="margin-top: 16px;">Pagamento</div>
+
+      <!-- CARD DO PIX COM A LOGO OFICIAL -->
+      <div class="pix-badge-box">
+        <div class="pix-badge-left">
+          <!-- LOGO OFICIAL DO PIX (BANCO CENTRAL) -->
+          <svg class="pix-icon" viewBox="0 0 512 512" fill="currentColor">
+            <path d="M112.5 124.7l69.7-69.7c15.6-15.6 40.9-15.6 56.6 0l46.7 46.7c7.8 7.8 20.5 7.8 28.3 0l46.7-46.7c15.6-15.6 40.9-15.6 56.6 0l69.7 69.7c15.6 15.6 15.6 40.9 0 56.6l-69.7 69.7c-7.8 7.8-7.8 20.5 0 28.3l69.7 69.7c15.6 15.6 15.6 40.9 0 56.6l-69.7 69.7c-15.6 15.6-40.9 15.6-56.6 0l-46.7-46.7c-7.8-7.8-20.5-7.8-28.3 0l-46.7 46.7c-15.6 15.6-40.9 15.6-56.6 0l-69.7-69.7c-15.6-15.6-15.6-40.9 0-56.6l69.7-69.7c7.8-7.8 7.8-20.5 0-28.3l-69.7-69.7c-15.6-15.6-15.6-40.9 0-56.6zm72 131.3l57.7 57.7c7.8 7.8 20.5 7.8 28.3 0l57.7-57.7c7.8-7.8 7.8-20.5 0-28.3l-57.7-57.7c-7.8-7.8-20.5-7.8-28.3 0l-57.7 57.7c-7.8 7.8-7.8 20.5 0 28.3z"/>
           </svg>
-          <span>Identificação e Envio do Produto</span>
+          <div>
+            <b>PIX</b>
+          </div>
         </div>
+        <span class="pix-tag">LIBERAÇÃO IMEDIATA</span>
+      </div>
 
-        <form id="chkDadosForm" novalidate>
-          <div class="form-field">
-            <label for="inputNome">Nome Completo</label>
-            <div class="input-wrap">
-              <input type="text" id="inputNome" class="input-text" placeholder="Ex: Maria da Silva" required autocomplete="name">
-              <div class="field-error-msg">Informe seu nome completo.</div>
-            </div>
-          </div>
+      <!-- BOTÃO DE COMPRA VIBRANTE -->
+      <button type="submit" class="btn-pay" id="btnPagar">
+        <div class="spinner"></div>
+        <span class="btn-label" id="btnPagarLabel">PAGAR VIA PIX · R$ 67,00</span>
+      </button>
 
-          <div class="form-field">
-            <label for="inputEmail">
-              E-mail principal
-              <span class="hint">Onde você receberá o guia e bônus</span>
-            </label>
-            <div class="input-wrap">
-              <input type="email" id="inputEmail" class="input-text" placeholder="Ex: seuemail@gmail.com" required autocomplete="email">
-              <div class="field-error-msg">Informe um e-mail válido.</div>
-            </div>
-          </div>
+      <div class="trust-row">
+        <span>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          Seguro
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          Sem taxas
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+          Imediato
+        </span>
+      </div>
+    </form>
+  </section>
 
-          <div class="form-field">
-            <label for="inputEmailConfirm">Confirmar E-mail</label>
-            <div class="input-wrap">
-              <input type="email" id="inputEmailConfirm" class="input-text" placeholder="Digite o mesmo e-mail para confirmar" required autocomplete="email">
-              <div class="field-error-msg">Os e-mails informados não conferem.</div>
-            </div>
-          </div>
-
-          <div class="form-field">
-            <label for="inputCpf">
-              CPF
-              <span class="hint">Exigência do Banco Central para emissão do PIX</span>
-            </label>
-            <div class="input-wrap">
-              <input type="tel" id="inputCpf" class="input-text" placeholder="000.000.000-00" maxlength="14" required>
-              <div class="field-error-msg">Informe um CPF válido (11 dígitos).</div>
-            </div>
-          </div>
-
-          <div class="form-field">
-            <label for="inputWhatsapp">
-              WhatsApp / Celular <span class="hint">(Opcional para avisos de entrega)</span>
-            </label>
-            <div class="input-wrap">
-              <input type="tel" id="inputWhatsapp" class="input-text" placeholder="(11) 90000-0000" maxlength="15" autocomplete="tel">
-            </div>
-          </div>
-
-          <div class="section-heading" style="margin-top: 24px;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="20" height="14" x="2" y="5" rx="2"/>
-              <line x1="2" x2="22" y1="10" y2="10"/>
-            </svg>
-            <span>Forma de Pagamento</span>
-          </div>
-
-          <div class="payment-selector-box">
-            <div class="payment-left">
-              <div class="payment-pix-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-              </div>
-              <div class="payment-info">
-                <b>PIX à Vista</b>
-                <span>Aprovação instantânea · Sem taxas</span>
-              </div>
-            </div>
-            <span class="payment-badge">LIBERAÇÃO IMEDIATA</span>
-          </div>
-
-          <button type="submit" class="btn-submit" id="btnSubmitForm">
-            <div class="spinner"></div>
-            <span class="btn-text-normal" id="btnSubmitText">GERAR QR CODE PIX · R$ 67,00</span>
-          </button>
-
-          <div class="trust-badges-bar">
-            <div class="trust-item">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-              <span>Criptografia 256 bits</span>
-            </div>
-            <div class="trust-item">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-              <span>Privacidade Total</span>
-            </div>
-            <div class="trust-item">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-              <span>Acesso Imediato</span>
-            </div>
-          </div>
-        </form>
-      </section>
-
-      <!-- ETAPA 2: TELA DO PIX GERADO -->
-      <section class="card-box pix-screen" id="stepPixSection">
-        <div class="pix-success-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          <span>PIX Gerado com Sucesso!</span>
-        </div>
-
-        <h2 class="pix-title" id="pixTitleUser">Pague agora para liberar seu acesso</h2>
-        <p class="pix-sub">Abra o app do seu banco, escolha <b>Pagar com PIX</b> e escaneie o QR Code ou copie o código abaixo:</p>
-
-        <div class="pix-timer-box">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14"/>
-          </svg>
-          <span>Válido por: <b id="pixExpirationTimer">29:59</b></span>
-        </div>
-
-        <div class="pix-qr-container" id="pixQrContainer">
-          <!-- Renderizado via QRCode ou img -->
-        </div>
-
-        <div class="pix-amount-pill">
-          Valor total a pagar: <b id="pixDisplayAmount">R$ 67,00</b>
-        </div>
-
-        <div class="pix-copy-box">
-          <input type="text" id="pixCodeInput" class="pix-code-input" readonly value="">
-          <button type="button" class="btn-copy-pix" id="btnCopyPix">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
-              <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
-            </svg>
-            <span id="btnCopyPixText">Copiar Código PIX</span>
-          </button>
-        </div>
-
-        <div class="pix-status-card" id="pixLiveStatusCard">
-          <div class="pulse-circle"></div>
-          <span id="pixLiveStatusText">Aguardando confirmação do banco em tempo real...</span>
-        </div>
-
-        <button type="button" class="btn-check-manual" id="btnManualCheck">
-          Já realizei o pagamento, conferir agora
-        </button>
-      </section>
-
+  <!-- ETAPA 2: TELA DO PIX GERADO -->
+  <section class="card" id="stepPixArea">
+    <div class="pix-head-logo">
+      <svg viewBox="0 0 512 512" fill="currentColor">
+        <path d="M112.5 124.7l69.7-69.7c15.6-15.6 40.9-15.6 56.6 0l46.7 46.7c7.8 7.8 20.5 7.8 28.3 0l46.7-46.7c15.6-15.6 40.9-15.6 56.6 0l69.7 69.7c15.6 15.6 15.6 40.9 0 56.6l-69.7 69.7c-7.8 7.8-7.8 20.5 0 28.3l69.7 69.7c15.6 15.6 15.6 40.9 0 56.6l-69.7 69.7c-15.6 15.6-40.9 15.6-56.6 0l-46.7-46.7c-7.8-7.8-20.5-7.8-28.3 0l-46.7 46.7c-15.6 15.6-40.9 15.6-56.6 0l-69.7-69.7c-15.6-15.6-15.6-40.9 0-56.6l69.7-69.7c7.8-7.8 7.8-20.5 0-28.3l-69.7-69.7c-15.6-15.6-15.6-40.9 0-56.6zm72 131.3l57.7 57.7c7.8 7.8 20.5 7.8 28.3 0l57.7-57.7c7.8-7.8 7.8-20.5 0-28.3l-57.7-57.7c-7.8-7.8-20.5-7.8-28.3 0l-57.7 57.7c-7.8 7.8-7.8 20.5 0 28.3z"/>
+      </svg>
+      <span>PAGAMENTO PIX</span>
     </div>
 
-    <!-- COLUNA DA DIREITA: RESUMO DO PEDIDO -->
-    <aside class="sidebar-summary">
-      <div class="card-box">
-        
-        <div class="product-card">
-          <div class="product-thumb">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <ellipse cx="6" cy="10" rx="2.1" ry="2.6"/>
-              <ellipse cx="10" cy="6" rx="2.1" ry="2.7"/>
-              <ellipse cx="14" cy="6" rx="2.1" ry="2.7"/>
-              <ellipse cx="18" cy="10" rx="2.1" ry="2.6"/>
-              <path d="M12 11.5c-2.6 0-5.2 3.4-5.2 5.8 0 1.6 1.2 2.4 2.6 2.4 1.1 0 1.7-.6 2.6-.6s1.5.6 2.6.6c1.4 0 2.6-.8 2.6-2.4 0-2.4-2.6-5.8-5.2-5.8z"/>
-            </svg>
-          </div>
-          <div class="product-meta">
-            <h3 id="summaryPlanName">Plano Premium PataCerta</h3>
-            <p>Acesso Completo + 5 Bônus Exclusivos</p>
-          </div>
-        </div>
+    <h2 class="pix-view-title" id="pixTitleUser">Pague agora pelo seu banco</h2>
+    <p class="pix-view-sub">Escaneie o QR Code ou copie o código abaixo:</p>
 
-        <!-- SELETOR DE PLANO -->
-        <div class="plan-toggle-box">
-          <button type="button" class="plan-toggle-btn" id="btnSelectBasico" data-plan="basico">
-            Plano Básico (R$ 37)
-          </button>
-          <button type="button" class="plan-toggle-btn active" id="btnSelectPremium" data-plan="premium">
-            Premium (R$ 67) <span class="badge-mini">TOP</span>
-          </button>
-        </div>
+    <div class="pix-qr-box" id="pixQrCode"></div>
 
-        <ul class="included-list" id="summaryFeaturesList">
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Plano de 4 semanas estruturado para seu cão</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Vídeos curtos de 10 minutos por dia</span>
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <span>Acesso vitalício completo pelo celular</span>
-          </li>
-          <li class="bonus-item" id="bonusItem1">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><b>Bônus 1:</b> Guia de Recompensas Caseiras</span>
-          </li>
-          <li class="bonus-item" id="bonusItem2">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><b>Bônus 2:</b> Checklist do Passeio Tranquilo</span>
-          </li>
-          <li class="bonus-item" id="bonusItem3">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><b>Bônus 3:</b> Aula Primeiros Comandos</span>
-          </li>
-          <li class="bonus-item" id="bonusItem4">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><b>Bônus 4:</b> Guia de Socialização Segura</span>
-          </li>
-          <li class="bonus-item" id="bonusItem5">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><b>Bônus 5:</b> 5 Brincadeiras para Gastar Energia</span>
-          </li>
-        </ul>
+    <div class="pix-amount-line">
+      Valor a pagar: <b id="pixFinalAmount">R$ 67,00</b>
+    </div>
 
-        <div class="price-breakdown">
-          <div class="price-row">
-            <span>Preço original</span>
-            <span style="text-decoration: line-through;" id="summaryOriginalPrice">R$ 197,00</span>
-          </div>
-          <div class="price-row">
-            <span>Desconto aplicado</span>
-            <span style="color: #059669; font-weight: 700;" id="summaryDiscount">-66% OFF</span>
-          </div>
-          <div class="price-row total-row">
-            <span>Total com Desconto:</span>
-            <b id="summaryFinalPrice">R$ 67,00</b>
-          </div>
-        </div>
+    <div class="copy-input-row">
+      <input type="text" id="pixCopyInput" class="copy-code-text" readonly value="">
+      <button type="button" class="btn-copy" id="btnCopyPix">Copiar código</button>
+    </div>
 
-        <div class="guarantee-card">
-          <div class="guarantee-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-          </div>
-          <div class="guarantee-text">
-            <b>Garantia Incondicional de 7 Dias</b>
-            <p>Se você não notar melhoras no seu cão, devolvemos 100% do seu dinheiro sem perguntas.</p>
-          </div>
-        </div>
+    <div class="status-live-box">
+      <span class="pulse-dot"></span>
+      <span id="pixStatusText">Aguardando pagamento...</span>
+    </div>
 
-      </div>
-    </aside>
+    <button type="button" class="btn-manual-verify" id="btnManualVerify">
+      Já fiz o pagamento, verificar agora
+    </button>
+  </section>
 
+  <!-- GARANTIA 7 DIAS (DISCRETO) -->
+  <div class="guarantee-box">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+    <div>
+      <b>Garantia incondicional de 7 dias.</b> Caso não fique satisfeito, devolvemos 100% do seu valor.
+    </div>
   </div>
+
 </main>
 
-<!-- FOOTER -->
-<footer class="chk-footer">
+<footer class="chk-foot">
   <p>PataCerta Educação Digital Ltda · CNPJ 31.855.029/0001-89</p>
-  <p>Av. Paulista, 1000 · Bela Vista, São Paulo/SP · CEP 01310-100</p>
-  <p>Contato: suporte@patacerta.com</p>
-  <div class="footer-links">
-    <a href="index.html">Página Inicial</a>
-    <a href="javascript:void(0)" onclick="alert('Seus dados estão protegidos sob a LGPD com criptografia ponta a ponta.');">Privacidade & Segurança</a>
-  </div>
+  <p>Ambiente seguro e protegido pela LGPD.</p>
 </footer>
 
 <script>
@@ -1089,20 +708,16 @@ const PLANOS = {
   basico: {
     id: "basico",
     nome: "Plano Básico PataCerta",
+    sub: "Plano estruturado de 4 semanas",
     valor: 37.00,
-    precoFormatado: "R$ 37,00",
-    original: "R$ 97,00",
-    desconto: "-62% OFF",
-    incluiBonus: false,
+    preco: "R$ 37,00",
   },
   premium: {
     id: "premium",
     nome: "Plano Premium PataCerta",
+    sub: "Acesso Completo + 5 Bônus Inclusos",
     valor: 67.00,
-    precoFormatado: "R$ 67,00",
-    original: "R$ 197,00",
-    desconto: "-66% OFF",
-    incluiBonus: true,
+    preco: "R$ 67,00",
   }
 };
 
@@ -1111,151 +726,97 @@ const state = {
   idTransaction: null,
   pollingTimer: null,
   expirationTimer: null,
-  expiraEmMs: 0,
   petNome: "",
   userEmail: "",
   userNome: "",
 };
 
 /* =====================================================================
-   INICIALIZAÇÃO DA PÁGINA E QUERY PARAMS
+   INICIALIZAÇÃO
    ===================================================================== */
 (function init() {
   const params = new URLSearchParams(window.location.search);
   
-  // Plano via URL (?plano=basico ou ?plano=premium)
+  // Define o plano selecionado pela URL (básico ou premium)
   const planoParam = (params.get("plano") || "").toLowerCase();
-  if (planoParam === "basico") {
-    selecionarPlano("basico");
-  } else {
-    selecionarPlano("premium");
-  }
+  state.planoId = planoParam === "basico" ? "basico" : "premium";
 
-  // Nome do pet (se passado do quiz)
-  const petParam = params.get("pet") || params.get("nome_cachorro");
-  if (petParam) {
-    state.petNome = petParam;
-  }
+  const p = PLANOS[state.planoId];
+  document.getElementById("prodTitle").textContent = p.nome;
+  document.getElementById("prodSub").textContent = p.sub;
+  document.getElementById("prodPrice").textContent = p.preco;
+  document.getElementById("btnPagarLabel").textContent = `PAGAR VIA PIX · ${p.preco}`;
+  document.getElementById("pixFinalAmount").textContent = p.preco;
 
-  iniciarTimerUrgenciaTopo();
-  configurarMascaras();
-  configurarEventos();
+  state.petNome = params.get("pet") || params.get("nome_cachorro") || "";
+
+  iniciarTimer();
+  configurarCampos();
 })();
 
 /* =====================================================================
-   SELEÇÃO DE PLANO
+   MÁSCARAS E VALIDAÇÃO
    ===================================================================== */
-function selecionarPlano(id) {
-  state.planoId = id;
-  const p = PLANOS[id] || PLANOS.premium;
-
-  // Atualiza botões do seletor
-  document.getElementById("btnSelectBasico").classList.toggle("active", id === "basico");
-  document.getElementById("btnSelectPremium").classList.toggle("active", id === "premium");
-
-  // Atualiza textos do resumo
-  document.getElementById("summaryPlanName").textContent = p.nome;
-  document.getElementById("summaryOriginalPrice").textContent = p.original;
-  document.getElementById("summaryDiscount").textContent = p.desconto;
-  document.getElementById("summaryFinalPrice").textContent = p.precoFormatado;
-  document.getElementById("btnSubmitText").textContent = `GERAR QR CODE PIX · ${p.precoFormatado}`;
-  document.getElementById("pixDisplayAmount").textContent = p.precoFormatado;
-
-  // Mostra ou esconde bônus
-  const bonusItems = document.querySelectorAll(".bonus-item");
-  bonusItems.forEach(el => {
-    el.style.display = p.incluiBonus ? "flex" : "none";
-  });
-}
-
-/* =====================================================================
-   MÁSCARAS E VALIDAÇÕES (CPF E WHATSAPP)
-   ===================================================================== */
-function mascaraCpf(valor) {
-  let v = String(valor || "").replace(/\D/g, "");
-  if (v.length > 11) v = v.slice(0, 11);
+function mascaraCpf(v) {
+  v = String(v || "").replace(/\D/g, "").slice(0, 11);
   v = v.replace(/(\d{3})(\d)/, "$1.$2");
   v = v.replace(/(\d{3})(\d)/, "$1.$2");
   v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
   return v;
 }
 
-function mascaraTel(valor) {
-  let v = String(valor || "").replace(/\D/g, "");
-  if (v.length > 11) v = v.slice(0, 11);
-  if (v.length > 10) {
-    return v.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
-  } else if (v.length > 6) {
-    return v.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
-  } else if (v.length > 2) {
-    return v.replace(/(\d{2})(\d{0,5})/, "($1) $2");
-  }
+function mascaraTel(v) {
+  v = String(v || "").replace(/\D/g, "").slice(0, 11);
+  if (v.length > 10) return v.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+  if (v.length > 6) return v.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
+  if (v.length > 2) return v.replace(/(\d{2})(\d{0,5})/, "($1) $2");
   return v;
 }
 
 function validarCpf(cpf) {
-  const limpo = String(cpf || "").replace(/\D/g, "");
-  if (limpo.length !== 11) return false;
-  if (/^(\d)\1{10}$/.test(limpo)) return false;
+  const c = String(cpf || "").replace(/\D/g, "");
+  if (c.length !== 11 || /^(\d)\1{10}$/.test(c)) return false;
   let soma = 0;
-  for (let i = 0; i < 9; i++) soma += parseInt(limpo.charAt(i)) * (10 - i);
+  for (let i = 0; i < 9; i++) soma += parseInt(c.charAt(i)) * (10 - i);
   let resto = (soma * 10) % 11;
   if (resto === 10 || resto === 11) resto = 0;
-  if (resto !== parseInt(limpo.charAt(9))) return false;
+  if (resto !== parseInt(c.charAt(9))) return false;
   soma = 0;
-  for (let i = 0; i < 10; i++) soma += parseInt(limpo.charAt(i)) * (11 - i);
+  for (let i = 0; i < 10; i++) soma += parseInt(c.charAt(i)) * (11 - i);
   resto = (soma * 10) % 11;
   if (resto === 10 || resto === 11) resto = 0;
-  return resto === parseInt(limpo.charAt(10));
+  return resto === parseInt(c.charAt(10));
 }
 
-function validarEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email || "").trim());
-}
-
-function configurarMascaras() {
-  const cpfEl = document.getElementById("inputCpf");
-  cpfEl.addEventListener("input", e => {
+function configurarCampos() {
+  const cpf = document.getElementById("inputCpf");
+  cpf.addEventListener("input", e => {
     e.target.value = mascaraCpf(e.target.value);
-    e.target.classList.remove("error");
+    e.target.classList.remove("is-invalid");
   });
 
-  const telEl = document.getElementById("inputWhatsapp");
-  telEl.addEventListener("input", e => {
+  const tel = document.getElementById("inputWhatsapp");
+  tel.addEventListener("input", e => {
     e.target.value = mascaraTel(e.target.value);
   });
 
   ["inputNome", "inputEmail", "inputEmailConfirm"].forEach(id => {
     document.getElementById(id).addEventListener("input", e => {
-      e.target.classList.remove("error");
+      e.target.classList.remove("is-invalid");
     });
   });
-}
 
-/* =====================================================================
-   CONFIGURAR EVENTOS
-   ===================================================================== */
-function configurarEventos() {
-  // Alternância de planos pelos botões
-  document.getElementById("btnSelectBasico").onclick = () => selecionarPlano("basico");
-  document.getElementById("btnSelectPremium").onclick = () => selecionarPlano("premium");
-
-  // Submissão do formulário
-  document.getElementById("chkDadosForm").onsubmit = processarEnvioFormulario;
-
-  // Botão copiar PIX
+  document.getElementById("formCheckout").onsubmit = enviarFormulario;
   document.getElementById("btnCopyPix").onclick = copiarCodigoPix;
-
-  // Botão checagem manual
-  document.getElementById("btnManualCheck").onclick = () => {
-    if (state.idTransaction) consultarStatusTransacao(state.idTransaction, true);
+  document.getElementById("btnManualVerify").onclick = () => {
+    if (state.idTransaction) verificarStatus(state.idTransaction, true);
   };
 }
 
 /* =====================================================================
-   PROCESSAR ENVIO DO FORMULÁRIO (GERAR PIX)
+   ENVIO DO FORMULÁRIO (GERAR PIX)
    ===================================================================== */
-async function processarEnvioFormulario(e) {
+async function enviarFormulario(e) {
   e.preventDefault();
 
   const nomeEl = document.getElementById("inputNome");
@@ -1271,35 +832,33 @@ async function processarEnvioFormulario(e) {
   const zap = zapEl.value.replace(/\D/g, "");
 
   let erro = false;
-
   if (nome.length < 3) {
-    nomeEl.classList.add("error");
+    nomeEl.classList.add("is-invalid");
     erro = true;
   }
-  if (!validarEmail(email)) {
-    emailEl.classList.add("error");
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    emailEl.classList.add("is-invalid");
     erro = true;
   }
   if (email.toLowerCase() !== emailConf.toLowerCase()) {
-    emailConfEl.classList.add("error");
+    emailConfEl.classList.add("is-invalid");
     erro = true;
   }
   if (!validarCpf(cpf)) {
-    cpfEl.classList.add("error");
+    cpfEl.classList.add("is-invalid");
     erro = true;
   }
 
   if (erro) {
-    const primeiroErro = document.querySelector(".input-text.error");
-    if (primeiroErro) primeiroErro.focus();
+    const p = document.querySelector(".form-input.is-invalid");
+    if (p) p.focus();
     return;
   }
 
   state.userNome = nome;
   state.userEmail = email;
 
-  // Botão em estado de loading
-  const btn = document.getElementById("btnSubmitForm");
+  const btn = document.getElementById("btnPagar");
   btn.disabled = true;
   btn.classList.add("loading");
 
@@ -1310,96 +869,79 @@ async function processarEnvioFormulario(e) {
       if (params.has(k)) utms[k] = params.get(k);
     });
 
-    const bodyPayload = {
-      planId: state.planoId,
-      customer: {
-        name: nome,
-        email: email,
-        cpf: cpf,
-        phone: zap || undefined,
-      },
-      metadata: {
-        petNome: state.petNome || undefined,
-        ...utms,
-      }
-    };
-
     const res = await fetch("/api/create-pix", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(bodyPayload),
+      body: JSON.stringify({
+        planId: state.planoId,
+        customer: {
+          name: nome,
+          email: email,
+          cpf: cpf,
+          phone: zap || undefined,
+        },
+        metadata: {
+          petNome: state.petNome || undefined,
+          ...utms,
+        }
+      })
     });
 
     const data = await res.json();
-
     if (!res.ok || !data.success) {
-      throw new Error(data.message || "Falha ao gerar cobrança PIX.");
+      throw new Error(data.message || "Erro ao gerar cobrança PIX.");
     }
 
     state.idTransaction = data.idTransaction;
-    exibirTelaPix(data.pix, nome);
+    mostrarTelaPix(data.pix, nome);
 
   } catch (err) {
-    console.error("[Erro Checkout]", err);
-    alert("Não foi possível gerar o PIX neste momento: " + (err.message || "Tente novamente."));
+    console.error("[Erro PIX]", err);
+    alert(err.message || "Não foi possível gerar o PIX. Tente novamente.");
     btn.disabled = false;
     btn.classList.remove("loading");
   }
 }
 
 /* =====================================================================
-   EXIBIR TELA 2 (PIX GERADO)
+   TELA 2: PIX GERADO
    ===================================================================== */
-function exibirTelaPix(pixData, clienteNome) {
-  // Transição de etapas no Stepper
-  document.getElementById("stepIndicator1").classList.remove("active");
-  document.getElementById("stepIndicator1").classList.add("done");
-  document.getElementById("stepIndicator2").classList.add("active");
+function mostrarTelaPix(pix, nome) {
+  document.getElementById("stepFormArea").style.display = "none";
+  const stepPix = document.getElementById("stepPixArea");
+  stepPix.classList.add("active");
 
-  // Esconde etapa 1 e mostra etapa 2
-  document.getElementById("stepDadosSection").style.display = "none";
-  const pixSec = document.getElementById("stepPixSection");
-  pixSec.classList.add("visible");
+  const primeiroNome = nome.split(" ")[0];
+  document.getElementById("pixTitleUser").textContent = `${primeiroNome}, realize o pagamento PIX`;
 
-  const primeiroNome = clienteNome.split(" ")[0];
-  document.getElementById("pixTitleUser").textContent = `${primeiroNome}, realize o pagamento PIX para liberar o acesso`;
+  const code = pix.emv || pix.code || "";
+  document.getElementById("pixCopyInput").value = code;
 
-  // Copia e cola
-  const pixCode = pixData.emv || pixData.code || "";
-  document.getElementById("pixCodeInput").value = pixCode;
+  const qrBox = document.getElementById("pixQrCode");
+  qrBox.innerHTML = "";
 
-  // Renderização do QR Code
-  const qrContainer = document.getElementById("pixQrContainer");
-  qrContainer.innerHTML = "";
-
-  if (pixData.qrCodeBase64) {
+  if (pix.qrCodeBase64) {
     const img = document.createElement("img");
-    img.src = pixData.qrCodeBase64.startsWith("data:") 
-      ? pixData.qrCodeBase64 
-      : "data:image/png;base64," + pixData.qrCodeBase64;
-    img.alt = "QR Code PIX LofyPay";
-    qrContainer.appendChild(img);
-  } else if (pixCode && typeof QRCode !== "undefined") {
-    new QRCode(qrContainer, {
-      text: pixCode,
-      width: 196,
-      height: 196,
+    img.src = pix.qrCodeBase64.startsWith("data:")
+      ? pix.qrCodeBase64
+      : "data:image/png;base64," + pix.qrCodeBase64;
+    img.alt = "QR Code PIX";
+    qrBox.appendChild(img);
+  } else if (code && typeof QRCode !== "undefined") {
+    new QRCode(qrBox, {
+      text: code,
+      width: 174,
+      height: 174,
       colorDark: "#111827",
       colorLight: "#ffffff",
       correctLevel: QRCode.CorrectLevel.M,
     });
   }
 
-  // Timer de expiração do PIX (30 min)
-  state.expiraEmMs = Date.now() + ((pixData.expiration || 1800) * 1000);
-  if (state.expirationTimer) clearInterval(state.expirationTimer);
-  state.expirationTimer = setInterval(atualizarTimerExpiracaoPix, 1000);
-  atualizarTimerExpiracaoPix();
-
-  // Inicia Polling em tempo real (a cada 4s)
+  // Polling automático (a cada 4s)
   if (state.pollingTimer) clearInterval(state.pollingTimer);
   state.pollingTimer = setInterval(() => {
-    consultarStatusTransacao(state.idTransaction, false);
+    verificarStatus(state.idTransaction, false);
   }, 4000);
 
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -1409,30 +951,29 @@ function exibirTelaPix(pixData, clienteNome) {
    COPIAR CÓDIGO PIX
    ===================================================================== */
 function copiarCodigoPix() {
-  const codeInput = document.getElementById("pixCodeInput");
-  const code = codeInput.value;
+  const input = document.getElementById("pixCopyInput");
+  const code = input.value;
   if (!code) return;
 
   navigator.clipboard.writeText(code).then(() => {
     const btn = document.getElementById("btnCopyPix");
-    const txt = document.getElementById("btnCopyPixText");
+    btn.textContent = "Copiado!";
     btn.classList.add("copied");
-    txt.textContent = "Código PIX Copiado!";
     setTimeout(() => {
+      btn.textContent = "Copiar código";
       btn.classList.remove("copied");
-      txt.textContent = "Copiar Código PIX";
-    }, 3000);
+    }, 2500);
   }).catch(() => {
-    codeInput.select();
+    input.select();
     document.execCommand("copy");
-    alert("Código PIX copiado para a área de transferência!");
+    alert("Código PIX copiado!");
   });
 }
 
 /* =====================================================================
-   CONSULTA DE STATUS EM TEMPO REAL (POLLING)
+   VERIFICAR STATUS DO PAGAMENTO (POLLING)
    ===================================================================== */
-async function consultarStatusTransacao(idTransaction, manual) {
+async function verificarStatus(idTransaction, manual) {
   if (!idTransaction) return;
 
   try {
@@ -1440,16 +981,16 @@ async function consultarStatusTransacao(idTransaction, manual) {
     if (!res.ok) return;
 
     const data = await res.json();
-
     if (data.isPaid || data.status === "PAID_OUT" || data.status === "paid") {
       clearInterval(state.pollingTimer);
-      clearInterval(state.expirationTimer);
 
-      const statusCard = document.getElementById("pixLiveStatusCard");
-      statusCard.style.background = "#D1FAE5";
-      statusCard.style.borderColor = "#10B981";
-      statusCard.style.color = "#047857";
-      statusCard.innerHTML = `<b>🎉 Pagamento confirmado com sucesso! Redirecionando...</b>`;
+      const statusBox = document.querySelector(".status-live-box");
+      if (statusBox) {
+        statusBox.style.background = "#D1FAE5";
+        statusBox.style.borderColor = "#10B981";
+        statusBox.style.color = "#047857";
+        statusBox.innerHTML = `<b>🎉 Pagamento confirmado! Redirecionando...</b>`;
+      }
 
       setTimeout(() => {
         const query = new URLSearchParams({
@@ -1460,35 +1001,22 @@ async function consultarStatusTransacao(idTransaction, manual) {
           pet: state.petNome,
         });
         window.location.href = `obrigado.html?${query.toString()}`;
-      }, 1400);
+      }, 1200);
 
     } else if (manual) {
-      alert("Ainda não identificamos a confirmação bancária. Se você acabou de pagar no aplicativo, aguarde até 15 segundos que a aprovação é automática.");
+      alert("Ainda não identificamos a confirmação do banco. Se você acabou de pagar, aguarde alguns segundos que a confirmação é automática.");
     }
   } catch (err) {
-    console.warn("[Polling Status Erro]", err);
+    console.warn("[Polling Erro]", err);
   }
 }
 
 /* =====================================================================
-   TIMERS
+   TIMER REGRESSIVO DE 15 MINUTOS NO TOPO
    ===================================================================== */
-function atualizarTimerExpiracaoPix() {
-  const restante = Math.max(0, Math.floor((state.expiraEmMs - Date.now()) / 1000));
-  const min = String(Math.floor(restante / 60)).padStart(2, "0");
-  const seg = String(restante % 60).padStart(2, "0");
-  const el = document.getElementById("pixExpirationTimer");
-  if (el) el.textContent = `${min}:${seg}`;
-
-  if (restante <= 0 && state.expirationTimer) {
-    clearInterval(state.expirationTimer);
-    if (el) el.textContent = "Expirado";
-  }
-}
-
-function iniciarTimerUrgenciaTopo() {
+function iniciarTimer() {
   let seg = 14 * 60 + 59;
-  const el = document.getElementById("countdownTimerText");
+  const el = document.getElementById("timerCount");
   setInterval(() => {
     if (seg > 0) seg--;
     const m = String(Math.floor(seg / 60)).padStart(2, "0");
