@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
-<title>PataCerta · Plan de adiestramiento personalizado</title>
-<meta name="description" content="Responde en 2 minutos y recibe un plan de adiestramiento de 10 minutos al día, hecho a la medida para tu perro.">
+<title>PataCerta · Plano de adestramento personalizado</title>
+<meta name="description" content="Responda em 2 minutos e receba um plano de adestramento de 10 minutos por dia, feito sob medida para o seu cachorro.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/brand/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="assets/brand/favicon-512.png">
 <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Un plan de adiestramiento hecho para tu perro">
-<meta property="og:description" content="Responde en 2 minutos y recibe un plan de solo 10 minutos al día.">
+<meta property="og:title" content="Um plano de adestramento feito para o seu cachorro">
+<meta property="og:description" content="Responda em 2 minutos e receba um plano de apenas 10 minutos por dia.">
 <meta property="og:image" content="assets/brand/og-share.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="preload" as="image" href="assets/quiz/quiz-inicio.jpg">
+<link rel="preload" as="image" href="assets/quiz/quiz-inicio.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -331,9 +331,21 @@ ul, ol { list-style: none; }
 
 /* Hero */
 .hero { padding-top: clamp(24px, 6vw, 44px); padding-bottom: clamp(36px, 8vw, 56px); text-align: center; }
-.eyebrow { font-size: 14px; color: var(--muted); font-weight: 500; }
-.hero h1 { font-size: clamp(28px, 8.6vw, 46px); line-height: 1.12; font-weight: 800; letter-spacing: -.035em; margin-top: 10px; }
-.hero .sub { margin-top: 10px; }
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: var(--red);
+  background: #FEF2F2;
+  border: 1px solid #FEE2E2;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+.hero h1 { font-size: clamp(24px, 6.2vw, 40px); line-height: 1.18; font-weight: 800; letter-spacing: -.03em; margin-top: 14px; }
+.hero .sub { margin-top: 14px; font-size: clamp(15px, 4vw, 17px); line-height: 1.5; color: #4B5563; max-width: 520px; margin-left: auto; margin-right: auto; }
 .hero-img { width: 100%; border-radius: var(--radius); overflow: hidden; margin: 24px 0 20px; }
 .hero-img img { display: block; width: 100%; height: auto; }
 .hero-img.ph { aspect-ratio: 16/9; font-size: 15px; border: 1px dashed #D1D5DB; }
@@ -453,11 +465,42 @@ img.produto { display: block; width: 100%; height: auto; object-fit: cover; back
 }
 
 /* Testimonios */
-.depos { display: flex; flex-direction: column; gap: 12px; }
-.depo { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; display: flex; gap: 14px; }
-.depo .foto { flex: none; width: 48px; height: 48px; border-radius: 50%; font-size: 11px; }
-.depo p { font-size: 15px; }
-.depo small { display: block; margin-top: 8px; font-size: 13px; color: var(--muted); }
+.depos { display: flex; flex-direction: column; gap: 14px; }
+.depo {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.depo-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+.depo-autor-wrap { display: flex; align-items: center; gap: 12px; }
+.depo-avatar {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: #111827; color: #fff;
+  font-weight: 700; font-size: 14px;
+  display: grid; place-items: center; flex: none;
+}
+.depo-nome { font-weight: 700; font-size: 15px; color: #111827; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.depo-badge {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-size: 11px; font-weight: 600; color: #047857;
+  background: #ECFDF5; border: 1px solid #A7F3D0;
+  padding: 2px 7px; border-radius: 999px;
+}
+.depo-badge svg { width: 11px; height: 11px; }
+.depo-meta { font-size: 13px; color: var(--muted); display: block; margin-top: 1px; }
+.depo-stars { color: #F59E0B; font-size: 15px; letter-spacing: 1.5px; flex: none; }
+.depo-texto { font-size: 15px; line-height: 1.55; color: #1F2937; }
+.depo-pet {
+  font-size: 12px; color: #4B5563; background: var(--soft);
+  padding: 6px 12px; border-radius: 8px;
+  display: inline-flex; align-items: center; gap: 4px;
+  align-self: flex-start;
+}
 
 /* Planes & Oferta */
 #planos { background: var(--soft); }
@@ -578,9 +621,434 @@ img.produto { display: block; width: 100%; height: auto; object-fit: cover; back
   .plano { display: flex; flex-direction: column; }
 }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+/* =========================================================
+   CHECKOUT TRANSPARENTE EM 2 ETAPAS (LOFYPAY PIX)
+   ========================================================= */
+.chk-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(17, 24, 39, 0.72);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease, visibility .25s ease;
 }
+.chk-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+.chk-modal {
+  width: 100%;
+  max-width: 440px;
+  background: #F9FAFB;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  transform: translateY(14px) scale(0.97);
+  transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1);
+  margin: auto;
+  border: 1px solid #E5E7EB;
+}
+.chk-overlay.open .chk-modal {
+  transform: translateY(0) scale(1);
+}
+.chk-topbar {
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  border-bottom: 1px solid #E5E7EB;
+}
+.chk-brand {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 800;
+  font-size: 16px;
+  color: #111827;
+}
+.chk-brand svg {
+  width: 18px;
+  height: 18px;
+  color: var(--red);
+}
+.chk-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.chk-safe-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #059669;
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+.chk-safe-tag svg { width: 12px; height: 12px; }
+.chk-btn-close {
+  background: none;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+  color: #9CA3AF;
+  cursor: pointer;
+  padding: 4px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  transition: color .15s;
+}
+.chk-btn-close:hover { color: #111827; }
+.chk-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 82vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.chk-card {
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 14px;
+  padding: 16px;
+}
+.chk-product-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.chk-product-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+.chk-product-thumb svg { width: 22px; height: 22px; }
+.chk-product-info { flex: 1; min-width: 0; }
+.chk-product-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.25;
+}
+.chk-product-sub {
+  font-size: 12px;
+  color: #6B7280;
+  margin-top: 2px;
+}
+.chk-product-val {
+  font-size: 17px;
+  font-weight: 800;
+  color: #111827;
+  white-space: nowrap;
+}
+.chk-section-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 12px;
+}
+.chk-step-bubble {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #111827;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+}
+.chk-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 11px;
+}
+.chk-field:last-child { margin-bottom: 0; }
+.chk-field label {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #374151;
+}
+.chk-input-text {
+  width: 100%;
+  height: 44px;
+  border: 1px solid #D1D5DB;
+  border-radius: 10px;
+  padding: 0 13px;
+  font-family: inherit;
+  font-size: 14.5px;
+  color: #111827;
+  background: #fff;
+  transition: border-color .15s, box-shadow .15s;
+}
+.chk-input-text:focus {
+  outline: none;
+  border-color: #111827;
+  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.08);
+}
+.chk-input-text.has-error {
+  border-color: #DC2626;
+  background: #FEF2F2;
+}
+.chk-error-text {
+  font-size: 11.5px;
+  color: #DC2626;
+  font-weight: 500;
+  display: none;
+}
+.chk-input-text.has-error + .chk-error-text { display: block; }
+
+.chk-coupon-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #4B5563;
+}
+.chk-coupon-action {
+  color: #059669;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+.chk-pay-opt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 14px;
+  border-radius: 12px;
+  border: 1.5px solid #E5E7EB;
+  background: #fff;
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: all .15s;
+}
+.chk-pay-opt.active {
+  border-color: #10B981;
+  background: #F0FDF4;
+}
+.chk-pay-opt:last-child { margin-bottom: 0; }
+.chk-pay-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #111827;
+}
+.chk-radio-circ {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #D1D5DB;
+  display: grid;
+  place-items: center;
+}
+.chk-pay-opt.active .chk-radio-circ {
+  border-color: #10B981;
+}
+.chk-radio-inner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+}
+.chk-pay-opt.active .chk-radio-inner {
+  background: #10B981;
+}
+.chk-pix-ico {
+  color: #00B494;
+  display: flex;
+  align-items: center;
+}
+.chk-pix-badge {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #059669;
+}
+.chk-opt-muted {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.chk-submit-btn {
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: 12px;
+  background: #059669;
+  color: #fff;
+  font-size: 15.5px;
+  font-weight: 800;
+  letter-spacing: .01em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 6px 16px rgba(5, 150, 105, 0.28);
+  transition: opacity .15s, transform .1s;
+}
+.chk-submit-btn:active { transform: scale(0.99); opacity: .9; }
+.chk-submit-btn:disabled { opacity: 0.65; cursor: not-allowed; }
+.chk-footer-sec {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #059669;
+  padding: 6px 0 2px;
+  font-weight: 600;
+}
+.chk-footer-sec svg { width: 14px; height: 14px; }
+
+/* TELA DO PIX GERADO */
+.pix-view {
+  text-align: center;
+}
+.pix-view-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 6px;
+}
+.pix-view-sub {
+  font-size: 13.5px;
+  color: #4B5563;
+  margin-bottom: 12px;
+}
+.pix-time-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #FEF3C7;
+  border: 1px solid #FDE68A;
+  color: #92400E;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+.pix-qr-wrapper {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 16px;
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 14px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+.pix-qr-wrapper img, .pix-qr-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+.pix-code-card {
+  background: #F3F4F6;
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.pix-code-field {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  font-family: monospace;
+  color: #374151;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.pix-copy-action {
+  flex: none;
+  background: #111827;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .2s;
+}
+.pix-copy-action.copied {
+  background: #059669;
+}
+.pix-live-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #065F46;
+  margin: 8px 0 12px;
+  padding: 10px 14px;
+  background: #ECFDF5;
+  border-radius: 10px;
+  border: 1px solid #A7F3D0;
+}
+.pix-pulse-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #10B981;
+  animation: livePulse 1.2s infinite ease-in-out;
+  flex: none;
+}
+.pix-manual-check {
+  background: none;
+  border: 1px solid #D1D5DB;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4B5563;
+  width: 100%;
+  cursor: pointer;
+}
+.pix-manual-check:hover { background: #fff; }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
 
@@ -588,317 +1056,312 @@ img.produto { display: block; width: 100%; height: auto; object-fit: cover; back
 
 <script>
 /* =====================================================================
-   1) CONFIGURACIÓN
+   1) CONFIGURAÇÃO
    ===================================================================== */
 const CONFIG = {
-  CHECKOUT_BASICO:  "",   // ej.: "https://pay.hotmart.com/XXXX?off=basico"
-  CHECKOUT_PREMIUM: "",   // ej.: "https://pay.hotmart.com/XXXX?off=premium"
-  VSL_EMBED_URL:    "",   // Enlace de video embed
-  TERMOS_URL:       "terminos.html",
-  PRIVACIDADE_URL:  "privacidad.html",
-  REEMBOLSO_URL:    "reembolso.html",
-  SOPORTE_URL:      "soporte.html",
+  CHECKOUT_BASICO:  "",   // ex.: "https://pay.hotmart.com/XXXX?off=basico"
+  CHECKOUT_PREMIUM: "",   // ex.: "https://pay.hotmart.com/XXXX?off=premium"
+  VSL_EMBED_URL:    "",   // Link do vídeo embed
   PIXEL_ID:         "",   // Meta Pixel ID
 
-  MONEDA: "COP",
+  MONEDA: "BRL",
 
   EMPRESA: {
     razaoSocial: "PATACERTA EDUCAÇÃO DIGITAL LTDA",
-    cnpj: "00.000.000/0001-00",
+    cnpj: "31.855.029/0001-89",
     endereco: "Av. Paulista, 1000, Bela Vista · São Paulo/SP – Brasil · CEP 01310-100",
     email: "suporte@patacerta.com",
   },
 
   PARAMS_REPASSAR: ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "src", "sck"],
-  PARAM_NOME: "nombre_perro",
-  PARAM_FOCO: "enfoque",
+  PARAM_NOME: "nome_cachorro",
+  PARAM_FOCO: "foco",
 
   DURACAO_CARREGAMENTO_MS: 4800,
   ANO: 2026,
 };
 
 /* =====================================================================
-   2) PLANES Y PRECIOS
+   2) PLANOS E PREÇOS
    ===================================================================== */
 const PLANOS = {
   basico: {
     nome: "Básico",
-    subtitulo: "Para empezar",
-    preco: "US$ 7,99",
-    periodo: "pago único",
-    valor: 7.99,
-    porDia: "Menos de $0,30 al día",
+    subtitulo: "Para começar",
+    preco: "R$ 37,00",
+    periodo: "pagamento único",
+    valor: 37.00,
+    porDia: "Apenas R$ 1,23 por dia",
     itens: [
-      "Plan de 4 semanas estructurado para {nome}",
-      "Videos cortos de 10 minutos al día",
-      "Ejercicios enfocados en {beneficio}",
-      "Acceso completo desde el celular",
+      "Plano de 4 semanas estruturado para {nome}",
+      "Vídeos curtos de 10 minutos por dia",
+      "Exercícios focados em {beneficio}",
+      "Acesso completo pelo celular",
     ],
     naoInclui: [
-      "Ejercicios para otros comportamientos",
-      "Bonos complementarios",
-      "Soporte para resolver dudas",
+      "Exercícios para outros comportamentos",
+      "Bônus complementares",
+      "Suporte para tirar dúvidas",
     ],
-    botao: "Quiero el Básico",
+    botao: "Quero o Básico",
     estiloBotao: "btn-outline",
     destaque: false,
     checkout: CONFIG.CHECKOUT_BASICO,
   },
   premium: {
     nome: "Premium",
-    subtitulo: "El más completo",
-    preco: "US$ 11,99",
-    periodo: "pago único",
-    valor: 11.99,
-    porDia: "Solo $0,40 al día",
+    subtitulo: "O mais completo",
+    preco: "R$ 67,00",
+    periodo: "pagamento único",
+    valor: 67.00,
+    porDia: "Apenas R$ 2,23 por dia",
     itens: [
-      "Todo lo del plan Básico para {nome}",
-      "Ejercicios para los otros comportamientos",
-      "Soporte directo para resolver tus dudas",
-      "Acceso de por vida a las actualizaciones",
+      "Tudo do plano Básico para {nome}",
+      "Exercícios para os outros comportamentos",
+      "Suporte direto para tirar dúvidas",
+      "Acesso vitalício às atualizações",
     ],
     incluiBonus: true,
-    botao: "Quiero el Premium",
+    botao: "Quero o Premium",
     estiloBotao: "btn-red",
     destaque: true,
-    selo: "MÁS ELEGIDO",
+    selo: "MAIS ESCOLHIDO",
     checkout: CONFIG.CHECKOUT_PREMIUM,
   },
 };
 
 /* =====================================================================
-   3) BASE CONDUCTUAL & DIAGNÓSTICOS PROFUNDOS
+   3) BASE COMPORTAMENTAL & DIAGNÓSTICOS PROFUNDOS
    ===================================================================== */
 const IMG_COMPORTAMENTO = {
-  "Tira de la correa":                     "assets/quiz/comportamento/comportamento_tira_de_la_correa.png",
-  "Ladra demasiado":                       "assets/quiz/comportamento/comportamento_ladra_demasiado.png",
-  "Hace pipí o popó en el lugar equivocado": "assets/quiz/comportamento/comportamento_pipi_popo_lugar_equivocado.png",
-  "Destruye objetos":                      "assets/quiz/comportamento/comportamento_destroi_objetos.png",
-  "Salta sobre las personas":              "assets/quiz/comportamento/comportamento_salta_sobre_pessoas.png",
-  "Llora cuando se queda solo":            "assets/quiz/comportamento/comportamento_llora_se_queda_solo.png",
-  "Mordisquea manos y objetos jugando":    "assets/quiz/comportamento/comportamento_mordisca_maos_objetos.png",
-  "Gruñe o intenta morder":                "assets/quiz/comportamento/comportamento_grunhe_tenta_morder.png",
+  "Puxa a guia":                           "assets/quiz/comportamento/comportamento_tira_de_la_correa.png",
+  "Late em excesso":                       "assets/quiz/comportamento/comportamento_ladra_demasiado.png",
+  "Faz xixi ou cocô no lugar errado":      "assets/quiz/comportamento/comportamento_pipi_popo_lugar_equivocado.png",
+  "Destrói objetos":                       "assets/quiz/comportamento/comportamento_destroi_objetos.png",
+  "Pula nas pessoas":                      "assets/quiz/comportamento/comportamento_salta_sobre_pessoas.png",
+  "Chora quando fica sozinho":             "assets/quiz/comportamento/comportamento_llora_se_queda_solo.png",
+  "Morde mãos e objetos brincando":        "assets/quiz/comportamento/comportamento_mordisca_maos_objetos.png",
+  "Rosna ou tenta morder":                 "assets/quiz/comportamento/comportamento_grunhe_tenta_morder.png",
 };
 
 const IMG_PORTE = {
-  "Pequeño (hasta 10 kg)":  "assets/quiz/porte/pata_certa_cachorro_pequeno.png",
-  "Mediano (10 a 25 kg)":   "assets/quiz/porte/pata_certa_cachorro_medio.png",
+  "Pequeno (até 10 kg)":    "assets/quiz/porte/pata_certa_cachorro_pequeno.png",
+  "Médio (10 a 25 kg)":     "assets/quiz/porte/pata_certa_cachorro_medio.png",
   "Grande (25 a 45 kg)":    "assets/quiz/porte/pata_certa_cachorro_grande.png",
-  "Gigante (más de 45 kg)": "assets/quiz/porte/pata_certa_cachorro_gigante.png",
+  "Gigante (mais de 45 kg)": "assets/quiz/porte/pata_certa_cachorro_gigante.png",
 };
 
 const IMG_IDADE = {
-  "Cachorro (hasta 6 meses)":  "assets/quiz/idade/idade_cachorro_ate_6_meses.png",
-  "Joven (de 6 a 18 meses)":   "assets/quiz/idade/idade_cachorro_joven_6_18_meses.png",
-  "Adulto (de 1,5 a 7 años)": "assets/quiz/idade/idade_cachorro_adulto_15_7_anos.png",
-  "Senior (más de 7 años)":   "assets/quiz/idade/idade_cachorro_senior_mais_7_anos.png",
+  "Filhote (até 6 meses)":   "assets/quiz/idade/idade_cachorro_ate_6_meses.png",
+  "Jovem (de 6 a 18 meses)": "assets/quiz/idade/idade_cachorro_joven_6_18_meses.png",
+  "Adulto (de 1,5 a 7 anos)": "assets/quiz/idade/idade_cachorro_adulto_15_7_anos.png",
+  "Idoso (mais de 7 anos)":  "assets/quiz/idade/idade_cachorro_senior_mais_7_anos.png",
 };
 
 const IMG_ENERGIA = {
-  "Muy activo e inquieto la mayor parte del día":   "assets/quiz/energia/energia_muito_ativo_inquieto.png",
-  "Energía moderada (se activa en paseos y juego)": "assets/quiz/energia/energia_moderada_paseos_juego.png",
-  "Tranquilo y dormilón":                           "assets/quiz/energia/energia_tranquilo_dormilon.png",
+  "Muito ativo e agitado a maior parte do dia":   "assets/quiz/energia/energia_muito_ativo_inquieto.png",
+  "Energia moderada (ativo em passeios e brincadeiras)": "assets/quiz/energia/energia_moderada_paseos_juego.png",
+  "Tranquilo e dorminhoco":                       "assets/quiz/energia/energia_tranquilo_dormilon.png",
 };
 
 const IMG_MORADIA = {
-  "Apartamento o conjunto cerrado": "assets/quiz/moradia/moradia_apartamento_conjunto_fechado.png",
-  "Casa con patio":                 "assets/quiz/moradia/moradia_casa_com_patio.png",
-  "Casa sin patio":                 "assets/quiz/moradia/moradia_casa_sem_patio.png",
+  "Apartamento ou condomínio fechado": "assets/quiz/moradia/moradia_apartamento_conjunto_fechado.png",
+  "Casa com quintal":                  "assets/quiz/moradia/moradia_casa_com_patio.png",
+  "Casa sem quintal":                  "assets/quiz/moradia/moradia_casa_sem_patio.png",
 };
 
 const IMG_TENTOU = {
-  "Con videos y consejos de internet":    "assets/quiz/correcao/correcao_videos_conselhos_internet.png",
-  "Regaños y llamados de atención":       "assets/quiz/correcao/correcao_reganos_chamados_atencao.png",
-  "Con un adiestrador o clases":           "assets/quiz/correcao/correcao_adestrador_aulas.png",
-  "Aún no he intentado un método formal": "assets/quiz/correcao/correcao_sem_metodo_formal.png",
+  "Com vídeos e dicas da internet":    "assets/quiz/correcao/correcao_videos_conselhos_internet.png",
+  "Broncas e chamadas de atenção":     "assets/quiz/correcao/correcao_reganos_chamados_atencao.png",
+  "Com um adestrador ou aulas":        "assets/quiz/correcao/correcao_adestrador_aulas.png",
+  "Ainda não tentei um método formal": "assets/quiz/correcao/correcao_sem_metodo_formal.png",
 };
 
 const IMG_TEMPO = {
-  "10 minutos al día":     "assets/quiz/tempo/tempo_10_minutos_dia.png",
-  "15 a 20 minutos al día": "assets/quiz/tempo/tempo_15_20_minutos_dia.png",
-  "Más de 20 minutos":      "assets/quiz/tempo/tempo_mais_20_minutos_dia.png",
+  "10 minutos por dia":      "assets/quiz/tempo/tempo_10_minutos_dia.png",
+  "15 a 20 minutos por dia": "assets/quiz/tempo/tempo_15_20_minutos_dia.png",
+  "Mais de 20 minutos":      "assets/quiz/tempo/tempo_mais_20_minutos_dia.png",
 };
 
 const IMG_OBJETOS = {
-  "Zapatos, ropa y medias":             "assets/quiz/objetos/objetos_morde_sapatos_roupa_meias.png",
-  "Muebles, patas de sillas y cojines": "assets/quiz/objetos/objetos_morde_moveis_cadeiras_cojines.png",
-  "Cables, paredes o puertas":          "assets/quiz/objetos/objetos_morde_cables_paredes_puertas.png",
-  "Cualquier objeto a su alcance":       "assets/quiz/objetos/objetos_morde_qualquer_objeto_alcance.png",
+  "Sapatos, roupas e meias":             "assets/quiz/objetos/objetos_morde_sapatos_roupa_meias.png",
+  "Móveis, pés de cadeiras e almofadas": "assets/quiz/objetos/objetos_morde_moveis_cadeiras_cojines.png",
+  "Cabos, fios, paredes ou portas":      "assets/quiz/objetos/objetos_morde_cables_paredes_puertas.png",
+  "Qualquer objeto ao alcance":          "assets/quiz/objetos/objetos_morde_qualquer_objeto_alcance.png",
 };
 
-
 const COMPORTAMENTOS = {
-  "Tira de la correa": {
+  "Puxa a guia": {
     perfil: "Explorador Inquieto",
-    resultado: "sin tirar de la correa",
-    beneficio: "paseos tranquilos sin tirar de la correa",
-    perguntaProfunda: "¿Qué usas actualmente para pasear a {nome}?",
+    resultado: "sem puxar a guia",
+    beneficio: "passeios tranquilos sem puxar a guia",
+    perguntaProfunda: "O que você usa atualmente para passear com {nome}?",
     opcoesProfundas: [
-      "Pechera o arnés convencional",
-      "Collar tradicional al cuello",
-      "Arnés antitirones (enganche frontal)",
-      "Collar de ahorque o púas",
+      "Peitoral convencional",
+      "Coleira tradicional de pescoço",
+      "Peitoral anti-puxão (engate frontal)",
+      "Enforcador ou coleira de pinos",
     ],
     insights: {
-      "Pechera o arnés convencional": "Las pecheras comunes activan el reflejo de tracción instintivo: cuanto más tiras hacia atrás, más fuerza hace el perro hacia adelante. El plan enseña a caminar relajado con la correa floja.",
-      "Collar tradicional al cuello": "Tirar con collar tradicional puede causar tensión en la tráquea y excitación cervical. Te enseñaremos ejercicios de 10 minutos para redireccionar su atención sin fuerza.",
-      default: "Los perros tiran porque el paseo es emocionante y, cuando tiran, llegan más rápido. El plan enseña a caminar a tu lado por voluntad propia.",
+      "Peitoral convencional": "Os peitorais comuns ativam o reflexo de oposição instintivo: quanto mais você puxa para trás, mais força o cão faz para frente. O plano ensina a caminhar relaxado com a guia frouxa.",
+      "Coleira tradicional de pescoço": "Puxar na coleira tradicional pode causar lesões na traqueia e tensão cervical. Ensinamos exercícios de 10 minutos para redirecionar a atenção dele sem usar força.",
+      default: "Os cães puxam porque o passeio é estimulante e, ao puxar, chegam mais rápido onde querem. O plano ensina o cão a caminhar ao seu lado por vontade própria.",
     },
     cenas: [
-      "El paseo se convierte en un tira y afloja constante.",
-      "Te duele el brazo después de 10 minutos de caminata.",
-      "Evitas salir o haces paseos cortos por el estrés.",
+      "O passeio vira um cabo de guerra constante.",
+      "Seu braço dói depois de 10 minutos de caminhada.",
+      "Você evita passear ou faz passeios curtos por causa do estresse.",
     ],
-    porque: "Los perros tiran porque el entorno los estimula y descubrieron que jalando avanzan hacia lo que quieren. Con ejercicios de redirección de 10 minutos al día, aprende a caminar a tu lado con la correa floja.",
+    porque: "Os cães puxam porque o ambiente é cheio de estímulos e eles aprenderam que puxar faz avançar até o que querem. Com exercícios de redirecionamento de 10 minutos por dia, ele aprende a andar ao seu lado com a guia frouxa.",
   },
-  "Ladra demasiado": {
-    perfil: "Guardián Vocal",
-    resultado: "ladrando menos y con calma",
-    beneficio: "reducir los ladridos y traer tranquilidad a casa",
-    perguntaProfunda: "¿En qué momento ladra {nome} con mayor intensidad?",
+  "Late em excesso": {
+    perfil: "Guardião Vocal",
+    resultado: "latindo menos e com tranquilidade",
+    beneficio: "reduzir os latidos e trazer tranquilidade para a casa",
+    perguntaProfunda: "Em que momento {nome} late com mais intensidade?",
     opcoesProfundas: [
-      "Cuando tocan la puerta o suena el pasillo",
-      "Cuando ve otros perros o personas desde la ventana/calle",
-      "Cuando se queda solo en casa",
-      "Para pedir comida, juego o atención",
+      "Quando tocam a campainha ou há barulho no corredor",
+      "Quando vê outros cães ou pessoas da janela/na rua",
+      "Quando fica sozinho em casa",
+      "Para pedir comida, brincadeira ou atenção",
     ],
     insights: {
-      "Cuando tocan la puerta o suena el pasillo": "Este ladrido es una alerta territorial que se refuerza cuando el visitante se va. El método enseña a ir a su colchoneta en calma ante cualquier sonido.",
-      "Para pedir comida, juego o atención": "El perro aprendió que el ladrido funciona para obtener lo que quiere. El entrenamiento le muestra que solo la calma produce recompensas.",
-      default: "Los perros ladran para avisar o liberar tensión acumulada. El plan enseña la orden de silencio y calma de manera natural.",
+      "Quando tocam a campainha ou há barulho no corredor": "Esse latido é um alerta territorial que é reforçado quando a visita vai embora. O método ensina o cão a ir para a caminha com calma diante de qualquer som.",
+      "Para pedir comida, brincadeira ou atenção": "O cão aprendeu que latir funciona para conseguir o que quer. O treinamento mostra que apenas a calma gera recompensas.",
+      default: "Os cães latem para alertar ou descarregar tensão acumulada. O plano ensina o comando de silêncio e calma de forma natural.",
     },
     cenas: [
-      "Cualquier ruido en el pasillo o la calle es motivo para ladrar.",
-      "Temes quejas de los vecinos en el edificio o conjunto.",
-      "Es difícil concentrarse o descansar en paz.",
+      "Qualquer barulho no corredor ou na rua é motivo para latir.",
+      "Você tem medo de reclamações dos vizinhos no condomínio.",
+      "É difícil se concentrar ou descansar em paz.",
     ],
-    porque: "Los perros ladran para avisar, pedir atención o descargar energía. Cuando el ladrido produce una reacción, el perro aprende que funciona. Te mostramos cómo enseñarle calma.",
+    porque: "Os cães latem para avisar, pedir atenção ou gastar energia. Quando o latido gera uma reação, o cão aprende que funciona. Mostramos como ensinar calma de verdade.",
   },
-  "Hace pipí o popó en el lugar equivocado": {
-    perfil: "Aprendiz de Rutina",
-    resultado: "haciendo sus necesidades en el lugar correcto",
-    beneficio: "hacer sus necesidades en el lugar correcto",
-    perguntaProfunda: "¿Dónde suelen ocurrir los accidentes con mayor frecuencia?",
+  "Faz xixi ou cocô no lugar errado": {
+    perfil: "Aprendiz de Rotina",
+    resultado: "fazendo as necessidades no lugar certo",
+    beneficio: "fazer as necessidades no lugar certo",
+    perguntaProfunda: "Onde os acidentes costumam acontecer com mais frequência?",
     opcoesProfundas: [
-      "En tapetes y alfombras",
-      "En pisos de salas o habitaciones",
-      "En cualquier rincón cuando nadie lo ve",
-      "Cerca de las puertas",
+      "Em tapetes e carpetes",
+      "No piso da sala ou dos quartos",
+      "Em qualquer canto quando ninguém está olhando",
+      "Perto das portas",
     ],
     insights: {
-      "En tapetes y alfombras": "Las alfombras retienen olores microscópicos que para el perro señalan 'baño'. El plan resetea ese patrón olfativo y fija una zona clara.",
-      default: "Los perros necesitan una rutina olfativa y de horarios sincronizada. Regañarlo después no enseña; solo confunde. El plan fija el hábito en 4 semanas.",
+      "Em tapetes e carpetes": "Os tapetes retêm odores microscópicos que para o cão sinalizam 'banheiro'. O plano reseta esse padrão olfativo e fixa uma área clara.",
+      default: "Os cães precisam de uma rotina olfativa e de horários sincronizada. Dar bronca depois não ensina; só confunde. O plano estabelece o hábito em 4 semanas.",
     },
     cenas: [
-      "Llegas a casa y encuentras accidentes en el piso o alfombras.",
-      "Has probado productos y repelentes sin éxito duradero.",
-      "Ya no sabes cómo enseñarle a pedir o usar su zona.",
+      "Você chega em casa e encontra xixi ou cocô no chão e tapetes.",
+      "Já testou produtos e repelentes sem resultado duradouro.",
+      "Você já não sabe como ensinar a usar o tapete higiênico ou quintal.",
     ],
-    porque: "Los perros necesitan una rutina olfativa y de horarios clara para fijar su baño. Regañarlo después no enseña; solo confunde. El plan establece el hábito de forma definitiva.",
+    porque: "Os cães precisam de uma rotina olfativa e horários claros para aprender o banheiro. Dar bronca depois não ensina; só gera medo e confusão. O plano estabelece o hábito de forma definitiva.",
   },
-  "Destruye objetos": {
-    perfil: "Energía Acumulada",
-    resultado: "sin destruir objetos de la casa",
-    beneficio: "gastar energía de forma correcta y dejar de morder muebles",
-    perguntaProfunda: "¿Qué tipo de objetos suele morder o destruir?",
+  "Destrói objetos": {
+    perfil: "Energia Acumulada",
+    resultado: "sem destruir objetos da casa",
+    beneficio: "gastar energia da forma certa e parar de roer móveis",
+    perguntaProfunda: "Que tipo de objetos costuma roer ou destruir?",
     opcoesProfundas: [
-      "Zapatos, ropa y medias",
-      "Muebles, patas de sillas y cojines",
-      "Cables, paredes o puertas",
-      "Cualquier objeto a su alcance",
+      "Sapatos, roupas e meias",
+      "Móveis, pés de cadeiras e almofadas",
+      "Cabos, fios, paredes ou portas",
+      "Qualquer objeto ao alcance",
     ],
     insights: {
-      default: "Morder alivia la ansiedad y estimula la mente del perro. Con 10 minutos de ejercicios diarios redirigimos ese instinto hacia sus propios juguetes.",
+      default: "Roer alivia a ansiedade e estimula a mente do cão. Com 10 minutos de exercícios diários, redirecionamos esse instinto para os brinquedos certos.",
     },
     cenas: [
-      "Zapatos, cojines o muebles mordidos.",
-      "Te da preocupación dejar a {nome} solo en casa.",
-      "Cada semana aparece un daño nuevo.",
+      "Sapatos, almofadas ou móveis roídos.",
+      "Dá aperto no coração deixar {nome} sozinho em casa.",
+      "Toda semana aparece um prejuízo novo.",
     ],
-    porque: "Morder es una necesidad canina para aliviar estrés o aburrimiento. Cuando no tiene una alternativa clara, elige tus cosas. El método redirige ese instinto hacia los juguetes adecuados.",
+    porque: "Roer é uma necessidade canina para aliviar estresse ou tédio. Quando não tem uma alternativa clara, ele escolhe as suas coisas. O método redireciona esse instinto para os brinquedos corretos.",
   },
-  "Salta sobre las personas": {
+  "Pula nas pessoas": {
     perfil: "Social Entusiasta",
-    resultado: "saludando con las cuatro patas en el suelo",
-    beneficio: "saludar a las visitas y familia sin saltar",
-    perguntaProfunda: "¿En qué momento ocurren los saltos con más frecuencia?",
+    resultado: "cumprimentando com as quatro patas no chão",
+    beneficio: "cumprimentar visitas e familiares sem pular",
+    perguntaProfunda: "Em que momento os pulos acontecem com mais frequência?",
     opcoesProfundas: [
-      "Apenas alguien llega a la casa",
-      "Durante los paseos al cruzarse con personas",
-      "Cuando se emociona durante el juego o comida",
+      "Assim que alguém chega em casa",
+      "Durante os passeios ao cruzar com pessoas",
+      "Quando se empolga na brincadeira ou na hora da comida",
     ],
     insights: {
-      default: "El perro salta buscando contacto visual inmediato. Al empujarlo o hablarle, interpreta la respuesta como juego. El plan fija la postura de calma como único acceso a la atención.",
+      default: "O cão pula buscando contato visual imediato. Ao empurrar ou falar com ele, ele interpreta a reação como brincadeira. O plano fixa a postura de calma como único acesso à atenção.",
     },
     cenas: [
-      "Cada visita es recibida con patas en la ropa.",
-      "Tienes que sujetar a {nome} cuando alguien llega.",
-      "Los niños o personas mayores le tienen recelo.",
+      "Toda visita é recebida com patas sujas na roupa.",
+      "Você precisa segurar {nome} quando alguém chega.",
+      "Crianças ou idosos ficam com receio de se aproximar.",
     ],
-    porque: "Los perros saltan buscando contacto visual y atención. Al empujarlo o hablarle, reforzamos la conducta sin querer. Aprenderá que la calma es la única forma de recibir cariño.",
+    porque: "Os cães pulam buscando contato visual e atenção. Ao empurrar ou falar, reforçamos o comportamento sem querer. Ele vai aprender que a calma é o único caminho para receber carinho.",
   },
-  "Llora cuando se queda solo": {
+  "Chora quando fica sozinho": {
     perfil: "Apegado Ansioso",
-    resultado: "tranquilo cuando se queda solo",
-    beneficio: "quedarse solo en casa con tranquilidad",
-    perguntaProfunda: "¿Qué suele hacer {nome} al quedarse solo?",
+    resultado: "tranquilo quando fica sozinho",
+    beneficio: "ficar sozinho em casa com tranquilidade",
+    perguntaProfunda: "O que {nome} costuma fazer ao ficar sozinho?",
     opcoesProfundas: [
-      "Llora o aúlla apenas escucha la puerta",
-      "Raspa puertas o ventanas intentando salir",
-      "Pasea de un lado a otro con respiración agitada",
-      "No come ni toma agua hasta que regresas",
+      "Chora ou uiva assim que ouve a porta fechar",
+      "Arranha portas ou janelas tentando sair",
+      "Anda de um lado para o outro ofegante",
+      "Não come nem bebe água até você voltar",
     ],
     insights: {
-      default: "La independencia se entrena con micro-salidas graduales de pocos minutos. {nome} aprenderá que tu partida es segura y que siempre regresas.",
+      default: "A independência é treinada com micro-saídas graduais de poucos minutos. {nome} aprenderá que sua partida é segura e que você sempre volta.",
     },
     cenas: [
-      "Empieza a llorar o ladrar apenas sales por la puerta.",
-      "Los vecinos escuchan sus quejas durante el día.",
-      "Sientes culpa cada vez que tienes que salir.",
+      "Começa a chorar ou latir assim que você passa pela porta.",
+      "Os vizinhos reclamam do barulho durante o dia.",
+      "Você sente culpa toda vez que precisa sair de casa.",
     ],
-    porque: "La tolerancia a la soledad es una habilidad que se entrena progresivamente en dosis cortas de 10 minutos. {nome} aprenderá a sentirse seguro mientras no estás.",
+    porque: "A tolerância à solidão é uma habilidade treinada progressivamente em doses curtas de 10 minutos. {nome} aprenderá a se sentir seguro enquanto você estiver fora.",
   },
-  "Mordisquea manos y objetos jugando": {
-    perfil: "Explorador de Boca",
-    resultado: "jugando sin morder manos ni ropa",
-    beneficio: "cambiar los mordiscos por sus juguetes",
-    perguntaProfunda: "¿A quién suele mordisquear con más insistencia?",
+  "Morde mãos e objetos brincando": {
+    perfil: "Explorador da Boca",
+    resultado: "brincando sem morder mãos nem roupas",
+    beneficio: "trocar as mordidas pelos brinquedos",
+    perguntaProfunda: "Quem ele costuma morder com mais frequência?",
     opcoesProfundas: [
-      "A los adultos de la casa",
-      "A los niños jugando",
-      "A cualquier persona que intente acariciarlo",
-      "A la correa durante el paseo",
+      "Os adultos da casa",
+      "As crianças brincando",
+      "Qualquer pessoa que tente fazer carinho",
+      "A guia durante o passeio",
     ],
     insights: {
-      default: "Los perros exploran con la boca y necesitan aprender el límite de presión mediante la técnica de inhibición de mordida en sesiones cortas de juego guiado.",
+      default: "Os cães exploram com a boca e precisam aprender o limite de pressão através da técnica de inibição de mordida em sessões curtas de brincadeira guiada.",
     },
     cenas: [
-      "Tus manos terminan llenas de marcas de juego.",
-      "El juego siempre termina en rasguño o molestia.",
-      "Muerde la ropa cuando quiere llamar la atención.",
+      "Suas mãos vivem cheias de marcas e arranhões.",
+      "A brincadeira sempre termina em machucado ou incômodo.",
+      "Morde a roupa quando quer chamar atenção.",
     ],
-    porque: "Los perros jóvenes exploran el mundo con la boca. Si nadie les enseña inhibición de mordida, las manos se convierten en juguete. Se soluciona guiándolo paso a paso.",
+    porque: "Cães jovens exploram o mundo pela boca. Se ninguém ensina a inibição de mordida, as mãos viram brinquedo. Isso se resolve guiando o cão passo a passo.",
   },
-  "Gruñe o intenta morder": {
-    perfil: "En Alerta",
-    resultado: "más tranquilo cerca de personas y perros",
-    beneficio: "construir calma y confianza en situaciones de tensión",
-    perguntaProfunda: "¿En qué situación reacciona con tensión o gruñidos?",
+  "Rosna ou tenta morder": {
+    perfil: "Em Alerta",
+    resultado: "mais tranquilo perto de pessoas e outros cães",
+    beneficio: "construir calma e confiança em situações de tensão",
+    perguntaProfunda: "Em que situação ele reage com tensão ou rosnados?",
     opcoesProfundas: [
-      "Cerca de otros perros en la calle",
-      "Cuando alguien se acerca a su comida o juguetes",
-      "Cuando personas extrañas intentan tocarlo",
-      "Durante la limpieza o visitas al veterinario",
+      "Perto de outros cães na rua",
+      "Quando alguém se aproxima da comida ou brinquedos",
+      "Quando pessoas estranhas tentam tocá-lo",
+      "Durante a higiene ou visitas ao veterinário",
     ],
     insights: {
-      default: "Gruñir es un aviso de incomodidad. El método trabaja desensibilización progresiva para que {nome} asocie esos momentos con seguridad y calma.",
+      default: "Rosnar é um aviso de desconforto. O método trabalha a dessensibilização progressiva para que {nome} associe esses momentos à segurança e calma.",
     },
     cenas: [
-      "Te tensionas cuando aparece otro perro en el camino.",
-      "Las visitas tienen que tener extremo cuidado.",
-      "Has tenido que sujetar a {nome} con fuerza.",
+      "Você fica tenso(a) quando aparece outro cachorro no caminho.",
+      "As visitas precisam tomar extremo cuidado.",
+      "Você já precisou segurar {nome} com força para evitar acidentes.",
     ],
-    porque: "Gruñir es una señal de incomodidad o inseguridad. Castigar la advertencia empeora el problema. El enfoque correcto es aumentar la confianza poco a poco con seguridad.",
+    porque: "Rosnar é um sinal de desconforto ou insegurança. Punir o aviso só piora o problema. A abordagem correta é aumentar a confiança aos poucos e com total segurança.",
     alertaAgressividade: true,
   },
 };
@@ -906,211 +1369,224 @@ const COMPORTAMENTOS = {
 const OPCOES_COMPORTAMENTO = Object.keys(COMPORTAMENTOS);
 
 /* =====================================================================
-   4) RAZAS SUGERIDAS
+   4) RAÇAS SUGERIDAS
    ===================================================================== */
 const RACAS = [
-  "Criollo (Mestizo)", "Shih Tzu", "Pomerania", "Yorkshire Terrier", "Golden Retriever",
-  "Labrador", "Bulldog Francés", "Caniche (Poodle)", "Border Collie", "Schnauzer",
-  "Pinscher Miniatura", "Pug", "Dachshund (Salchicha)", "Pastor Alemán", "Beagle",
+  "Vira-lata (SRD)", "Shih Tzu", "Spitz Alemão (Lulu)", "Yorkshire Terrier", "Golden Retriever",
+  "Labrador Retriever", "Bulldog Francês", "Poodle", "Border Collie", "Schnauzer",
+  "Pinscher", "Pug", "Dachshund (Salsicha)", "Pastor Alemão", "Beagle",
   "Pitbull", "Chihuahua", "Rottweiler", "Husky Siberiano", "American Bully",
-  "Bulldog Inglés", "Bóxer", "Cocker Spaniel", "Jack Russell Terrier", "Maltés",
-  "Pastor Belga Malinois", "Lhasa Apso", "Dóberman", "Boyero de Berna", "Gran Danés",
+  "Bulldog Inglês", "Boxer", "Cocker Spaniel", "Jack Russell Terrier", "Maltês",
+  "Pastor Belga Malinois", "Lhasa Apso", "Doberman", "Bernese Mountain Dog", "Dogue Alemão",
 ];
 
 /* =====================================================================
-   5) PANTALLA DE INICIO DEL QUIZ
+   5) TELA DE INÍCIO DO QUIZ
    ===================================================================== */
 const INICIO = {
-  selo: "Evaluación canina · 2 minutos",
-  titulo: 'Descubre el plan de adiestramiento ideal para <span class="red hl">tu perro</span>',
-  subtitulo: 'Responde unas preguntas sobre su rutina y recibe un plan personalizado de <span class="hl">solo 10 minutos al día</span>.',
-  imagem: "assets/quiz/quiz-inicio.jpg",
-  imagemAlt: "Plan de adiestramiento de 10 minutos al día para tu perro",
-  botao: "Empezar la evaluación",
-  nota: "Toma 2 minutos · Sin registro previo",
-  beneficiosTitulo: "Qué vas a recibir",
+  selo: "Avaliação canina · 2 minutos",
+  titulo: 'Descubra o plano de adestramento ideal para <span class="red hl">o seu cão</span>',
+  subtitulo: 'Responda algumas perguntas sobre a rotina dele e receba um plano personalizado de <span class="hl">apenas 10 minutos por dia</span>.',
+  imagem: "assets/quiz/quiz-inicio.png",
+  imagemAlt: "Plano de adestramento de 10 minutos por dia para o seu cachorro",
+  botao: "Começar a avaliação",
+  nota: "Leva apenas 2 minutos · Sem cadastro prévio",
+  beneficiosTitulo: "O que você vai receber",
   beneficios: [
-    "Un diagnóstico claro de las causas del comportamiento de tu perro",
-    "Un plan adaptado a su edad, tamaño, raza y entorno",
-    "Ejercicios prácticos de 10 minutos para aplicar en casa o en el paseo",
+    "Um diagnóstico claro das causas do comportamento do seu cão",
+    "Um plano adaptado à idade, porte, raça e ambiente onde ele vive",
+    "Exercícios práticos de 10 minutos para aplicar em casa ou no passeio",
   ],
-  passosTitulo: "Cómo funciona",
+  passosTitulo: "Como funciona",
   passos: [
-    { titulo: "Responde el quiz", texto: "Preguntas guiadas sobre la conducta y rutina de tu perro." },
-    { titulo: "Recibe su plan", texto: "Estructurado con las lecciones precisas para su comportamiento." },
-    { titulo: "Entrena 10 minutos al día", texto: "Un ejercicio por día, a tu propio ritmo." },
+    { titulo: "Responda o quiz", texto: "Perguntas guiadas sobre a rotina e o comportamento do seu cão." },
+    { titulo: "Receba o plano", texto: "Estruturado com as lições exatas para o comportamento dele." },
+    { titulo: "Treine 10 minutos por dia", texto: "Um exercício por dia, no seu próprio ritmo." },
   ],
 };
 
 /* =====================================================================
-   6) CONTENIDO DE LA PÁGINA DE VENTAS
+   6) CONTEÚDO DA PÁGINA DE VENDAS
    ===================================================================== */
 const TEXTOS = {
-  confianca: ["Pago seguro", "PSE, Nequi y Tarjetas", "Acceso inmediato"],
-  imagemPagamentos: "assets/sales/pata_certa_pagamentos_logos_nomes.png",
+  confianca: ["Pagamento seguro", "Pix, Cartão e Boleto", "Acesso imediato"],
   imagemGarantia: "assets/sales/pata_certa_selo_garantia_7_dias.png",
-  heroTopo: "El plan de {nome} está listo.",
-  heroTitulo: '{nome} <span class="hl">{resultado}</span>.',
-  heroSub: "Solo 10 minutos de entrenamiento al día.",
-  imagemHero: "assets/sales/capa-lp.png", // imagen editorial para la página de texto
-  heroBotao: "Quiero el plan de {nome}",
-  dorTitulo: "¿Te suena esta escena?",
-  dorTexto: "Si te viste en al menos una de estas situaciones, este plan fue hecho para ti.",
-  causaTitulo: "¿Por qué {nome} hace esto?",
-  causaTexto: "La buena noticia: se puede cambiar. Con 10 minutos al día y los ejercicios correctos, {nome} aprende una nueva forma de actuar.",
-  resumoTitulo: "El plan de {nome}",
+  heroTopo: "🎯 Plano Personalizado Concluído para {nome}",
+  heroTitulo: 'O plano prático para ver {nome} <span class="hl">{resultado}</span> em poucas semanas — com apenas 10 minutos por dia',
+  heroSub: "O protocolo diário passo a passo criado sob medida para o perfil de {nome}, sem estresse, sem broncas e 100% focado em reforço positivo.",
+  imagemHero: "assets/sales/capa-lp.png",
+  heroBotao: "Quero o plano de {nome}",
+  dorTitulo: "Você se identifica com esta cena?",
+  dorTexto: "Se você se reconheceu em pelo menos uma dessas situações, este plano foi feito para você.",
+  causaTitulo: "Por que {nome} faz isso?",
+  causaTexto: "A boa notícia: isso tem solução. Com 10 minutos por dia e os exercícios certos, {nome} aprende uma nova forma de se comportar.",
+  resumoTitulo: "O plano de {nome}",
   resumoLinhas: {
     sexo: "Sexo",
-    idade: "Edad",
-    porte: "Tamaño",
-    raca: "Raza",
-    foco: "Enfoque principal",
-    detalhe: "Detonante analizado",
-    moradia: "Vivienda",
-    tempo: "Tiempo al día",
+    idade: "Idade",
+    porte: "Porte",
+    raca: "Raça",
+    foco: "Foco principal",
+    detalhe: "Gatilho analisado",
+    moradia: "Moradia",
+    tempo: "Tempo por dia",
   },
-  racaVazia: "Criollo / No informada",
-  avisoAgressividade: "Para comportamientos agresivos severos, recomendamos también el acompañamiento presencial de un especialista o veterinario. El plan ayuda en la rutina diaria, pero no reemplaza ese seguimiento.",
-  comoTitulo: "Cómo funciona",
-  compTitulo: "Sin plan × con plan",
-  recebeTitulo: "Lo que recibes",
+  racaVazia: "Vira-lata (SRD) / Não informada",
+  avisoAgressividade: "Para comportamentos de agressividade severa, recomendamos também o acompanhamento presencial de um adestrador ou veterinário comportamentalista. O plano ajuda na rotina diária, mas não substitui esse acompanhamento.",
+  comoTitulo: "Como funciona",
+  compTitulo: "Sem o plano × Com o plano",
+  recebeTitulo: "O que você recebe",
   imagemProduto: "assets/sales/product-mockup-corrected.png",
-  bonusTitulo: "Bonos incluidos con el plan Premium",
-  bonusRotulo: "Bono",
-  depoTitulo: "Lo que dicen otros dueños",
-  planosTitulo: "Elige el plan de {nome}",
-  planosNota: "Pago único. Sin cobros mensuales recurrentes. Acceso de por vida.",
-  planoInclui: "Incluye",
-  planoBonusTag: "+{n} bonos",
-  planoBonusTitulo: "{n} bonos incluidos de regalo",
-  planoSeguro: "Pago seguro · Tarjeta, PayPal y Pix",
+  bonusTitulo: "Bônus inclusos no plano Premium",
+  bonusRotulo: "Bônus",
+  depoTitulo: "O que dizem outros tutores",
+  planosTitulo: "Escolha o plano de {nome}",
+  planosNota: "Pagamento único. Sem mensalidades recorrentes. Acesso vitalício.",
+  planoInclui: "Inclui",
+  planoBonusTag: "+{n} bônus",
+  planoBonusTitulo: "{n} bônus inclusos de presente",
+  planoSeguro: "Pagamento 100% seguro · Pix, Cartão e Boleto",
   kickers: {
-    dor: "El problema", causa: "La causa", resumo: "Tu plan",
-    como: "El método", recebe: "Qué incluye", bonus: "De regalo", comp: "La diferencia", depo: "Testimonios",
-    planos: "La oferta", garantia: "Sin riesgo", faq: "Dudas",
+    dor: "O problema", causa: "A causa", resumo: "Seu plano",
+    como: "O método", recebe: "O que inclui", bonus: "De presente", comp: "A diferença", depo: "Depoimentos",
+    planos: "A oferta", garantia: "Sem risco", faq: "Dúvidas",
   },
-  garantiaSeloTopo: "GARANTÍA",
-  garantiaSeloBase: "DÍAS",
-  garantiaTitulo: "Garantía de 7 días",
-  garantiaTexto: "Prueba el plan durante 7 días completos. Si no te gusta o no ves avances, te devolvemos el 100% de tu dinero. Sin preguntas.",
-  faqTitulo: "Preguntas frecuentes",
-  psTexto: "<b>P.D.</b> Son solo 10 minutos al día y tienes 7 días de garantía incondicional. Si no te gusta, te devolvemos tu dinero. Todo el riesgo es nuestro.",
-  psBotao: "Empezar el plan de {nome}",
-  rodapeTermos: "Términos de Uso",
-  rodapePrivacidade: "Política de Privacidad",
+  garantiaSeloTopo: "GARANTIA",
+  garantiaSeloBase: "DIAS",
+  garantiaTitulo: "Garantia incondicional de 7 dias",
+  garantiaTexto: "Experimente o plano por 7 dias completos. Se não gostar ou não notar evolução, devolvemos 100% do seu dinheiro. Sem perguntas.",
+  faqTitulo: "Perguntas frequentes",
+  psTexto: "<b>P.S.</b> São apenas 10 minutos por dia e você tem 7 dias de garantia incondicional. Se não gostar, devolvemos todo o seu dinheiro. O risco é todo nosso.",
+  psBotao: "Começar o plano de {nome}",
+  rodapeTermos: "Termos de Uso",
+  rodapePrivacidade: "Política de Privacidade",
   rodapeReembolso: "Política de Reembolso",
-  rodapeSuporte: "Soporte al Comprador",
-  rodapeAviso: "Contenido educacional. Los resultados pueden variar de un perro a otro según la constancia y aplicación del método. El plan no reemplaza la atención médico-veterinaria cuando sea necesaria.",
+  rodapeSuporte: "Suporte ao Cliente",
+  rodapeAviso: "Conteúdo educacional. Os resultados podem variar de acordo com a dedicação e constância na aplicação do método. O plano não substitui cuidados médico-veterinários quando necessários.",
 };
 
 const PASSOS = [
-  { titulo: "Abre la lección del día", texto: "Un video corto y directo de 10 minutos, estructurado semana a semana." },
-  { titulo: "Practica con {nome}", texto: "En casa o en el paseo, a la hora que te quede más cómodo." },
-  { titulo: "Mira cómo aparece el nuevo hábito", texto: "En 4 semanas, el plan resuelve el comportamiento que elegiste." },
+  { titulo: "Abra a lição do dia", texto: "Um vídeo curto e direto ao ponto de 10 minutos, estruturado semana a semana." },
+  { titulo: "Pratique com {nome}", texto: "Em casa ou no passeio, no horário que for mais tranquilo para você." },
+  { titulo: "Veja o novo comportamento surgir", texto: "Em 4 semanas, o plano transforma o comportamento que você escolheu." },
 ];
 
 const COMPARACAO = {
   sozinho: {
-    titulo: "Intentándolo solo",
+    titulo: "Tentando sozinho",
     itens: [
-      "Videos sueltos en internet",
-      "Consejos contradictorios",
-      "Sin saber por dónde empezar",
-      "Abandonas en la primera semana",
+      "Vídeos soltos na internet",
+      "Dicas contraditórias",
+      "Sem saber por onde começar",
+      "Desiste na primeira semana",
     ],
   },
   plano: {
-    titulo: "Con PataCerta",
+    titulo: "Com o PataCerta",
     itens: [
-      "Plan adaptado a {nome}",
-      "Un paso por día, en orden",
-      "10 minutos y listo",
-      "Garantía de 7 días sin riesgo",
+      "Plano personalizado para {nome}",
+      "Um passo por dia, em ordem lógica",
+      "10 minutos e pronto",
+      "Garantia de 7 dias sem risco",
     ],
   },
 };
 
 const RECEBE = [
-  "Plan de 4 semanas hecho para {nome}",
-  "Videos cortos de 10 minutos al día",
-  "Ejercicios enfocados en {beneficio}",
-  "Acceso desde el celular, a tu ritmo",
-  "Acceso de por vida sin mensualidades",
+  "Plano de 4 semanas feito sob medida para {nome}",
+  "Vídeos curtos de 10 minutos por dia",
+  "Exercícios focados em {beneficio}",
+  "Acesso pelo celular, no seu ritmo",
+  "Acesso vitalício sem mensalidades",
 ];
 
 const BONUS = [
   {
-    titulo: "Guía de premios caseros",
-    texto: "Recetas sencillas y saludables para usar como recompensa en el entrenamiento.",
-    imagem: "assets/sales/capa_bono_01_guia_premios_caseros.png",
+    titulo: "Guia de recompensas caseiras",
+    texto: "Receitas simples e saudáveis para usar como recompensa no adestramento.",
+    imagem: "assets/sales/capa_bonus_01_recompensas_caseiras_pt.png",
   },
   {
-    titulo: "Checklist del paseo tranquilo",
-    texto: "El paso a paso para salir de casa sin tirones ni estrés.",
-    imagem: "assets/sales/capa_bono_02_checklist_paseo_tranquilo.png",
+    titulo: "Checklist do passeio tranquilo",
+    texto: "O passo a passo para sair de casa sem puxões nem estresse.",
+    imagem: "assets/sales/capa_bonus_02_checklist_passeio_pt.png",
   },
   {
-    titulo: "Clase extra: primeros comandos",
-    texto: "Sentado, quieto y acudir al llamado, explicados de forma simple.",
-    imagem: "assets/sales/capa_bono_03_clase_primeros_comandos.png",
+    titulo: "Aula extra: primeiros comandos",
+    texto: "Senta, fica e vem, explicados de forma simples e descomplicada.",
+    imagem: "assets/sales/capa_bonus_03_primeiros_comandos_pt.png",
   },
   {
-    titulo: "Guía de socialización",
-    texto: "Cómo presentar a tu perro a personas y otros perros con calma.",
-    imagem: "assets/sales/capa_bono_04_guia_socializacion.png",
+    titulo: "Guia de socialização",
+    texto: "Como apresentar seu cão a pessoas e outros animais com tranquilidade.",
+    imagem: "assets/sales/capa_bonus_04_socializacao_pt.png",
   },
   {
-    titulo: "Juegos para gastar energía en casa",
-    texto: "Ideas sencillas para cansar la mente de tu perro en días sin salida.",
-    imagem: "assets/sales/capa_bono_05_juegos_gastar_energia.png",
+    titulo: "Brincadeiras para gastar energia em casa",
+    texto: "Ideias práticas para cansar a mente do seu cachorro em dias de chuva.",
+    imagem: "assets/sales/capa_bonus_05_brincadeiras_energia_pt.png",
   },
 ];
 
 const DEPOIMENTOS = [
   {
-    foto: "",
-    texto: "Vivimos en apartamento en Bogotá y Toby ladraba con cada ruido del pasillo. Con las rutinas de 10 minutos al día, en dos semanas logramos que se quedara tranquilo en su colchoneta.",
-    autor: "Marcela R.",
-    detalhe: "Bogotá · Criollo de 2 años",
+    iniciais: "MR",
+    autor: "Marcela Rocha",
+    local: "São Paulo/SP",
+    pet: "Toby · Vira-lata (2 anos)",
+    tempo: "há 3 dias",
+    texto: "Gente, eu já estava desesperada de verdade. Moro no 3º andar e qualquer barulho no corredor ou entrega do iFood fazia o Toby disparar a latir parecendo um alarme. O síndico já tinha me notificado no WhatsApp. Apliquei os exercícios de 10 minutinhos no final da tarde e em menos de duas semanas ele entendeu o comando de calma na caminha. Ontem tocaram a campainha e ele só levantou a orelha e continuou deitado. Quase chorei de alívio!",
   },
   {
-    foto: "",
-    texto: "Bruno tiraba de la correa con tanta fuerza que los paseos eran una pesadilla. Con los ejercicios de redirección ahora camina relajado a mi lado. Muy recomendado.",
-    autor: "Carlos M.",
-    detalhe: "Medellín · Bulldog Francés de 1 año",
+    iniciais: "CM",
+    autor: "Carlos Eduardo Mendes",
+    local: "Belo Horizonte/MG",
+    pet: "Bruno · Bulldog Francês (1 ano e meio)",
+    tempo: "há 1 semana",
+    texto: "Meu braço vivia dormente depois de 15 minutos na rua. O Bruno tem 13kg mas parecia um trator me arrastando, o passeio era um cabo de guerra estressante. Eu achava que precisava comprar enforcador ou coleira cara, mas o método mostrou que o segredo é o redirecionamento com guia frouxa. Hoje a gente passeia com calma, ele andando do meu lado sem dar um puxão sequer. Valeu cada centavo investido.",
   },
   {
-    foto: "",
-    texto: "Luna mordisqueaba todos los muebles y hacía sus necesidades adentro. El plan nos ordenó la rutina y en pocos días ya aprendió su lugar de baño.",
-    autor: "Valentina G.",
-    detalhe: "Cali · Golden Retriever de 8 meses",
+    iniciais: "JR",
+    autor: "Juliana & Ricardo",
+    local: "Curitiba/PR",
+    pet: "Luna · Golden Retriever (7 meses)",
+    tempo: "há 2 semanas",
+    texto: "Confesso que comprei com o pé atrás porque já tinha gastado mais de R$ 250 em sprays repelentes e atrativos de pet shop que não adiantaram nada. A Luna fazia xixi no chão da sala e cocô embaixo da mesa. Seguindo o cronograma certinho do plano, em 5 dias ela já procurava o tapetinho sozinha. O material é muito direto e não fica com enrolação teórica. Salvou nosso piso e nossa paciência!",
+  },
+  {
+    iniciais: "PF",
+    autor: "Patrícia Fernandes",
+    local: "Campinas/SP",
+    pet: "Fred · Beagle (10 meses)",
+    tempo: "há 3 semanas",
+    texto: "O Fred não podia ver um chinelo ou o pé da mesa de jantar que começava a roer, e quando a gente brincava saía com a mão toda arranhada de dentinhos. As aulas de gasto de energia mental e redirecionamento de mordida resolveram em pouco mais de uma semana. Ele aprendeu a descarregar a ansiedade nos brinquedos certos. Melhor investimento que fiz pro meu cãozinho.",
   },
 ];
 
 const FAQ = [
   {
-    p: "¿Cómo recibo el acceso?",
-    r: "La entrega es 100% digital e inmediata. En cuanto se confirme el pago, recibirás automáticamente las credenciales de acceso en el correo electrónico que utilizaste al comprar para ingresar a la plataforma.",
+    p: "Como recebo o acesso?",
+    r: "A entrega é 100% digital e imediata. Assim que o pagamento for aprovado, você receberá os dados de acesso diretamente no seu e-mail para entrar na plataforma.",
   },
   {
-    p: "¿Qué medios de pago están disponibles?",
-    r: "Aceptamos PSE, Nequi, Daviplata, tarjetas de crédito y débito, y pagos en efectivo a través de puntos Efecty.",
+    p: "Quais são as formas de pagamento?",
+    r: "Aceitamos Pix, cartão de crédito em até 12x e boleto bancário.",
   },
   {
-    p: "¿Cuánto tiempo necesito al día?",
-    r: "Solo 10 minutos. Las lecciones son directas al grano y están pensadas para encajar en cualquier rutina.",
+    p: "Quanto tempo preciso por dia?",
+    r: "Apenas 10 minutos. As aulas são diretas ao ponto e pensadas para caber em qualquer rotina corrida.",
   },
   {
-    p: "¿Funciona con perros criollos, adultos o mayores?",
-    r: "Sí. El plan se adapta a la edad, tamaño y comportamiento que indicaste en el quiz. Cualquier perro puede aprender hábitos nuevos.",
+    p: "Funciona para vira-latas, cães adultos ou idosos?",
+    r: "Sim! O plano é personalizado de acordo com a idade, porte e comportamento que você indicou no quiz. Qualquer cão pode aprender novos hábitos.",
   },
   {
-    p: "¿Es un pago único o una suscripción?",
-    r: "Es un pago único con acceso de por vida. No hay mensualidades ocultas ni cobros sorpresa.",
+    p: "É pagamento único ou assinatura?",
+    r: "É pagamento único com acesso vitalício. Não cobramos mensalidades nem surpresas no cartão.",
   },
   {
-    p: "¿Y si no funciona con mi perro?",
-    r: "Tienes 7 días de garantía incondicional. Si no estás conforme, te devolvemos el 100% de tu dinero en hasta 7 días hábiles. Consulta nuestra <a href='reembolso.html' target='_blank' rel='noopener'>Política de Reembolso</a> completa.",
+    p: "E se não funcionar para o meu cachorro?",
+    r: "Você tem 7 dias de garantia incondicional. Se não gostar ou não notar resultados, devolvemos 100% do seu dinheiro em até 7 dias úteis. Consulte nossa <a href='reembolso.html' target='_blank' rel='noopener'>Política de Reembolso</a> completa.",
   },
 ];
 
@@ -1134,7 +1610,7 @@ function track(evento, params, personalizado) {
 }
 
 /* =====================================================================
-   8) ÍCONOS SVG
+   8) ÍCONES SVG
    ===================================================================== */
 const svg = (d, w = 2) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
 const ICON = {
@@ -1153,7 +1629,7 @@ const LOGO = `<span class="logo">${ICON.paw}PataCerta</span>`;
 const TRUST = `<div class="trust">${[ICON.lock, ICON.card, ICON.bolt].map((ic, i) => `<span>${ic}${TEXTOS.confianca[i]}</span>`).join("")}</div>`;
 
 /* =====================================================================
-   9) ESTADO DINÁMICO & ADAPTACIÓN
+   9) ESTADO DINÂMICO & ADAPTAÇÃO
    ===================================================================== */
 const state = {
   sexo: "Macho",
@@ -1175,7 +1651,7 @@ let travado = false;
 let quizIniciado = false;
 
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const ucfirst = s => s ? s.charAt(0).toLocaleUpperCase("es") + s.slice(1) : "";
+const ucfirst = s => s ? s.charAt(0).toLocaleUpperCase("pt-BR") + s.slice(1) : "";
 const semAcento = s => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
 function nomeFormatado() {
@@ -1185,13 +1661,13 @@ function nomeFormatado() {
 }
 
 function esHembra() {
-  return state.sexo === "Hembra";
+  return state.sexo === "Fêmea";
 }
 
 function tpl(texto) {
   const c = COMPORTAMENTOS[state.foco] || {};
   const n = nomeFormatado();
-  const hembra = esHembra();
+  const femea = esHembra();
 
   return String(texto || "")
     .replace(/\{perfil\}/g, esc(c.perfil || ""))
@@ -1200,92 +1676,86 @@ function tpl(texto) {
     .replace(/\{porque\}/g, esc(c.porque || ""))
     .replace(/\{moradia\}/g, esc(state.moradia || "casa"))
     .replace(/\{detalhe\}/g, esc(state.detalhe_foco || ""))
-    .replace(/\{artigo\}/g, hembra ? "la" : "el")
-    .replace(/\{pronome\}/g, hembra ? "ella" : "él")
-    .replace(/\{genero_o_a\}/g, hembra ? "a" : "o")
-    .replace(/\{nome\}/g, n ? esc(n) : (hembra ? "tu perra" : "tu perro"));
+    .replace(/\{artigo\}/g, femea ? "a" : "o")
+    .replace(/\{pronome\}/g, femea ? "ela" : "ele")
+    .replace(/\{genero_o_a\}/g, femea ? "a" : "o")
+    .replace(/\{nome\}/g, n ? esc(n) : (femea ? "sua cachorrinha" : "seu cachorro"));
 }
 
 function renderFooterHtml() {
   return `
   <footer class="foot">
     <div class="wrap-sales">
-      <nav>
-        <a href="${esc(CONFIG.SOPORTE_URL)}" target="_blank" rel="noopener">Soporte</a>
-        <a href="${esc(CONFIG.REEMBOLSO_URL)}" target="_blank" rel="noopener">Política de Reembolso</a>
-        <a href="${esc(CONFIG.PRIVACIDADE_URL)}" target="_blank" rel="noopener">Política de Privacidad</a>
-        <a href="${esc(CONFIG.TERMOS_URL)}" target="_blank" rel="noopener">Términos de Uso</a>
-      </nav>
       <div class="seller-info">
         <strong>${esc(CONFIG.EMPRESA.razaoSocial)}</strong> · CNPJ: ${esc(CONFIG.EMPRESA.cnpj)}<br>
         ${esc(CONFIG.EMPRESA.endereco)}<br>
-        Atención / Soporte: <a href="mailto:${esc(CONFIG.EMPRESA.email)}">${esc(CONFIG.EMPRESA.email)}</a>
+        Atendimento / Suporte: <a href="mailto:${esc(CONFIG.EMPRESA.email)}">${esc(CONFIG.EMPRESA.email)}</a>
       </div>
       <p class="disclaimer">${TEXTOS.rodapeAviso}</p>
-      <p class="copy">© ${CONFIG.ANO} PataCerta · Todos los derechos reservados.</p>
+      <p class="copy">© ${CONFIG.ANO} PataCerta · Todos os direitos reservados.</p>
     </div>
   </footer>`;
 }
 
 /* =====================================================================
-   10) MOTOR DE ETAPAS INTELIGENTES (RAMIFICACIÓN)
+   10) MOTOR DE ETAPAS INTELIGENTES (RAMIFICAÇÃO)
    ===================================================================== */
 function obtenerEtapasDinamicas() {
-  const c = COMPORTAMENTOS[state.foco] || COMPORTAMENTOS["Tira de la correa"];
-  const insightEspecifico = (c.insights && state.detalhe_foco && c.insights[state.detalhe_foco]) || (c.insights && c.insights.default) || "Los entrenamientos de 10 minutos al día permiten fijar hábitos duraderos sin sobrecargar a tu perro.";
+  const c = COMPORTAMENTOS[state.foco] || COMPORTAMENTOS["Puxa a guia"];
+  const insightEspecifico = (c.insights && state.detalhe_foco && c.insights[state.detalhe_foco]) || (c.insights && c.insights.default) || "Treinos diários de apenas 10 minutos permitem fixar hábitos duradouros sem sobrecarregar o seu cachorro.";
 
   return [
     { id: "inicio", tipo: "inicio" },
     {
       id: "sexo", tipo: "escolha",
-      pergunta: "¿Tu perro es macho o hembra?",
-      opcoes: ["Macho", "Hembra"],
+      pergunta: "Seu cão é macho ou fêmea?",
+      opcoes: ["Macho", "Fêmea"],
     },
     {
       id: "nome", tipo: "texto",
-      pergunta: "¿Cómo se llama?",
-      placeholder: esHembra() ? "Ej.: Luna, Maya, Niña..." : "Ej.: Bruno, Toby, Mateo...",
+      pergunta: "Como ele(a) se chama?",
+      placeholder: esHembra() ? "Ex.: Luna, Mel, Nina..." : "Ex.: Thor, Bob, Fred...",
     },
     {
       id: "idade", tipo: "escolha",
-      pergunta: "¿Qué edad tiene {nome}?",
+      pergunta: "Qual é a idade de {nome}?",
       opcoes: [
-        "Cachorro (hasta 6 meses)",
-        "Joven (de 6 a 18 meses)",
-        "Adulto (de 1,5 a 7 años)",
-        "Senior (más de 7 años)"
+        "Filhote (até 6 meses)",
+        "Jovem (de 6 a 18 meses)",
+        "Adulto (de 1,5 a 7 anos)",
+        "Idoso (mais de 7 anos)"
       ],
       imagemMap: IMG_IDADE,
       imagemClasse: "opt-img--porte",
     },
     {
       id: "porte", tipo: "escolha",
-      pergunta: "¿De qué tamaño es {nome}?",
+      pergunta: "Qual é o porte de {nome}?",
       opcoes: [
-        "Pequeño (hasta 10 kg)",
-        "Mediano (10 a 25 kg)",
+        "Pequeno (até 10 kg)",
+        "Médio (10 a 25 kg)",
         "Grande (25 a 45 kg)",
-        "Gigante (más de 45 kg)"
+        "Gigante (mais de 45 kg)"
       ],
       imagemMap: IMG_PORTE,
       imagemClasse: "opt-img--porte",
     },
     {
       id: "raca", tipo: "raca",
-      pergunta: "¿De qué raza es {nome}?",
-      semRaca: "Criollo (Mestizo)",
+      pergunta: "Qual é a raça de {nome}?",
+      semRaca: "Vira-lata (SRD)",
     },
     {
       id: "foco", tipo: "escolha",
-      pergunta: "¿Qué comportamiento de {nome} quieres resolver primero?",
+      pergunta: "Qual comportamento de {nome} você quer resolver primeiro?",
       opcoes: OPCOES_COMPORTAMENTO,
       imagemMap: IMG_COMPORTAMENTO,
     },
     {
       id: "detalhe_foco", tipo: "escolha",
-      pergunta: () => tpl(COMPORTAMENTOS[state.foco] ? COMPORTAMENTOS[state.foco].perguntaProfunda : "¿En qué momento ocurre con más frecuencia?"),
-      opcoes: () => (COMPORTAMENTOS[state.foco] ? COMPORTAMENTOS[state.foco].opcoesProfundas : ["Todos los días", "A veces", "Situaciones puntuales"]),
-      imagemMap: () => state.foco === "Destruye objetos" ? IMG_OBJETOS : null,
+      pergunta: () => tpl(COMPORTAMENTOS[state.foco] ? COMPORTAMENTOS[state.foco].perguntaProfunda : "Em que momento isso acontece com mais frequência?"),
+      opcoes: () => (COMPORTAMENTOS[state.foco] ? COMPORTAMENTOS[state.foco].opcoesProfundas : ["Todos os dias", "Às vezes", "Situações pontuais"]),
+      imagemMap: () => state.foco === "Destrói objetos" ? IMG_OBJETOS : null,
     },
     {
       id: "info_diagnostico", tipo: "info",
@@ -1294,60 +1764,60 @@ function obtenerEtapasDinamicas() {
     },
     {
       id: "energia", tipo: "escolha",
-      pergunta: "¿Cómo describirías el nivel de energía habitual de {nome}?",
+      pergunta: "Como você descreveria o nível de energia habitual de {nome}?",
       opcoes: [
-        "Muy activo e inquieto la mayor parte del día",
-        "Energía moderada (se activa en paseos y juego)",
-        "Tranquilo y dormilón",
+        "Muito ativo e agitado a maior parte do dia",
+        "Energia moderada (ativo em passeios e brincadeiras)",
+        "Tranquilo e dorminhoco",
       ],
       imagemMap: IMG_ENERGIA,
       imagemClasse: "opt-img--porte",
     },
     {
       id: "moradia", tipo: "escolha",
-      pergunta: "¿Dónde viven actualmente?",
+      pergunta: "Onde vocês moram atualmente?",
       opcoes: [
-        "Apartamento o conjunto cerrado",
-        "Casa con patio",
-        "Casa sin patio",
+        "Apartamento ou condomínio fechado",
+        "Casa com quintal",
+        "Casa sem quintal",
       ],
       imagemMap: IMG_MORADIA,
       imagemClasse: "opt-img--porte",
     },
     {
       id: "tentou", tipo: "escolha",
-      pergunta: "¿Has intentado corregir este comportamiento anteriormente?",
+      pergunta: "Você já tentou corrigir esse comportamento anteriormente?",
       opcoes: [
-        "Con videos y consejos de internet",
-        "Regaños y llamados de atención",
-        "Con un adiestrador o clases",
-        "Aún no he intentado un método formal",
+        "Com vídeos e dicas da internet",
+        "Broncas e chamadas de atenção",
+        "Com um adestrador ou aulas",
+        "Ainda não tentei um método formal",
       ],
       imagemMap: IMG_TENTOU,
       imagemClasse: "opt-img--porte",
     },
     {
       id: "tempo", tipo: "escolha",
-      pergunta: "¿Cuánto tiempo al día puedes dedicarle al plan?",
-      opcoes: ["10 minutos al día", "15 a 20 minutos al día", "Más de 20 minutos"],
+      pergunta: "Quanto tempo por dia você pode dedicar ao plano?",
+      opcoes: ["10 minutos por dia", "15 a 20 minutos por dia", "Mais de 20 minutos"],
       imagemMap: IMG_TEMPO,
       imagemClasse: "opt-img--porte",
     },
     {
       id: "carregando", tipo: "carregando",
-      titulo: "Generando el plan para {nome}...",
+      titulo: "Gerando o plano personalizado de {nome}...",
       itens: [
-        () => `Analizando perfil (${state.raca || "Criollo"}, ${state.idade || "Adulto"})`,
-        () => `Adaptando protocolo para ${state.foco || "comportamiento seleccionado"}`,
-        () => `Ajustando ejercicios a vivienda en ${state.moradia || "casa"}`,
-        () => "Estructurando el cronograma de 4 semanas de 10 min/día",
+        () => `Analisando perfil (${state.raca || "Vira-lata"}, ${state.idade || "Adulto"})`,
+        () => `Adaptando protocolo para ${state.foco || "comportamento selecionado"}`,
+        () => `Ajustando exercícios para moradia em ${state.moradia || "casa"}`,
+        () => "Estruturando cronograma de 4 semanas de 10 min/dia",
       ],
     },
   ];
 }
 
 /* =====================================================================
-   11) CONTROLADOR DEL QUIZ
+   11) CONTROLADOR DO QUIZ
    ===================================================================== */
 const app = document.getElementById("app");
 let qbody, qbar, qback;
@@ -1357,10 +1827,10 @@ function montarShellQuiz() {
     <header class="qhead">
       <div class="wrap-quiz">
         <div class="qhead-in">
-          <button class="back" id="qback" aria-label="Volver" hidden>${ICON.back}</button>
+          <button class="back" id="qback" aria-label="Voltar" hidden>${ICON.back}</button>
           ${LOGO}
         </div>
-        <div class="progress" role="progressbar" aria-label="Progreso del quiz"><span id="qbar"></span></div>
+        <div class="progress" role="progressbar" aria-label="Progresso do quiz"><span id="qbar"></span></div>
       </div>
     </header>
     <main class="wrap-quiz"><div id="qbody"></div></main>`;
@@ -1458,14 +1928,14 @@ function telaInicio() {
   const I = INICIO;
   const img = I.imagem
     ? `<div class="inicio-img"><img src="${esc(I.imagem)}" alt="${esc(I.imagemAlt || "")}" fetchpriority="high"></div>`
-    : `<div class="inicio-img ph">[IMAGEN]</div>`;
+    : `<div class="inicio-img ph">[IMAGEM]</div>`;
   qbody.innerHTML = `
     <section class="screen inicio">
       <span class="pill"><i></i>${I.selo}</span>
       <h1 class="h1">${I.titulo}</h1>
       <p class="sub">${I.subtitulo}</p>
       <div style="text-align:center">
-        <span class="badge-live"><span class="badge-live-dot"></span><span id="liveCount">${liveCountValue}</span> personas haciendo el quiz ahora</span>
+        <span class="badge-live"><span class="badge-live-dot"></span><span id="liveCount">${liveCountValue}</span> pessoas fazendo o quiz agora</span>
       </div>
       ${img}
       <button class="btn btn-red" data-comecar>${I.botao}</button>
@@ -1555,7 +2025,7 @@ function telaTexto(e) {
     </section>`;
   const input = document.getElementById("inTexto");
   const enviar = () => {
-    const v = input.value.trim() || (esHembra() ? "tu perra" : "tu perro");
+    const v = input.value.trim() || (esHembra() ? "sua cachorrinha" : "seu cachorro");
     registrar(e.id, v);
     avancar();
   };
@@ -1569,7 +2039,7 @@ function telaRaca(e) {
     <section class="screen">
       <h2 class="q">${tpl(e.pergunta)}</h2>
       <input class="field" id="inRaca" type="text" autocomplete="off" spellcheck="false" enterkeyhint="next"
-        placeholder="Escribe la raza" value="${esc(state.raca === e.semRaca ? "" : state.raca)}" aria-label="Raza">
+        placeholder="Digite a raça" value="${esc(state.raca === e.semRaca ? "" : state.raca)}" aria-label="Raça">
       <div class="sugs" id="sugs"></div>
       <button class="btn btn-dark" id="btnCont">Continuar</button>
       <button class="btn btn-light mt-12" id="btnSrd">${esc(e.semRaca)}</button>
@@ -1591,7 +2061,7 @@ function telaRaca(e) {
     const q = semAcento(input.value.trim());
     btnCont.disabled = !q;
     if (!q) {
-      sugs.innerHTML = `<p class="sugs-label">Más comunes</p><div class="chips">${RACAS.slice(0, 8).map(r => `<button class="chip" data-r="${esc(r)}">${esc(r)}</button>`).join("")}</div>`;
+      sugs.innerHTML = `<p class="sugs-label">Mais comuns</p><div class="chips">${RACAS.slice(0, 8).map(r => `<button class="chip" data-r="${esc(r)}">${esc(r)}</button>`).join("")}</div>`;
     } else {
       const comeca = RACAS.filter(r => semAcento(r).startsWith(q));
       const contem = RACAS.filter(r => !semAcento(r).startsWith(q) && semAcento(r).includes(q));
@@ -1666,28 +2136,28 @@ function telaCarregando(e) {
 }
 
 /* =====================================================================
-   12) PÁGINA DE VENTAS
+   12) PÁGINA DE VENDAS
    ===================================================================== */
 function renderVendas() {
   if (!COMPORTAMENTOS[state.foco]) state.foco = OPCOES_COMPORTAMENTO[0];
   const c = COMPORTAMENTOS[state.foco];
   const n = nomeFormatado();
-  const nomeTitulo = n ? esc(n) : ucfirst(NOME_PADRAO);
+  const nomeTitulo = n ? esc(n) : (esHembra() ? "Sua cachorrinha" : "Seu cachorro");
   const L = TEXTOS.resumoLinhas;
 
   const heroMedia = TEXTOS.imagemHero
-    ? `<div class="hero-img"><img src="${esc(TEXTOS.imagemHero)}" alt="Plan de adiestramiento para tu perro" width="1200" height="675" fetchpriority="high"></div>`
-    : `<div class="hero-img ph">[IMAGEN PRINCIPAL]</div>`;
+    ? `<div class="hero-img"><img src="${esc(TEXTOS.imagemHero)}" alt="Plano de adestramento para o seu cachorro" width="1200" height="675" fetchpriority="high"></div>`
+    : `<div class="hero-img ph">[IMAGEM PRINCIPAL]</div>`;
 
   const linhas = [
     [L.sexo, state.sexo || "Macho"],
     [L.idade, state.idade || "Adulto"],
-    [L.porte, state.porte || "Mediano"],
+    [L.porte, state.porte || "Médio"],
     [L.raca, state.raca || TEXTOS.racaVazia],
     [L.foco, state.foco],
     state.detalhe_foco ? [L.detalhe, state.detalhe_foco] : null,
     state.moradia ? [L.moradia, state.moradia] : null,
-    [L.tempo, state.tempo || "10 minutos al día"],
+    [L.tempo, state.tempo || "10 minutos por dia"],
   ].filter(Boolean);
 
   const K = TEXTOS.kickers;
@@ -1700,18 +2170,18 @@ function renderVendas() {
   </header>
 
   <main>
-    <!-- =================== A · ATENCIÓN =================== -->
+    <!-- =================== A · ATENÇÃO =================== -->
     <section class="hero wrap-sales">
       <p class="eyebrow">${tpl(TEXTOS.heroTopo)}</p>
       <h1>${ucfirst(tpl(TEXTOS.heroTitulo))}</h1>
-      <p class="sub">${TEXTOS.heroSub}</p>
+      <p class="sub">${tpl(TEXTOS.heroSub)}</p>
       ${heroMedia}
       <button class="btn btn-red" id="heroCta" data-scroll>${tpl(TEXTOS.heroBotao)}</button>
       ${TRUST}
     </section>
 
-    <!-- =================== I · INTERÉS =================== -->
-    <!-- Dolor -->
+    <!-- =================== I · INTERESSE =================== -->
+    <!-- Dor -->
     <section class="sec">
       <div class="wrap-sales">
         <p class="kicker">${K.dor}</p>
@@ -1731,7 +2201,7 @@ function renderVendas() {
       </div>
     </section>
 
-    <!-- Resumen del plan -->
+    <!-- Resumo do plano -->
     <section class="sec">
       <div class="wrap-sales">
         <p class="kicker">${K.resumo}</p>
@@ -1750,8 +2220,8 @@ function renderVendas() {
       </div>
     </section>
 
-    <!-- =================== D · DESEO =================== -->
-    <!-- Cómo funciona -->
+    <!-- =================== D · DESEJO =================== -->
+    <!-- Como funciona -->
     <section class="sec">
       <div class="wrap-sales">
         <p class="kicker">${K.como}</p>
@@ -1762,19 +2232,19 @@ function renderVendas() {
       </div>
     </section>
 
-    <!-- Lo que recibes -->
+    <!-- O que você recebe -->
     <section class="sec">
       <div class="wrap-sales">
         <p class="kicker">${K.recebe}</p>
         <h2 class="h2">${TEXTOS.recebeTitulo}</h2>
         ${TEXTOS.imagemProduto
-          ? `<img class="produto" src="${esc(TEXTOS.imagemProduto)}" alt="App con el plan de adiestramiento" width="1200" height="900" loading="lazy">`
-          : `<div class="ph produto">[IMAGEN DEL PRODUCTO]</div>`}
+          ? `<img class="produto" src="${esc(TEXTOS.imagemProduto)}" alt="Aplicativo com o plano de adestramento" width="1200" height="900" loading="lazy">`
+          : `<div class="ph produto">[IMAGEM DO PRODUTO]</div>`}
         <ul class="checklist">${RECEBE.map(checkLi).join("")}</ul>
       </div>
     </section>
 
-    <!-- Bonos -->
+    <!-- Bônus -->
     <section class="sec">
       <div class="wrap-sales">
         <p class="kicker">${K.bonus}</p>
@@ -1793,7 +2263,7 @@ function renderVendas() {
       </div>
     </section>
 
-    <!-- Comparación -->
+    <!-- Comparação -->
     <section class="sec">
       <div class="wrap-sales">
         <p class="kicker">${K.comp}</p>
@@ -1811,22 +2281,8 @@ function renderVendas() {
       </div>
     </section>
 
-    <!-- Testimonios -->
-    <section class="sec">
-      <div class="wrap-sales">
-        <p class="kicker">${K.depo}</p>
-        <h2 class="h2">${TEXTOS.depoTitulo}</h2>
-        <div class="depos">
-          ${DEPOIMENTOS.map(d => `
-            <figure class="depo">
-              <div><p>${esc(d.texto)}</p><small>${esc(d.autor)} · ${esc(d.detalhe)}</small></div>
-            </figure>`).join("")}
-        </div>
-      </div>
-    </section>
-
-    <!-- =================== A · ACCIÓN =================== -->
-    <!-- Planes -->
+    <!-- =================== A · AÇÃO =================== -->
+    <!-- Planos -->
     <section class="sec" id="planos">
       <div class="wrap-sales">
         <p class="kicker center">${K.planos}</p>
@@ -1834,14 +2290,36 @@ function renderVendas() {
         <div class="planos">
           ${Object.entries(PLANOS).map(([id, p]) => cartaoPlano(id, p)).join("")}
         </div>
-        ${TEXTOS.imagemPagamentos
-          ? `<div style="text-align:center;margin-top:20px"><img src="${esc(TEXTOS.imagemPagamentos)}" alt="Formas de pago aceptadas" loading="lazy" style="max-width:320px;width:100%;height:auto;margin:0 auto"></div>`
-          : TRUST}
         <p class="nota">${TEXTOS.planosNota}</p>
       </div>
     </section>
 
-    <!-- Garantía -->
+    <!-- Depoimentos -->
+    <section class="sec">
+      <div class="wrap-sales">
+        <p class="kicker">${K.depo}</p>
+        <h2 class="h2">${TEXTOS.depoTitulo}</h2>
+        <div class="depos">
+          ${DEPOIMENTOS.map(d => `
+            <figure class="depo">
+              <div class="depo-top">
+                <div class="depo-autor-wrap">
+                  <div class="depo-avatar">${esc(d.iniciais)}</div>
+                  <div>
+                    <div class="depo-nome">${esc(d.autor)} <span class="depo-badge">${ICON.check} Compra verificada</span></div>
+                    <span class="depo-meta">${esc(d.local)} · <span class="depo-tempo">${esc(d.tempo)}</span></span>
+                  </div>
+                </div>
+                <div class="depo-stars" aria-label="5 estrelas">★★★★★</div>
+              </div>
+              <p class="depo-texto">“${esc(d.texto)}”</p>
+              <div class="depo-pet">🐾 <b>Tutor(a) de:</b> ${esc(d.pet)}</div>
+            </figure>`).join("")}
+        </div>
+      </div>
+    </section>
+
+    <!-- Garantia -->
     <section class="sec">
       <div class="wrap-sales garantia">
         ${TEXTOS.imagemGarantia
@@ -1850,11 +2328,10 @@ function renderVendas() {
         <p class="kicker">${K.garantia}</p>
         <h2 class="h2">${TEXTOS.garantiaTitulo}</h2>
         <p class="p">${TEXTOS.garantiaTexto}</p>
-        <p class="garantia-link"><a href="${esc(CONFIG.REEMBOLSO_URL)}" target="_blank" rel="noopener">Consulta nuestra Política de Reembolso completa aquí →</a></p>
       </div>
     </section>
 
-    <!-- Preguntas frecuentes -->
+    <!-- Perguntas frequentes -->
     <section class="sec">
       <div class="wrap-sales">
         <p class="kicker">${K.faq}</p>
@@ -1865,7 +2342,7 @@ function renderVendas() {
       </div>
     </section>
 
-    <!-- P.D. -->
+    <!-- P.S. -->
     <section class="sec">
       <div class="wrap-sales">
         <p class="ps">${TEXTOS.psTexto}</p>
@@ -1877,7 +2354,7 @@ function renderVendas() {
   ${renderFooterHtml()}`;
 
   window.scrollTo(0, 0);
-  track("ViewContent", { content_name: "Plan PataCerta", content_category: state.foco });
+  track("ViewContent", { content_name: "Plano PataCerta", content_category: state.foco });
 
   const suave = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   app.querySelectorAll("[data-scroll]").forEach(b => b.onclick = () =>
@@ -1923,33 +2400,432 @@ function cartaoPlano(id, p) {
 }
 
 /* =====================================================================
-   13) CHECKOUT
+   13) CHECKOUT TRANSPARENTE LOFYPAY (2 ETAPAS + PIX)
    ===================================================================== */
-function montarUrlCheckout(base) {
-  if (!base) return null;
-  let url;
-  try { url = new URL(base, location.href); } catch (e) { return base; }
-  const atuais = new URLSearchParams(location.search);
-  atuais.forEach((v, k) => {
-    if (k.startsWith("utm_") || CONFIG.PARAMS_REPASSAR.includes(k)) url.searchParams.set(k, v);
+const checkoutState = {
+  planoId: "premium",
+  idTransaction: null,
+  pollingTimer: null,
+  countdownTimer: null,
+  expiraEmMs: 0,
+};
+
+function extrairUtmsAtuais() {
+  const p = new URLSearchParams(location.search);
+  const utms = {};
+  CONFIG.PARAMS_REPASSAR.forEach(k => {
+    if (p.has(k)) utms[k] = p.get(k);
   });
-  const nome = nomeFormatado();
-  if (nome) url.searchParams.set(CONFIG.PARAM_NOME, nome);
-  if (state.foco) url.searchParams.set(CONFIG.PARAM_FOCO, state.foco);
-  if (state.raca) url.searchParams.set("raca", state.raca);
-  return url.toString();
+  return utms;
 }
 
-function irParaCheckout(id) {
-  const p = PLANOS[id];
-  if (!p) return;
+function mascaraCpf(valor) {
+  let v = String(valor || "").replace(/\D/g, "");
+  if (v.length > 11) v = v.slice(0, 11);
+  v = v.replace(/(\d{3})(\d)/, "$1.$2");
+  v = v.replace(/(\d{3})(\d)/, "$1.$2");
+  v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+  return v;
+}
+
+function validarCpfFront(cpf) {
+  const limpo = String(cpf || "").replace(/\D/g, "");
+  if (limpo.length !== 11) return false;
+  if (/^(\d)\1{10}$/.test(limpo)) return false;
+  let soma = 0;
+  for (let i = 0; i < 9; i++) soma += parseInt(limpo.charAt(i)) * (10 - i);
+  let resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) resto = 0;
+  if (resto !== parseInt(limpo.charAt(9))) return false;
+  soma = 0;
+  for (let i = 0; i < 10; i++) soma += parseInt(limpo.charAt(i)) * (11 - i);
+  resto = (soma * 10) % 11;
+  if (resto === 10 || resto === 11) resto = 0;
+  return resto === parseInt(limpo.charAt(10));
+}
+
+function montarModalCheckoutHtml() {
+  if (document.getElementById("chkModalOverlay")) return;
+
+  const div = document.createElement("div");
+  div.id = "chkModalOverlay";
+  div.className = "chk-overlay";
+  div.innerHTML = `
+    <div class="chk-modal" role="dialog" aria-modal="true" aria-labelledby="chkModalTitle">
+      <div class="chk-topbar">
+        <div class="chk-brand">
+          ${ICON.paw}
+          <span id="chkModalTitle">PataCerta</span>
+        </div>
+        <div class="chk-top-actions">
+          <span class="chk-safe-tag">${ICON.lock} Compra 100% segura</span>
+          <button type="button" class="chk-btn-close" id="chkBtnClose" aria-label="Fechar checkout">&times;</button>
+        </div>
+      </div>
+      <div class="chk-content" id="chkContentArea">
+        <!-- Conteúdo dinâmico (Formulário ou PIX) -->
+      </div>
+    </div>
+  `;
+  document.body.appendChild(div);
+
+  document.getElementById("chkBtnClose").onclick = fecharCheckout;
+  div.onclick = e => {
+    if (e.target === div) fecharCheckout();
+  };
+}
+
+function irParaCheckout(planoId) {
+  checkoutState.planoId = planoId;
+  const p = PLANOS[planoId] || PLANOS.premium;
   track("InitiateCheckout", { value: p.valor, currency: CONFIG.MONEDA, content_name: p.nome });
-  const destino = montarUrlCheckout(p.checkout);
-  if (!destino) {
-    console.warn("[PataCerta] Enlace de checkout no configurado para: " + p.nome);
-    return;
+
+  montarModalCheckoutHtml();
+  renderizarFormularioCheckout();
+
+  const overlay = document.getElementById("chkModalOverlay");
+  if (overlay) overlay.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function fecharCheckout() {
+  if (checkoutState.pollingTimer) clearInterval(checkoutState.pollingTimer);
+  if (checkoutState.countdownTimer) clearInterval(checkoutState.countdownTimer);
+
+  const overlay = document.getElementById("chkModalOverlay");
+  if (overlay) overlay.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+function renderizarFormularioCheckout() {
+  const p = PLANOS[checkoutState.planoId] || PLANOS.premium;
+  const area = document.getElementById("chkContentArea");
+  if (!area) return;
+
+  area.innerHTML = `
+    <!-- Resumo do Produto -->
+    <div class="chk-card">
+      <div class="chk-product-box">
+        <div class="chk-product-thumb">
+          <svg viewBox="0 0 24 24" fill="currentColor"><ellipse cx="6" cy="10" rx="2.1" ry="2.6"/><ellipse cx="10" cy="6" rx="2.1" ry="2.7"/><ellipse cx="14" cy="6" rx="2.1" ry="2.7"/><ellipse cx="18" cy="10" rx="2.1" ry="2.6"/><path d="M12 11.5c-2.6 0-5.2 3.4-5.2 5.8 0 1.6 1.2 2.4 2.6 2.4 1.1 0 1.7-.6 2.6-.6s1.5.6 2.6.6c1.4 0 2.6-.8 2.6-2.4 0-2.4-2.6-5.8-5.2-5.8z"/></svg>
+        </div>
+        <div class="chk-product-info">
+          <div class="chk-product-title">Plano ${esc(p.nome)} · PataCerta</div>
+          <div class="chk-product-sub">Vendido por PataCerta Educação</div>
+        </div>
+        <div class="chk-product-val">${esc(p.preco)}</div>
+      </div>
+    </div>
+
+    <!-- Etapa 1: Dados Pessoais -->
+    <div class="chk-card">
+      <div class="chk-section-label">
+        <span class="chk-step-bubble">1</span>
+        <span>Dados pessoais</span>
+      </div>
+      <div class="chk-field">
+        <label for="chkNome">Nome completo</label>
+        <input type="text" id="chkNome" class="chk-input-text" placeholder="Nome e sobrenome" autocomplete="name" required>
+        <span class="chk-error-text" id="chkNomeErr">Informe seu nome e sobrenome completos.</span>
+      </div>
+      <div class="chk-field">
+        <label for="chkEmail">E-mail (para onde enviaremos o acesso)</label>
+        <input type="email" id="chkEmail" class="chk-input-text" placeholder="voce@email.com" autocomplete="email" required>
+        <span class="chk-error-text" id="chkEmailErr">Informe um e-mail válido para receber o produto.</span>
+      </div>
+      <div class="chk-field">
+        <label for="chkCpf">CPF (exigido pelo Banco Central para PIX)</label>
+        <input type="tel" id="chkCpf" class="chk-input-text" placeholder="000.000.000-00" maxlength="14" autocomplete="off" required>
+        <span class="chk-error-text" id="chkCpfErr">CPF inválido. Digite um CPF válido.</span>
+      </div>
+    </div>
+
+    <!-- Cupom -->
+    <div class="chk-coupon-card">
+      <span>Tem um cupom de desconto?</span>
+      <a class="chk-coupon-action" onclick="alert('Nenhum cupom ativo no momento. Desconto máximo já aplicado nesta oferta!')">Adicionar</a>
+    </div>
+
+    <!-- Etapa 2: Forma de Pagamento -->
+    <div class="chk-card">
+      <div class="chk-section-label">
+        <span class="chk-step-bubble">2</span>
+        <span>Forma de pagamento</span>
+      </div>
+      <div class="chk-pay-opt active">
+        <div class="chk-pay-left">
+          <div class="chk-radio-circ"><div class="chk-radio-inner"></div></div>
+          <span class="chk-pix-ico">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M14.81 12l3.41-3.41a3.2 3.2 0 000-4.52l-2.7-2.7a3.2 3.2 0 00-4.52 0L7.59 4.78l3.41 3.41 3.81 3.81zm-5.62 0l-3.4 3.41a3.2 3.2 0 000 4.52l2.7 2.7a3.2 3.2 0 004.52 0l3.41-3.41-3.41-3.41-3.82-3.81zM4.78 7.59l2.81 2.82 3.41-3.41-2.82-2.82a3.2 3.2 0 00-4.52 0l-2.7 2.7a3.2 3.2 0 000 4.52l3.82-3.81zm14.44 8.82l-2.81-2.82-3.41 3.41 2.82 2.82a3.2 3.2 0 004.52 0l2.7-2.7a3.2 3.2 0 000-4.52l-3.82 3.81z"/></svg>
+          </span>
+          <span>Pix</span>
+        </div>
+        <span class="chk-pix-badge">Aprovação na hora</span>
+      </div>
+      <div class="chk-pay-opt chk-opt-muted" onclick="alert('Pagamento via Cartão temporariamente indisponível. Utilize PIX para aprovação imediata!')">
+        <div class="chk-pay-left">
+          <div class="chk-radio-circ"><div class="chk-radio-inner"></div></div>
+          <span>💳 Cartão de crédito</span>
+        </div>
+        <span style="font-size:12px;color:#9CA3AF">À vista</span>
+      </div>
+      <div id="chkErroGeral" style="display:none;color:#DC2626;font-size:13px;text-align:center;margin-top:10px;font-weight:600;padding:8px;background:#FEF2F2;border-radius:8px"></div>
+      <button type="button" class="chk-submit-btn" id="chkBtnGerarPix">
+        GERAR PIX DE ${esc(p.preco)}
+      </button>
+    </div>
+
+    <div class="chk-footer-sec">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      <span>Dados criptografados e pagamento processado com segurança</span>
+    </div>
+  `;
+
+  // Formatação automática de CPF
+  const inputCpf = document.getElementById("chkCpf");
+  if (inputCpf) {
+    inputCpf.addEventListener("input", e => {
+      e.target.value = mascaraCpf(e.target.value);
+    });
   }
-  setTimeout(() => { location.href = destino; }, 250);
+
+  document.getElementById("chkBtnGerarPix").onclick = processarGeracaoPix;
+}
+
+async function processarGeracaoPix() {
+  const inputNome = document.getElementById("chkNome");
+  const inputEmail = document.getElementById("chkEmail");
+  const inputCpf = document.getElementById("chkCpf");
+  const errGeral = document.getElementById("chkErroGeral");
+  const btn = document.getElementById("chkBtnGerarPix");
+
+  let hasError = false;
+
+  const nome = inputNome.value.trim();
+  if (!nome || nome.split(" ").length < 2) {
+    inputNome.classList.add("has-error");
+    hasError = true;
+  } else {
+    inputNome.classList.remove("has-error");
+  }
+
+  const email = inputEmail.value.trim().toLowerCase();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    inputEmail.classList.add("has-error");
+    hasError = true;
+  } else {
+    inputEmail.classList.remove("has-error");
+  }
+
+  const cpfLimpo = inputCpf.value.replace(/\D/g, "");
+  if (!validarCpfFront(cpfLimpo)) {
+    inputCpf.classList.add("has-error");
+    hasError = true;
+  } else {
+    inputCpf.classList.remove("has-error");
+  }
+
+  if (hasError) return;
+
+  btn.disabled = true;
+  const textoOriginal = btn.innerHTML;
+  btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin .8s linear infinite"><circle cx="12" cy="12" r="10" stroke-opacity=".25"/><path d="M12 2a10 10 0 0 1 10 10"/></svg> Gerando Pix seguro...`;
+  errGeral.style.display = "none";
+
+  try {
+    const payload = {
+      planId: checkoutState.planoId,
+      client: {
+        name: nome,
+        email: email,
+        document: cpfLimpo,
+      },
+      petName: nomeFormatado(),
+      utms: extrairUtmsAtuais(),
+    };
+
+    const res = await fetch("/api/create-pix", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok || !data.success || !data.idTransaction) {
+      throw new Error(data.message || "Não foi possível gerar a chave PIX no momento.");
+    }
+
+    checkoutState.idTransaction = data.idTransaction;
+    renderizarTelaPix(data, email, nomeFormatado());
+  } catch (err) {
+    console.error("[Checkout Erro]", err);
+    errGeral.textContent = err.message || "Erro ao conectar com a operadora de pagamentos.";
+    errGeral.style.display = "block";
+    btn.disabled = false;
+    btn.innerHTML = textoOriginal;
+  }
+}
+
+function renderizarTelaPix(pixData, emailComprador, petNome) {
+  const area = document.getElementById("chkContentArea");
+  if (!area) return;
+
+  const valorFormatado = Number(pixData.amount).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  checkoutState.expiraEmMs = Date.now() + ((pixData.expiration || 1800) * 1000);
+
+  area.innerHTML = `
+    <div class="pix-view">
+      <div class="pix-time-pill">
+        ⏱️ <span id="pixTimerContador">Expira em 29:59</span>
+      </div>
+
+      <div class="pix-view-title">Pague com Pix para liberar seu acesso</div>
+      <div class="pix-view-sub">Total a pagar: <b>${valorFormatado}</b></div>
+
+      <div class="pix-qr-wrapper" id="pixQrContainer">
+        ${pixData.paymentCodeBase64
+          ? `<img src="data:image/png;base64,${pixData.paymentCodeBase64}" alt="QR Code Pix" width="200" height="200">`
+          : `<div id="pixQrCodeCanvas"></div>`}
+      </div>
+
+      <p style="font-size:12.5px;color:#4B5563;margin-bottom:8px">Ou copie o código Pix abaixo:</p>
+
+      <div class="pix-code-card">
+        <input type="text" class="pix-code-field" id="pixCodeInput" value="${esc(pixData.paymentCode)}" readonly>
+        <button type="button" class="pix-copy-action" id="pixBtnCopiar">Copiar código Pix</button>
+      </div>
+
+      <div class="pix-live-status">
+        <div class="pix-pulse-dot"></div>
+        <span>Aguardando pagamento... Identificamos automaticamente</span>
+      </div>
+
+      <p style="font-size:12px;color:#6B7280;margin:6px 0 12px;line-height:1.4">
+        Abra o app do seu banco, escolha <b>Pagar com Pix</b> e escaneie o QR Code ou cole o código acima.
+      </p>
+
+      <button type="button" class="pix-manual-check" id="pixBtnCheckManual">
+        Já realizei o pagamento (verificar agora)
+      </button>
+    </div>
+  `;
+
+  // Renderizar QR code via biblioteca caso não venha base64
+  if (!pixData.paymentCodeBase64) {
+    try {
+      if (typeof QRCode !== "undefined") {
+        new QRCode(document.getElementById("pixQrCodeCanvas"), {
+          text: pixData.paymentCode,
+          width: 180,
+          height: 180,
+          colorDark: "#111827",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.M,
+        });
+      } else {
+        // Fallback dinâmico seguro
+        const container = document.getElementById("pixQrContainer");
+        container.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(pixData.paymentCode)}" alt="QR Code Pix" width="180" height="180">`;
+      }
+    } catch (e) {
+      console.warn("QR code fallback:", e);
+    }
+  }
+
+  // Ação copiar código
+  const btnCopiar = document.getElementById("pixBtnCopiar");
+  btnCopiar.onclick = () => {
+    const input = document.getElementById("pixCodeInput");
+    input.select();
+    input.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(pixData.paymentCode).then(() => {
+      btnCopiar.textContent = "✓ Código Copiado!";
+      btnCopiar.classList.add("copied");
+      setTimeout(() => {
+        btnCopiar.textContent = "Copiar código Pix";
+        btnCopiar.classList.remove("copied");
+      }, 3000);
+    });
+  };
+
+  // Cronômetro
+  iniciarContadorRegressivo();
+
+  // Polling automático a cada 5 segundos
+  iniciarPollingStatus(pixData.idTransaction, emailComprador, petNome);
+
+  // Verificação manual imediata
+  document.getElementById("pixBtnCheckManual").onclick = () => {
+    checarStatusPix(pixData.idTransaction, emailComprador, petNome, true);
+  };
+}
+
+function iniciarContadorRegressivo() {
+  const el = document.getElementById("pixTimerContador");
+  if (!el) return;
+
+  if (checkoutState.countdownTimer) clearInterval(checkoutState.countdownTimer);
+
+  checkoutState.countdownTimer = setInterval(() => {
+    const restante = Math.max(0, Math.floor((checkoutState.expiraEmMs - Date.now()) / 1000));
+    const min = String(Math.floor(restante / 60)).padStart(2, "0");
+    const seg = String(restante % 60).padStart(2, "0");
+
+    if (el) el.textContent = `Expira em ${min}:${seg}`;
+
+    if (restante <= 0) {
+      clearInterval(checkoutState.countdownTimer);
+      if (el) el.textContent = "Chave Pix expirada. Gere uma nova cobrança.";
+    }
+  }, 1000);
+}
+
+function iniciarPollingStatus(idTransaction, email, petNome) {
+  if (checkoutState.pollingTimer) clearInterval(checkoutState.pollingTimer);
+
+  // Checa a cada 5 segundos
+  checkoutState.pollingTimer = setInterval(() => {
+    checarStatusPix(idTransaction, email, petNome, false);
+  }, 5000);
+}
+
+async function checarStatusPix(idTransaction, email, petNome, manual = false) {
+  try {
+    const res = await fetch("/api/check-status", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ idTransaction }),
+    });
+
+    const data = await res.json();
+
+    if (data.isPaid || data.status === "PAID_OUT") {
+      clearInterval(checkoutState.pollingTimer);
+      clearInterval(checkoutState.countdownTimer);
+
+      const statusBox = document.querySelector(".pix-live-status");
+      if (statusBox) {
+        statusBox.style.background = "#D1FAE5";
+        statusBox.style.borderColor = "#10B981";
+        statusBox.innerHTML = `<b>🎉 Pagamento confirmado! Redirecionando...</b>`;
+      }
+
+      track("Purchase", {
+        value: PLANOS[checkoutState.planoId]?.valor || 57.00,
+        currency: CONFIG.MONEDA,
+        transaction_id: idTransaction,
+      });
+
+      setTimeout(() => {
+        location.href = `obrigado.html?email=${encodeURIComponent(email || "")}&pet=${encodeURIComponent(petNome || "")}&id=${encodeURIComponent(idTransaction)}`;
+      }, 1200);
+    } else if (manual) {
+      alert("Ainda não identificamos o pagamento no banco. Se você acabou de pagar, aguarde alguns segundos que a confirmação é automática.");
+    }
+  } catch (err) {
+    console.warn("[Polling LofyPay]", err);
+  }
 }
 
 /* =====================================================================

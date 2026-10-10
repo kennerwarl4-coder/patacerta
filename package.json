@@ -1,0 +1,9 @@
+{
+  "name": "patacerta-funil",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Funil de Quiz e Vendas PataCerta com checkout PIX nativo LofyPay",
+  "engines": {
+    "node": ">=18"
+  }
+}

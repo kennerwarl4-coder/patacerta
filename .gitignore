@@ -18,7 +18,10 @@ Thumbs.db
 *.swp
 *.swo
 
-# Variáveis de ambiente
+# Variáveis de ambiente — NUNCA commitar o .env real
 .env
 .env.local
 .env.*.local
+
+# O .env.example SIM pode ser commitado (sem valores reais)
+!.env.example
