@@ -2011,29 +2011,24 @@ function cartaoPlano(id, p) {
 })();
 
 function irParaCheckout(planoId) {
-  const p = new URLSearchParams(location.search);
-  p.set('plano', planoId || 'premium');
+  const params = new URLSearchParams(location.search);
+  params.set('plano', planoId || 'premium');
   if (state && state.nome) {
-    p.set('pet', state.nome);
+    params.set('pet', state.nome);
   }
   CONFIG.PARAMS_REPASSAR.forEach(k => {
-    if (!p.has(k)) {
+    if (!params.has(k)) {
       const val = sessionStorage.getItem(k) || localStorage.getItem(k);
-      if (val) p.set(k, val);
+      if (val) params.set(k, val);
     }
   });
-  const p = new URLSearchParams(location.search);
-  p.set('plano', planoId || 'premium');
-  if (state && state.nome) {
-    p.set('pet', state.nome);
-  }
   const planoObj = PLANOS[planoId] || PLANOS.premium;
   track('InitiateCheckout', {
     value: planoObj.valor,
     currency: CONFIG.MONEDA,
     content_name: planoObj.nome,
   });
-  window.location.href = 'checkout.html?' + p.toString();
+  window.location.href = 'checkout.html?' + params.toString();
 }/* =====================================================================
    INICIO
    ===================================================================== */
