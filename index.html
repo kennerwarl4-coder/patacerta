@@ -1476,11 +1476,6 @@ function voltar() {
 
 function registrar(id, valor) {
   state[id] = valor;
-  if (!quizIniciado) {
-    quizIniciado = true;
-    track("quizStart", {}, true);
-    track("QuizStart", {}, true);
-  }
 }
 
 let liveCountValue = 779;
@@ -1551,7 +1546,13 @@ function telaInicio() {
       </div>
     </section>`;
   iniciarContadorAoVivo();
-  qbody.querySelectorAll("[data-comecar]").forEach(b => b.onclick = avancar);
+  qbody.querySelectorAll("[data-comecar]").forEach(b => b.onclick = () => {
+    if (!quizIniciado) {
+      quizIniciado = true;
+      track("QuizStart", { content_name: "Quiz PataCerta" });
+    }
+    avancar();
+  });
 }
 
 function telaEscolha(e) {
@@ -1724,8 +1725,7 @@ function telaCarregando(e) {
     checkItems.forEach((li, i) => { if (t >= (i + 1) / checkItems.length - 0.02) li.classList.add("done"); });
     if (t < 1) requestAnimationFrame(frame);
     else {
-      track("quizComplete", { foco: state.foco, raca: state.raca }, true);
-      track("QuizComplete", { foco: state.foco, raca: state.raca }, true);
+      track("QuizComplete", { foco: state.foco, raca: state.raca });
       setTimeout(renderVendas, 400);
     }
   };
