@@ -91,17 +91,23 @@ module.exports = async function handler(req, res) {
         document: documento,
         phone: telefone || undefined,
       },
+      products: [
+        {
+          id: `patacerta-${planId}`,
+          name: plano.nome,
+        }
+      ],
       external_reference: externalRef,
       notification_url: notificationUrl,
       expiration: 1800, // 30 minutos
       trackingParameters: {
-        utm_source: utms.utm_source || null,
-        utm_medium: utms.utm_medium || null,
-        utm_campaign: utms.utm_campaign || null,
-        utm_content: utms.utm_content || null,
-        utm_term: utms.utm_term || null,
-        src: utms.src || null,
-        sck: utms.sck || null,
+        utm_source: utms.utm_source || body.trackingParameters?.utm_source || null,
+        utm_campaign: utms.utm_campaign || body.trackingParameters?.utm_campaign || null,
+        utm_medium: utms.utm_medium || body.trackingParameters?.utm_medium || null,
+        utm_content: utms.utm_content || body.trackingParameters?.utm_content || null,
+        utm_term: utms.utm_term || body.trackingParameters?.utm_term || null,
+        src: utms.src || body.trackingParameters?.src || null,
+        sck: utms.sck || body.trackingParameters?.sck || null,
       },
       idempotencyKey: externalRef,
     });

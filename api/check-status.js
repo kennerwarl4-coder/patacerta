@@ -1,4 +1,5 @@
 const { consultarStatus } = require("./_lofypay");
+const { enviarEventoMetaCapi } = require("./_meta");
 
 module.exports = async function handler(req, res) {
   // CORS
@@ -24,6 +25,20 @@ module.exports = async function handler(req, res) {
 
   try {
     const resultado = await consultarStatus(idTransaction);
+
+    if (resultado.isPaid) {
+      // Dispara Purchase via Meta Conversions API (CAPI) de forma assíncrona
+      enviarEventoMetaCapi({
+        eventName: "Purchase",
+        eventId: idTransaction,
+        eventSourceUrl: "https://patacerta-five.vercel.app/checkout",
+        customData: {
+          value: resultado.amount || 67.00,
+          currency: "BRL",
+          content_name: "Plano PataCerta",
+        },
+      }).catch(err => console.warn("[Meta CAPI check-status error]", err.message));
+    }
 
     return res.status(200).json({
       success: true,

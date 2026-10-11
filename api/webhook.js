@@ -1,4 +1,5 @@
 const { consultarStatus, verificarAssinaturaWebhook } = require("./_lofypay");
+const { enviarEventoMetaCapi } = require("./_meta");
 
 // Cache de idTransactions já marcadas como pagas nesta execução (deduplicação em memória)
 const transacoesConfirmadas = new Set();
@@ -82,11 +83,19 @@ module.exports = async function handler(req, res) {
       if (deliveryId) entregasProcessadas.add(deliveryId);
 
       // ✅ PAGAMENTO CONFIRMADO COM SEGURANÇA
-      // Aqui você integra sua lógica de entrega:
-      // - Enviar e-mail de acesso (ex.: Resend, SendGrid, Loops)
-      // - Marcar pedido como pago no banco de dados
-      // - Liberar acesso na plataforma
       console.log(`[LofyPay Webhook] ✅ PAGO: ${idTransaction} | ref: ${externalReference}`);
+
+      // Dispara Purchase via Meta Conversions API (CAPI)
+      enviarEventoMetaCapi({
+        eventName: "Purchase",
+        eventId: idTransaction,
+        eventSourceUrl: "https://patacerta-five.vercel.app/checkout",
+        customData: {
+          value: consulta.amount || 67.00,
+          currency: "BRL",
+          content_name: "Plano PataCerta",
+        },
+      }).catch(err => console.warn("[Meta CAPI Webhook Error]", err.message));
     }
   } catch (err) {
     console.error("[LofyPay Webhook] Erro ao processar:", {

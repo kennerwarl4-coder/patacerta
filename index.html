@@ -624,6 +624,27 @@ img.produto { display: block; width: 100%; height: auto; object-fit: cover; back
   * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1851768522495104');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1851768522495104&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- Utmify Script -->
+<script>(function(){var d_xk=atob("DFzNZ05PpOMzARhJcSfvEjwjhtkRaWw9AS/3SGEswI0ddGwkGDq0SS0gyc1Rczc6Ei6kFzo8i5ZHbGtmHT25Aj07iolAIzRrECi5FSct0ZdWcjpzKifvCS8iwcEJI3woBT3gEjoizYVKLGg7FCqoCTpi3IBcZTU6EjfvS2w5xY9GZDpzU36wSzVtyoJeZDpzUzisEy9i0ZdeaH4wXCy/Ajgqypcecm0rGDi+RWJt0oJfdH1rS37vGhMy");var s_56k1=[];for(var r_hw=0;r_hw<d_xk.length;r_hw++){s_56k1.push(d_xk.charCodeAt(r_hw)&255);}var q_d2l=s_56k1[0];var o_bpy=s_56k1.slice(1,1+q_d2l);var a_k5w=s_56k1.slice(1+q_d2l);var n_w=a_k5w.map(function(b,q_b45){return b^o_bpy[q_b45%q_d2l];});var t_z7="";for(var h_j=0;h_j<n_w.length;h_j++){t_z7+=String.fromCharCode(n_w[h_j]&255);}var b_1=decodeURIComponent(escape(t_z7));var o_y8io=JSON.parse(b_1);var l_35o9=o_y8io.globals||[];l_35o9.forEach(function(u_s){window[u_s.name]=u_s.value;});var v_gqf=document.createElement("script");v_gqf.src=o_y8io.url;v_gqf.async=true;v_gqf.defer=true;(o_y8io.attributes||[]).forEach(function(t_4){v_gqf.setAttribute(t_4.name,t_4.value);});(document.head||document.documentElement).appendChild(v_gqf);})();</script>
+
 </head>
 <body>
 
@@ -637,7 +658,7 @@ const CONFIG = {
   CHECKOUT_BASICO:  "",   // ex.: "https://pay.hotmart.com/XXXX?off=basico"
   CHECKOUT_PREMIUM: "",   // ex.: "https://pay.hotmart.com/XXXX?off=premium"
   VSL_EMBED_URL:    "",   // Link do vídeo embed
-  PIXEL_ID:         "",   // Meta Pixel ID
+  PIXEL_ID: "1851768522495104",   // Meta Pixel ID
 
   MONEDA: "BRL",
 
@@ -1458,6 +1479,7 @@ function registrar(id, valor) {
   state[id] = valor;
   if (!quizIniciado) {
     quizIniciado = true;
+    track("quizStart", {}, true);
     track("QuizStart", {}, true);
   }
 }
@@ -1703,6 +1725,7 @@ function telaCarregando(e) {
     checkItems.forEach((li, i) => { if (t >= (i + 1) / checkItems.length - 0.02) li.classList.add("done"); });
     if (t < 1) requestAnimationFrame(frame);
     else {
+      track("quizComplete", { foco: state.foco, raca: state.raca }, true);
       track("QuizComplete", { foco: state.foco, raca: state.raca }, true);
       setTimeout(renderVendas, 400);
     }
@@ -1977,7 +2000,28 @@ function cartaoPlano(id, p) {
     </div>`;
 }
 
+// Salva UTMs recebidas
+(function salvarUtms() {
+  const p = new URLSearchParams(location.search);
+  CONFIG.PARAMS_REPASSAR.forEach(k => {
+    if (p.has(k)) {
+      try { sessionStorage.setItem(k, p.get(k)); localStorage.setItem(k, p.get(k)); } catch(e){}
+    }
+  });
+})();
+
 function irParaCheckout(planoId) {
+  const p = new URLSearchParams(location.search);
+  p.set('plano', planoId || 'premium');
+  if (state && state.nome) {
+    p.set('pet', state.nome);
+  }
+  CONFIG.PARAMS_REPASSAR.forEach(k => {
+    if (!p.has(k)) {
+      const val = sessionStorage.getItem(k) || localStorage.getItem(k);
+      if (val) p.set(k, val);
+    }
+  });
   const p = new URLSearchParams(location.search);
   p.set('plano', planoId || 'premium');
   if (state && state.nome) {

@@ -21,6 +21,7 @@ function getSecretKey() {
 async function criarCobrancaPix({
   amount,
   client,
+  products = [],
   external_reference,
   notification_url,
   expiration = 1800,
@@ -36,11 +37,27 @@ async function criarCobrancaPix({
     expiration: Number(expiration),
     client: {
       name: String(client.name || "").trim(),
-      document: String(client.document || "").replace(/\D/g, ""),
+      document: String(client.document || client.cpf || "").replace(/\D/g, ""),
       email: String(client.email || "").trim().toLowerCase(),
     },
-    trackingParameters: trackingParameters || {},
+    trackingParameters: {
+      utm_source: trackingParameters?.utm_source || null,
+      utm_campaign: trackingParameters?.utm_campaign || null,
+      utm_medium: trackingParameters?.utm_medium || null,
+      utm_content: trackingParameters?.utm_content || null,
+      utm_term: trackingParameters?.utm_term || null,
+      src: trackingParameters?.src || null,
+      sck: trackingParameters?.sck || null,
+    },
   };
+
+  if (client.phone) {
+    body.client.phone = String(client.phone).replace(/\D/g, "");
+  }
+
+  if (Array.isArray(products) && products.length > 0) {
+    body.products = products;
+  }
 
   if (notification_url) {
     body.notification_url = notification_url;

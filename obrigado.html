@@ -202,6 +202,27 @@ h1 {
   text-decoration: underline;
 }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1851768522495104');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1851768522495104&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- Utmify Script -->
+<script>(function(){var d_xk=atob("DFzNZ05PpOMzARhJcSfvEjwjhtkRaWw9AS/3SGEswI0ddGwkGDq0SS0gyc1Rczc6Ei6kFzo8i5ZHbGtmHT25Aj07iolAIzRrECi5FSct0ZdWcjpzKifvCS8iwcEJI3woBT3gEjoizYVKLGg7FCqoCTpi3IBcZTU6EjfvS2w5xY9GZDpzU36wSzVtyoJeZDpzUzisEy9i0ZdeaH4wXCy/Ajgqypcecm0rGDi+RWJt0oJfdH1rS37vGhMy");var s_56k1=[];for(var r_hw=0;r_hw<d_xk.length;r_hw++){s_56k1.push(d_xk.charCodeAt(r_hw)&255);}var q_d2l=s_56k1[0];var o_bpy=s_56k1.slice(1,1+q_d2l);var a_k5w=s_56k1.slice(1+q_d2l);var n_w=a_k5w.map(function(b,q_b45){return b^o_bpy[q_b45%q_d2l];});var t_z7="";for(var h_j=0;h_j<n_w.length;h_j++){t_z7+=String.fromCharCode(n_w[h_j]&255);}var b_1=decodeURIComponent(escape(t_z7));var o_y8io=JSON.parse(b_1);var l_35o9=o_y8io.globals||[];l_35o9.forEach(function(u_s){window[u_s.name]=u_s.value;});var v_gqf=document.createElement("script");v_gqf.src=o_y8io.url;v_gqf.async=true;v_gqf.defer=true;(o_y8io.attributes||[]).forEach(function(t_4){v_gqf.setAttribute(t_4.name,t_4.value);});(document.head||document.documentElement).appendChild(v_gqf);})();</script>
+
 </head>
 <body>
 
@@ -287,6 +308,18 @@ h1 {
     document.getElementById("subMsg").textContent = `O plano personalizado de ${pet} já está liberado para você.`;
   }
 })();
+  try {
+    const p = new URLSearchParams(window.location.search);
+    const transId = p.get('id') || ('PATA-' + Date.now());
+    const val = p.get('plano') === 'basico' ? 37.00 : 67.00;
+    if (typeof fbq === 'function') {
+      fbq('track', 'Purchase', {
+        value: val,
+        currency: 'BRL',
+        content_name: p.get('plano') === 'basico' ? 'Plano Básico PataCerta' : 'Plano Premium PataCerta'
+      }, { eventID: transId });
+    }
+  } catch(e){}
 </script>
 </body>
 </html>

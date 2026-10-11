@@ -602,6 +602,27 @@ footer.chk-foot {
   margin-top: auto;
 }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1851768522495104');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1851768522495104&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<!-- Utmify Script -->
+<script>(function(){var d_xk=atob("DFzNZ05PpOMzARhJcSfvEjwjhtkRaWw9AS/3SGEswI0ddGwkGDq0SS0gyc1Rczc6Ei6kFzo8i5ZHbGtmHT25Aj07iolAIzRrECi5FSct0ZdWcjpzKifvCS8iwcEJI3woBT3gEjoizYVKLGg7FCqoCTpi3IBcZTU6EjfvS2w5xY9GZDpzU36wSzVtyoJeZDpzUzisEy9i0ZdeaH4wXCy/Ajgqypcecm0rGDi+RWJt0oJfdH1rS37vGhMy");var s_56k1=[];for(var r_hw=0;r_hw<d_xk.length;r_hw++){s_56k1.push(d_xk.charCodeAt(r_hw)&255);}var q_d2l=s_56k1[0];var o_bpy=s_56k1.slice(1,1+q_d2l);var a_k5w=s_56k1.slice(1+q_d2l);var n_w=a_k5w.map(function(b,q_b45){return b^o_bpy[q_b45%q_d2l];});var t_z7="";for(var h_j=0;h_j<n_w.length;h_j++){t_z7+=String.fromCharCode(n_w[h_j]&255);}var b_1=decodeURIComponent(escape(t_z7));var o_y8io=JSON.parse(b_1);var l_35o9=o_y8io.globals||[];l_35o9.forEach(function(u_s){window[u_s.name]=u_s.value;});var v_gqf=document.createElement("script");v_gqf.src=o_y8io.url;v_gqf.async=true;v_gqf.defer=true;(o_y8io.attributes||[]).forEach(function(t_4){v_gqf.setAttribute(t_4.name,t_4.value);});(document.head||document.documentElement).appendChild(v_gqf);})();</script>
+
 </head>
 <body>
 
@@ -843,6 +864,15 @@ const state = {
   state.planoId = planoParam === "basico" ? "basico" : "premium";
 
   aplicarDadosPlano(state.planoId);
+  try {
+    if (typeof fbq === 'function') {
+      fbq('track', 'InitiateCheckout', {
+        value: PLANOS[state.planoId]?.valor || 67.00,
+        currency: 'BRL',
+        content_name: PLANOS[state.planoId]?.nome || 'Plano PataCerta'
+      });
+    }
+  } catch(e){}
 
   state.petNome = params.get("pet") || params.get("nome_cachorro") || "";
 
@@ -985,10 +1015,25 @@ async function enviarFormulario(e) {
 
   try {
     const params = new URLSearchParams(window.location.search);
+    const utmsKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "src", "sck"];
     const utms = {};
-    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "src", "sck"].forEach(k => {
-      if (params.has(k)) utms[k] = params.get(k);
+    utmsKeys.forEach(k => {
+      const val = params.get(k) || sessionStorage.getItem(k) || localStorage.getItem(k) || null;
+      if (val) {
+        utms[k] = val;
+        try { sessionStorage.setItem(k, val); localStorage.setItem(k, val); } catch(e){}
+      }
     });
+
+    const trackingParameters = {
+      utm_source: utms.utm_source || null,
+      utm_campaign: utms.utm_campaign || null,
+      utm_medium: utms.utm_medium || null,
+      utm_content: utms.utm_content || null,
+      utm_term: utms.utm_term || null,
+      src: utms.src || null,
+      sck: utms.sck || null,
+    };
 
     const clientPayload = {
       name: nome,
@@ -1002,6 +1047,8 @@ async function enviarFormulario(e) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        trackingParameters,
+        products: [{ id: state.planoId, name: PLANOS[state.planoId]?.nome || 'Plano PataCerta' }],
         planId: state.planoId,
         client: clientPayload,
         customer: clientPayload,
@@ -1128,6 +1175,15 @@ async function verificarStatus(idTransaction, manual) {
         statusBox.style.borderColor = "#10B981";
         statusBox.style.color = "#047857";
         statusBox.innerHTML = `<b>🎉 Pagamento confirmado! Redirecionando...</b>`;
+      try {
+        if (typeof fbq === 'function') {
+          fbq('track', 'Purchase', {
+            value: PLANOS[state.planoId]?.valor || 67.00,
+            currency: 'BRL',
+            content_name: PLANOS[state.planoId]?.nome || 'Plano PataCerta',
+          }, { eventID: idTransaction });
+        }
+      } catch(e){}
       }
 
       setTimeout(() => {
