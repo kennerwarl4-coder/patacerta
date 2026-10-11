@@ -23,7 +23,7 @@
   --green-hover: #009E6F;
   --pix: #00B494;
   --red: #DC2626;
-  --radius: 12px;
+  --radius: 14px;
   --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -44,7 +44,7 @@ body {
   flex-direction: column;
 }
 
-/* FAIXA DE TIMER LARANJA (TEXTO CURTO) */
+/* FAIXA DE TIMER LARANJA */
 .timer-bar {
   background: var(--orange);
   color: #FFFFFF;
@@ -105,7 +105,7 @@ header.chk-head {
   height: 13px;
 }
 
-/* CONTAINER CENTRALIZADO (RESPONSIVO PARA CELULAR) */
+/* CONTAINER CENTRALIZADO */
 main.chk-container {
   width: 100%;
   max-width: 480px;
@@ -121,64 +121,141 @@ main.chk-container {
   border-radius: var(--radius);
   padding: 18px 16px;
   margin-bottom: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-/* 1) RESUMO NO TOPO */
+/* =========================================================
+   1) RESUMO TRABALHADO COM A CAPA DO PRODUTO (ETAPA 1)
+   ========================================================= */
+.summary-card {
+  padding: 16px;
+}
 .summary-top {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  gap: 14px;
+  align-items: flex-start;
 }
-.prod-thumb {
-  width: 48px;
-  height: 48px;
-  border-radius: 10px;
-  background: #FEF2F2;
-  border: 1px solid #FEE2E2;
-  color: var(--red);
-  display: grid;
-  place-items: center;
+.prod-thumb-wrap {
   flex: none;
+  width: 74px;
 }
-.prod-thumb svg {
-  width: 26px;
-  height: 26px;
+.prod-cover-img {
+  width: 74px;
+  height: auto;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  display: block;
 }
 .prod-details {
   flex: 1;
   min-width: 0;
 }
+.prod-badge-row {
+  margin-bottom: 4px;
+}
+.badge-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .03em;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: #FEF2F2;
+  color: var(--red);
+  border: 1px solid #FEE2E2;
+}
+.badge-tag.tag-basico {
+  background: #F1F5F9;
+  color: #475569;
+  border-color: #E2E8F0;
+}
 .prod-title {
-  font-size: 14.5px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 800;
   color: var(--txt);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.25;
+  margin-bottom: 2px;
 }
 .prod-sub {
   font-size: 12px;
   color: var(--muted);
-  margin-top: 2px;
+  line-height: 1.35;
+  margin-bottom: 8px;
 }
-.prod-price {
-  text-align: right;
+.prod-features {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 10px;
+  padding: 6px 0;
+  border-top: 1px dashed #E5E7EB;
+  border-bottom: 1px dashed #E5E7EB;
+}
+.prod-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: #374151;
+  font-weight: 500;
+}
+.prod-feature-item svg {
+  width: 13px;
+  height: 13px;
+  color: #059669;
   flex: none;
 }
-.prod-price b {
+.prod-pricing-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 6px;
+}
+.price-orig {
   display: block;
-  font-size: 18px;
+  font-size: 11px;
+  color: #9CA3AF;
+  text-decoration: line-through;
+}
+.price-now {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  line-height: 1;
+}
+.price-now span {
+  font-size: 12px;
+  color: var(--muted);
+}
+.price-now b {
+  font-size: 20px;
   font-weight: 800;
   color: var(--txt);
 }
-.prod-price span {
-  font-size: 11px;
-  color: #059669;
-  font-weight: 700;
+.pricing-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+.badge-unique {
+  font-size: 10px;
+  font-weight: 800;
+  color: #047857;
   background: #ECFDF5;
-  padding: 2px 6px;
+  border: 1px solid #A7F3D0;
+  padding: 2px 7px;
   border-radius: 4px;
+  white-space: nowrap;
+}
+.pricing-instant {
+  font-size: 10px;
+  color: var(--muted);
+  white-space: nowrap;
 }
 
 /* TÍTULO DA SEÇÃO */
@@ -238,7 +315,7 @@ main.chk-container {
   display: block;
 }
 
-/* MÉTODO PIX SELECIONADO */
+/* CARD DO PIX COM A LOGO OFICIAL DE ASSETS */
 .pix-badge-box {
   background: #F0FDF4;
   border: 1.5px solid #86EFAC;
@@ -253,14 +330,22 @@ main.chk-container {
   align-items: center;
   gap: 10px;
 }
-.pix-badge-left svg.pix-icon {
-  width: 24px;
+.pix-logo-img {
   height: 24px;
-  color: var(--pix);
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 .pix-badge-left b {
   font-size: 14px;
   color: var(--txt);
+  display: block;
+  line-height: 1.2;
+}
+.pix-badge-left span {
+  font-size: 11px;
+  color: #047857;
+  font-weight: 600;
 }
 .pix-tag {
   font-size: 11px;
@@ -303,12 +388,6 @@ main.chk-container {
   cursor: not-allowed;
   transform: none;
 }
-.btn-pay svg {
-  width: 18px;
-  height: 18px;
-}
-
-/* SPINNER */
 .spinner {
   width: 20px;
   height: 20px;
@@ -364,7 +443,7 @@ main.chk-container {
 }
 
 /* =========================================================
-   ETAPA 2: TELA DO PIX GERADO
+   ETAPA 2: TELA DO PIX GERADO (FOCADA E LIMPA)
    ========================================================= */
 #stepPixArea {
   display: none;
@@ -379,19 +458,19 @@ main.chk-container {
   to { opacity: 1; transform: translateY(0); }
 }
 
-.pix-head-logo {
-  display: inline-flex;
+.pix-screen-header {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 6px;
-  color: var(--pix);
-  font-weight: 800;
-  font-size: 15px;
-  margin-bottom: 4px;
+  margin-bottom: 12px;
 }
-.pix-head-logo svg {
-  width: 22px;
-  height: 22px;
+.pix-logo-lg {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
+
 .pix-view-title {
   font-size: 17px;
   font-weight: 800;
@@ -404,10 +483,21 @@ main.chk-container {
   margin-bottom: 12px;
 }
 
+.pix-amount-pill {
+  font-size: 14.5px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.pix-amount-pill b {
+  font-size: 22px;
+  font-weight: 800;
+  color: #047857;
+}
+
 .pix-qr-box {
   width: 190px;
   height: 190px;
-  margin: 0 auto 12px;
+  margin: 0 auto 14px;
   background: #FFFFFF;
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -420,16 +510,6 @@ main.chk-container {
   width: 100% !important;
   height: 100% !important;
   display: block;
-}
-
-.pix-amount-line {
-  font-size: 14px;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
-.pix-amount-line b {
-  font-size: 18px;
-  color: var(--txt);
 }
 
 .copy-input-row {
@@ -556,25 +636,35 @@ footer.chk-foot {
 <!-- CONTEÚDO PRINCIPAL (1 COLUNA RESPONSIVA) -->
 <main class="chk-container">
 
-  <!-- RESUMO DO PEDIDO NO TOPO -->
-  <section class="card">
+  <!-- RESUMO TRABALHADO COM A CAPA DO PRODUTO (VISÍVEL APENAS NA ETAPA 1) -->
+  <section class="card summary-card" id="summaryCard">
     <div class="summary-top">
-      <div class="prod-thumb">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <ellipse cx="6" cy="10" rx="2.1" ry="2.6"/>
-          <ellipse cx="10" cy="6" rx="2.1" ry="2.7"/>
-          <ellipse cx="14" cy="6" rx="2.1" ry="2.7"/>
-          <ellipse cx="18" cy="10" rx="2.1" ry="2.6"/>
-          <path d="M12 11.5c-2.6 0-5.2 3.4-5.2 5.8 0 1.6 1.2 2.4 2.6 2.4 1.1 0 1.7-.6 2.6-.6s1.5.6 2.6.6c1.4 0 2.6-.8 2.6-2.4 0-2.4-2.6-5.8-5.2-5.8z"/>
-        </svg>
+      <div class="prod-thumb-wrap">
+        <img src="assets/capa-checkou.png" alt="Capa PataCerta" class="prod-cover-img" width="76" height="96">
       </div>
       <div class="prod-details">
-        <div class="prod-title" id="prodTitle">Plano Premium PataCerta</div>
-        <div class="prod-sub" id="prodSub">Acesso Completo + 5 Bônus Inclusos</div>
-      </div>
-      <div class="prod-price">
-        <b id="prodPrice">R$ 67,00</b>
-        <span>PAGAMENTO ÚNICO</span>
+        <div class="prod-badge-row">
+          <span class="badge-tag" id="prodBadge">★ MAIS ESCOLHIDO</span>
+        </div>
+        <h1 class="prod-title" id="prodTitle">Plano Premium PataCerta</h1>
+        <p class="prod-sub" id="prodSub">Plano estruturado de 4 semanas + 5 Bônus inclusos</p>
+        
+        <div class="prod-features" id="prodFeatures">
+          <!-- Inserido dinamicamente de acordo com o plano -->
+        </div>
+
+        <div class="prod-pricing-row">
+          <div class="pricing-left">
+            <span class="price-orig" id="prodOrigPrice">De R$ 197,00</span>
+            <div class="price-now">
+              <span>por</span> <b id="prodPrice">R$ 67,00</b>
+            </div>
+          </div>
+          <div class="pricing-right">
+            <span class="badge-unique">PAGAMENTO ÚNICO</span>
+            <span class="pricing-instant">Acesso imediato</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -615,18 +705,16 @@ footer.chk-foot {
 
       <div class="sec-title" style="margin-top: 16px;">Pagamento</div>
 
-      <!-- CARD DO PIX COM A LOGO OFICIAL -->
+      <!-- CARD DO PIX COM A LOGO OFICIAL EM ASSETS -->
       <div class="pix-badge-box">
         <div class="pix-badge-left">
-          <!-- LOGO OFICIAL DO PIX (BANCO CENTRAL) -->
-          <svg class="pix-icon" viewBox="0 0 512 512" fill="currentColor">
-            <path d="M112.5 124.7l69.7-69.7c15.6-15.6 40.9-15.6 56.6 0l46.7 46.7c7.8 7.8 20.5 7.8 28.3 0l46.7-46.7c15.6-15.6 40.9-15.6 56.6 0l69.7 69.7c15.6 15.6 15.6 40.9 0 56.6l-69.7 69.7c-7.8 7.8-7.8 20.5 0 28.3l69.7 69.7c15.6 15.6 15.6 40.9 0 56.6l-69.7 69.7c-15.6 15.6-40.9 15.6-56.6 0l-46.7-46.7c-7.8-7.8-20.5-7.8-28.3 0l-46.7 46.7c-15.6 15.6-40.9 15.6-56.6 0l-69.7-69.7c-15.6-15.6-15.6-40.9 0-56.6l69.7-69.7c7.8-7.8 7.8-20.5 0-28.3l-69.7-69.7c-15.6-15.6-15.6-40.9 0-56.6zm72 131.3l57.7 57.7c7.8 7.8 20.5 7.8 28.3 0l57.7-57.7c7.8-7.8 7.8-20.5 0-28.3l-57.7-57.7c-7.8-7.8-20.5-7.8-28.3 0l-57.7 57.7c-7.8 7.8-7.8 20.5 0 28.3z"/>
-          </svg>
+          <img src="assets/logo-pix.webp" alt="Pix" class="pix-logo-img">
           <div>
             <b>PIX</b>
+            <span>Liberação Imediata</span>
           </div>
         </div>
-        <span class="pix-tag">LIBERAÇÃO IMEDIATA</span>
+        <span class="pix-tag">SEM TAXAS</span>
       </div>
 
       <!-- BOTÃO DE COMPRA VIBRANTE -->
@@ -652,23 +740,20 @@ footer.chk-foot {
     </form>
   </section>
 
-  <!-- ETAPA 2: TELA DO PIX GERADO -->
+  <!-- ETAPA 2: TELA DO PIX GERADO (FOCADA, COM A LOGO DO PIX DE ASSETS) -->
   <section class="card" id="stepPixArea">
-    <div class="pix-head-logo">
-      <svg viewBox="0 0 512 512" fill="currentColor">
-        <path d="M112.5 124.7l69.7-69.7c15.6-15.6 40.9-15.6 56.6 0l46.7 46.7c7.8 7.8 20.5 7.8 28.3 0l46.7-46.7c15.6-15.6 40.9-15.6 56.6 0l69.7 69.7c15.6 15.6 15.6 40.9 0 56.6l-69.7 69.7c-7.8 7.8-7.8 20.5 0 28.3l69.7 69.7c15.6 15.6 15.6 40.9 0 56.6l-69.7 69.7c-15.6 15.6-40.9 15.6-56.6 0l-46.7-46.7c-7.8-7.8-20.5-7.8-28.3 0l-46.7 46.7c-15.6 15.6-40.9 15.6-56.6 0l-69.7-69.7c-15.6-15.6-15.6-40.9 0-56.6l69.7-69.7c7.8-7.8 7.8-20.5 0-28.3l-69.7-69.7c-15.6-15.6-15.6-40.9 0-56.6zm72 131.3l57.7 57.7c7.8 7.8 20.5 7.8 28.3 0l57.7-57.7c7.8-7.8 7.8-20.5 0-28.3l-57.7-57.7c-7.8-7.8-20.5-7.8-28.3 0l-57.7 57.7c-7.8 7.8-7.8 20.5 0 28.3z"/>
-      </svg>
-      <span>PAGAMENTO PIX</span>
+    <div class="pix-screen-header">
+      <img src="assets/logo-pix.webp" alt="Pix" class="pix-logo-lg">
     </div>
 
     <h2 class="pix-view-title" id="pixTitleUser">Pague agora pelo seu banco</h2>
-    <p class="pix-view-sub">Escaneie o QR Code ou copie o código abaixo:</p>
+    <p class="pix-view-sub">Escaneie o QR Code ou copie o código abaixo para liberar o acesso:</p>
+
+    <div class="pix-amount-pill">
+      Total a pagar: <b id="pixFinalAmount">R$ 67,00</b>
+    </div>
 
     <div class="pix-qr-box" id="pixQrCode"></div>
-
-    <div class="pix-amount-line">
-      Valor a pagar: <b id="pixFinalAmount">R$ 67,00</b>
-    </div>
 
     <div class="copy-input-row">
       <input type="text" id="pixCopyInput" class="copy-code-text" readonly value="">
@@ -686,7 +771,7 @@ footer.chk-foot {
   </section>
 
   <!-- GARANTIA 7 DIAS (DISCRETO) -->
-  <div class="guarantee-box">
+  <div class="guarantee-box" id="guaranteeArea">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
     <div>
       <b>Garantia incondicional de 7 dias.</b> Caso não fique satisfeito, devolvemos 100% do seu valor.
@@ -708,16 +793,32 @@ const PLANOS = {
   basico: {
     id: "basico",
     nome: "Plano Básico PataCerta",
-    sub: "Plano estruturado de 4 semanas",
+    badge: "PLANO ESSENCIAL",
+    badgeClass: "tag-basico",
+    sub: "Plano estruturado de 4 semanas para seu cão",
     valor: 37.00,
     preco: "R$ 37,00",
+    original: "R$ 97,00",
+    features: [
+      "Plano de 4 semanas passo a passo",
+      "Vídeos curtos de 10 minutos por dia",
+      "Acesso completo pelo celular",
+    ]
   },
   premium: {
     id: "premium",
     nome: "Plano Premium PataCerta",
-    sub: "Acesso Completo + 5 Bônus Inclusos",
+    badge: "★ MAIS ESCOLHIDO",
+    badgeClass: "tag-premium",
+    sub: "Plano estruturado de 4 semanas + 5 Bônus Inclusos",
     valor: 67.00,
     preco: "R$ 67,00",
+    original: "R$ 197,00",
+    features: [
+      "Tudo do Plano Básico para seu cão",
+      "+ 5 Bônus Exclusivos de Adestramento",
+      "Acesso vitalício e suporte prioritário",
+    ]
   }
 };
 
@@ -741,18 +842,38 @@ const state = {
   const planoParam = (params.get("plano") || "").toLowerCase();
   state.planoId = planoParam === "basico" ? "basico" : "premium";
 
-  const p = PLANOS[state.planoId];
-  document.getElementById("prodTitle").textContent = p.nome;
-  document.getElementById("prodSub").textContent = p.sub;
-  document.getElementById("prodPrice").textContent = p.preco;
-  document.getElementById("btnPagarLabel").textContent = `PAGAR VIA PIX · ${p.preco}`;
-  document.getElementById("pixFinalAmount").textContent = p.preco;
+  aplicarDadosPlano(state.planoId);
 
   state.petNome = params.get("pet") || params.get("nome_cachorro") || "";
 
   iniciarTimer();
   configurarCampos();
 })();
+
+function aplicarDadosPlano(planoKey) {
+  const p = PLANOS[planoKey] || PLANOS.premium;
+  document.getElementById("prodTitle").textContent = p.nome;
+  document.getElementById("prodSub").textContent = p.sub;
+  document.getElementById("prodPrice").textContent = p.preco;
+  document.getElementById("prodOrigPrice").textContent = `De ${p.original}`;
+  
+  const badgeEl = document.getElementById("prodBadge");
+  badgeEl.textContent = p.badge;
+  badgeEl.className = `badge-tag ${p.badgeClass}`;
+
+  const featEl = document.getElementById("prodFeatures");
+  featEl.innerHTML = p.features.map(f => `
+    <div class="prod-feature-item">
+      <svg viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+      </svg>
+      <span>${f}</span>
+    </div>
+  `).join("");
+
+  document.getElementById("btnPagarLabel").textContent = `PAGAR VIA PIX · ${p.preco}`;
+  document.getElementById("pixFinalAmount").textContent = p.preco;
+}
 
 /* =====================================================================
    MÁSCARAS E VALIDAÇÃO
@@ -908,10 +1029,21 @@ async function enviarFormulario(e) {
 }
 
 /* =====================================================================
-   TELA 2: PIX GERADO
+   TELA 2: PIX GERADO (FOCADA - OCULTA RESUMO E EXIBE LOGO DO PIX)
    ===================================================================== */
 function mostrarTelaPix(pixData, nome) {
+  // Oculta etapa de dados pessoais
   document.getElementById("stepFormArea").style.display = "none";
+
+  // Oculta o resumo do pedido no topo para deixar apenas a tela do PIX
+  const summaryEl = document.getElementById("summaryCard");
+  if (summaryEl) summaryEl.style.display = "none";
+
+  // Oculta garantia para focar 100% no pagamento
+  const guaranteeEl = document.getElementById("guaranteeArea");
+  if (guaranteeEl) guaranteeEl.style.display = "none";
+
+  // Ativa a tela do PIX
   const stepPix = document.getElementById("stepPixArea");
   stepPix.classList.add("active");
 
