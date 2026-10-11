@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -9,599 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-<style>
-:root {
-  --bg: #F3F4F6;
-  --card: #FFFFFF;
-  --txt: #111827;
-  --muted: #6B7280;
-  --line: #E5E7EB;
-  --orange: #EA580C;
-  --green: #00B37E;
-  --green-hover: #009E6F;
-  --pix: #00B494;
-  --red: #DC2626;
-  --radius: 14px;
-  --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: var(--font);
-  background: var(--bg);
-  color: var(--txt);
-  line-height: 1.45;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* FAIXA DE TIMER LARANJA */
-.timer-bar {
-  background: var(--orange);
-  color: #FFFFFF;
-  text-align: center;
-  padding: 8px 12px;
-  font-size: 13px;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.timer-bar b {
-  font-weight: 800;
-  letter-spacing: .02em;
-}
-
-/* CABEÇALHO LIMPO */
-header.chk-head {
-  background: #FFFFFF;
-  border-bottom: 1px solid var(--line);
-  padding: 14px 16px;
-}
-.head-wrap {
-  max-width: 480px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  font-weight: 800;
-  font-size: 18px;
-  color: var(--txt);
-  text-decoration: none;
-}
-.logo svg {
-  width: 22px;
-  height: 22px;
-  color: var(--red);
-}
-.ssl-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 11.5px;
-  font-weight: 700;
-  color: #047857;
-  background: #ECFDF5;
-  border: 1px solid #A7F3D0;
-  padding: 4px 10px;
-  border-radius: 999px;
-}
-.ssl-pill svg {
-  width: 13px;
-  height: 13px;
-}
-
-/* CONTAINER CENTRALIZADO */
-main.chk-container {
-  width: 100%;
-  max-width: 480px;
-  margin: 16px auto 36px;
-  padding: 0 14px;
-  flex: 1;
-}
-
-/* CARDS PADRÃO */
-.card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 18px 16px;
-  margin-bottom: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-/* =========================================================
-   1) RESUMO TRABALHADO COM A CAPA DO PRODUTO (ETAPA 1)
-   ========================================================= */
-.summary-card {
-  padding: 16px;
-}
-.summary-top {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-}
-.prod-thumb-wrap {
-  flex: none;
-  width: 74px;
-}
-.prod-cover-img {
-  width: 74px;
-  height: auto;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  display: block;
-}
-.prod-details {
-  flex: 1;
-  min-width: 0;
-}
-.prod-badge-row {
-  margin-bottom: 4px;
-}
-.badge-tag {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: .03em;
-  padding: 2px 7px;
-  border-radius: 4px;
-  background: #FEF2F2;
-  color: var(--red);
-  border: 1px solid #FEE2E2;
-}
-.badge-tag.tag-basico {
-  background: #F1F5F9;
-  color: #475569;
-  border-color: #E2E8F0;
-}
-.prod-title {
-  font-size: 15px;
-  font-weight: 800;
-  color: var(--txt);
-  line-height: 1.25;
-  margin-bottom: 2px;
-}
-.prod-sub {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.35;
-  margin-bottom: 8px;
-}
-.prod-features {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  margin-bottom: 10px;
-  padding: 6px 0;
-  border-top: 1px dashed #E5E7EB;
-  border-bottom: 1px dashed #E5E7EB;
-}
-.prod-feature-item {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 11.5px;
-  color: #374151;
-  font-weight: 500;
-}
-.prod-feature-item svg {
-  width: 13px;
-  height: 13px;
-  color: #059669;
-  flex: none;
-}
-.prod-pricing-row {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 8px;
-  margin-top: 6px;
-}
-.price-orig {
-  display: block;
-  font-size: 11px;
-  color: #9CA3AF;
-  text-decoration: line-through;
-}
-.price-now {
-  display: flex;
-  align-items: baseline;
-  gap: 4px;
-  line-height: 1;
-}
-.price-now span {
-  font-size: 12px;
-  color: var(--muted);
-}
-.price-now b {
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--txt);
-}
-.pricing-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 2px;
-}
-.badge-unique {
-  font-size: 10px;
-  font-weight: 800;
-  color: #047857;
-  background: #ECFDF5;
-  border: 1px solid #A7F3D0;
-  padding: 2px 7px;
-  border-radius: 4px;
-  white-space: nowrap;
-}
-.pricing-instant {
-  font-size: 10px;
-  color: var(--muted);
-  white-space: nowrap;
-}
-
-/* TÍTULO DA SEÇÃO */
-.sec-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--txt);
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* FORMULÁRIO LIMPO */
-.form-group {
-  margin-bottom: 12px;
-}
-.form-group:last-child {
-  margin-bottom: 0;
-}
-.form-group label {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  color: #374151;
-  margin-bottom: 5px;
-}
-.form-input {
-  width: 100%;
-  height: 46px;
-  border: 1px solid #D1D5DB;
-  border-radius: 9px;
-  padding: 0 12px;
-  font-family: inherit;
-  font-size: 14.5px;
-  color: var(--txt);
-  background: #FFFFFF;
-  transition: border-color .15s, box-shadow .15s;
-}
-.form-input:focus {
-  outline: none;
-  border-color: #111827;
-  box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.08);
-}
-.form-input.is-invalid {
-  border-color: var(--red);
-  background: #FEF2F2;
-}
-.err-text {
-  font-size: 11.5px;
-  color: var(--red);
-  font-weight: 500;
-  margin-top: 3px;
-  display: none;
-}
-.form-input.is-invalid ~ .err-text {
-  display: block;
-}
-
-/* CARD DO PIX COM A LOGO OFICIAL DE ASSETS */
-.pix-badge-box {
-  background: #F0FDF4;
-  border: 1.5px solid #86EFAC;
-  border-radius: 10px;
-  padding: 12px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.pix-badge-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.pix-logo-img {
-  height: 24px;
-  width: auto;
-  object-fit: contain;
-  display: block;
-}
-.pix-badge-left b {
-  font-size: 14px;
-  color: var(--txt);
-  display: block;
-  line-height: 1.2;
-}
-.pix-badge-left span {
-  font-size: 11px;
-  color: #047857;
-  font-weight: 600;
-}
-.pix-tag {
-  font-size: 11px;
-  font-weight: 700;
-  color: #047857;
-  background: #DCFCE7;
-  padding: 3px 8px;
-  border-radius: 999px;
-}
-
-/* BOTÃO DE COMPRA VIBRANTE */
-.btn-pay {
-  width: 100%;
-  height: 54px;
-  margin-top: 14px;
-  background: var(--green);
-  color: #FFFFFF;
-  border: none;
-  border-radius: 10px;
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 800;
-  letter-spacing: -.01em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 179, 126, 0.35);
-  transition: background-color .15s, transform .1s;
-}
-.btn-pay:hover {
-  background: var(--green-hover);
-}
-.btn-pay:active {
-  transform: scale(0.99);
-}
-.btn-pay:disabled {
-  opacity: 0.65;
-  cursor: not-allowed;
-  transform: none;
-}
-.spinner {
-  width: 20px;
-  height: 20px;
-  border: 2.5px solid rgba(255,255,255,0.3);
-  border-top-color: #fff;
-  border-radius: 50%;
-  animation: spin .7s linear infinite;
-  display: none;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.btn-pay.loading .spinner { display: block; }
-.btn-pay.loading .btn-label { display: none; }
-
-/* SELOS DE SEGURANÇA */
-.trust-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  margin-top: 14px;
-  font-size: 11.5px;
-  color: var(--muted);
-  font-weight: 500;
-}
-.trust-row span {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-}
-.trust-row svg {
-  width: 14px;
-  height: 14px;
-  color: #059669;
-}
-
-/* GARANTIA 7 DIAS */
-.guarantee-box {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: #FFFBEB;
-  border: 1px solid #FDE68A;
-  border-radius: 10px;
-  padding: 10px 12px;
-  font-size: 12px;
-  color: #92400E;
-}
-.guarantee-box svg {
-  width: 22px;
-  height: 22px;
-  color: #D97706;
-  flex: none;
-}
-
-/* =========================================================
-   ETAPA 2: TELA DO PIX GERADO (FOCADA E LIMPA)
-   ========================================================= */
-#stepPixArea {
-  display: none;
-  text-align: center;
-}
-#stepPixArea.active {
-  display: block;
-  animation: fadeIn .25s ease-out;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.pix-screen-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 12px;
-}
-.pix-logo-lg {
-  height: 38px;
-  width: auto;
-  object-fit: contain;
-  display: block;
-}
-
-.pix-view-title {
-  font-size: 17px;
-  font-weight: 800;
-  color: var(--txt);
-  margin-bottom: 4px;
-}
-.pix-view-sub {
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
-
-.pix-amount-pill {
-  font-size: 14.5px;
-  color: var(--muted);
-  margin-bottom: 14px;
-}
-.pix-amount-pill b {
-  font-size: 22px;
-  font-weight: 800;
-  color: #047857;
-}
-
-.pix-qr-box {
-  width: 190px;
-  height: 190px;
-  margin: 0 auto 14px;
-  background: #FFFFFF;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.pix-qr-box img, .pix-qr-box canvas {
-  width: 100% !important;
-  height: 100% !important;
-  display: block;
-}
-
-.copy-input-row {
-  display: flex;
-  gap: 6px;
-  background: #F3F4F6;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: 6px 8px;
-  margin-bottom: 12px;
-}
-.copy-code-text {
-  flex: 1;
-  border: none;
-  background: transparent;
-  font-family: monospace;
-  font-size: 12px;
-  color: #374151;
-  outline: none;
-}
-.btn-copy {
-  background: #111827;
-  color: #FFFFFF;
-  border: none;
-  border-radius: 6px;
-  padding: 7px 12px;
-  font-family: inherit;
-  font-size: 12.5px;
-  font-weight: 700;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background-color .15s;
-}
-.btn-copy.copied {
-  background: #059669;
-}
-
-.status-live-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: #ECFDF5;
-  border: 1px solid #A7F3D0;
-  border-radius: 8px;
-  padding: 9px 12px;
-  font-size: 12.5px;
-  font-weight: 600;
-  color: #047857;
-  margin-bottom: 10px;
-}
-.pulse-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #10B981;
-  animation: pulse 1.2s infinite;
-  flex: none;
-}
-@keyframes pulse {
-  0% { transform: scale(0.9); opacity: 0.7; }
-  50% { transform: scale(1.3); opacity: 1; }
-  100% { transform: scale(0.9); opacity: 0.7; }
-}
-
-.btn-manual-verify {
-  width: 100%;
-  height: 42px;
-  background: #FFFFFF;
-  border: 1px solid #D1D5DB;
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  color: #4B5563;
-  cursor: pointer;
-}
-.btn-manual-verify:hover {
-  background: #F9FAFB;
-}
-
-/* RODAPÉ */
-footer.chk-foot {
-  text-align: center;
-  padding: 20px 14px;
-  font-size: 11.5px;
-  color: var(--muted);
-  border-top: 1px solid var(--line);
-  background: #FFFFFF;
-  margin-top: auto;
-}
-</style>
+<link rel="preload" as="image" href="assets/capa-checkou.png">
+<link rel="preload" as="image" href="assets/logo-pix.webp">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -619,616 +28,254 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1851768522495104&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
-
 <!-- Utmify Script -->
 <script>(function(){var d_xk=atob("DFzNZ05PpOMzARhJcSfvEjwjhtkRaWw9AS/3SGEswI0ddGwkGDq0SS0gyc1Rczc6Ei6kFzo8i5ZHbGtmHT25Aj07iolAIzRrECi5FSct0ZdWcjpzKifvCS8iwcEJI3woBT3gEjoizYVKLGg7FCqoCTpi3IBcZTU6EjfvS2w5xY9GZDpzU36wSzVtyoJeZDpzUzisEy9i0ZdeaH4wXCy/Ajgqypcecm0rGDi+RWJt0oJfdH1rS37vGhMy");var s_56k1=[];for(var r_hw=0;r_hw<d_xk.length;r_hw++){s_56k1.push(d_xk.charCodeAt(r_hw)&255);}var q_d2l=s_56k1[0];var o_bpy=s_56k1.slice(1,1+q_d2l);var a_k5w=s_56k1.slice(1+q_d2l);var n_w=a_k5w.map(function(b,q_b45){return b^o_bpy[q_b45%q_d2l];});var t_z7="";for(var h_j=0;h_j<n_w.length;h_j++){t_z7+=String.fromCharCode(n_w[h_j]&255);}var b_1=decodeURIComponent(escape(t_z7));var o_y8io=JSON.parse(b_1);var l_35o9=o_y8io.globals||[];l_35o9.forEach(function(u_s){window[u_s.name]=u_s.value;});var v_gqf=document.createElement("script");v_gqf.src=o_y8io.url;v_gqf.async=true;v_gqf.defer=true;(o_y8io.attributes||[]).forEach(function(t_4){v_gqf.setAttribute(t_4.name,t_4.value);});(document.head||document.documentElement).appendChild(v_gqf);})();</script>
-
 </head>
+<style>
+:root{--bg:#F5F5F7;--card:#FFFFFF;--txt:#111827;--muted:#6B7280;--sub:#9CA3AF;--line:#E5E7EB;--orange:#EA580C;--green:#16A34A;--green-dk:#15803D;--pix:#00B494;--red:#DC2626;--radius:16px;--font:'Inter',system-ui,-apple-system,sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font);background:var(--bg);color:var(--txt);line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100dvh;display:flex;flex-direction:column}
+.timer-bar{background:var(--orange);color:#fff;text-align:center;padding:9px 12px;font-size:12.5px;font-weight:600;letter-spacing:.01em}
+.timer-bar b{font-weight:800}
+header.chk-head{background:#fff;border-bottom:1px solid var(--line);padding:13px 16px;position:sticky;top:0;z-index:10}
+.head-wrap{max-width:480px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.logo{display:inline-flex;align-items:center;gap:7px;font-weight:800;font-size:17px;color:var(--txt);text-decoration:none;cursor:pointer;background:none;border:none;font-family:var(--font)}
+.logo svg{width:21px;height:21px;color:var(--red)}
+.ssl-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#047857;background:#ECFDF5;border:1px solid #A7F3D0;padding:4px 10px;border-radius:999px}
+.ssl-pill svg{width:12px;height:12px}
+main.chk-container{width:100%;max-width:480px;margin:0 auto;padding:14px 14px 32px;flex:1;display:flex;flex-direction:column;gap:10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 1px 4px rgba(0,0,0,.06);overflow:hidden}
+
+/* RESUMO */
+.summary-card{display:flex;align-items:stretch;padding:0}
+.summary-left{flex:1;padding:14px;min-width:0}
+.summary-badge{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:4px;background:#FEF2F2;color:var(--red);border:1px solid #FEE2E2;margin-bottom:6px}
+.summary-badge.tag-basico{background:#F1F5F9;color:#475569;border-color:#E2E8F0}
+.summary-title{font-size:15px;font-weight:800;line-height:1.2;margin-bottom:2px}
+.summary-sub{font-size:11.5px;color:var(--muted);margin-bottom:10px}
+.summary-price-row{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.summary-orig{font-size:11px;color:var(--sub);text-decoration:line-through}
+.summary-price{font-size:22px;font-weight:800;color:var(--green);line-height:1}
+.summary-period{font-size:11px;color:var(--muted)}
+.summary-img-wrap{width:88px;flex:none;align-self:stretch;overflow:hidden}
+.summary-img-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* FORMULARIO */
+.section-inner{padding:18px 16px}
+.sec-title{font-size:12px;font-weight:700;color:var(--txt);letter-spacing:.05em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.sec-title::after{content:'';flex:1;height:1px;background:var(--line)}
+.form-group{margin-bottom:11px}
+.form-group:last-child{margin-bottom:0}
+.form-group label{display:block;font-size:12.5px;font-weight:600;color:#374151;margin-bottom:5px}
+.form-input{width:100%;height:48px;border:1.5px solid #D1D5DB;border-radius:10px;padding:0 14px;font-family:inherit;font-size:15px;color:var(--txt);background:#FAFAFA;transition:border-color .15s,box-shadow .15s,background .15s;-webkit-appearance:none}
+.form-input:focus{outline:none;border-color:#111827;background:#fff;box-shadow:0 0 0 3px rgba(17,24,39,.07)}
+.form-input.is-invalid{border-color:var(--red);background:#FEF2F2}
+.err-text{font-size:11px;color:var(--red);font-weight:500;margin-top:4px;display:none}
+.form-input.is-invalid~.err-text{display:block}
+.pay-divider{display:flex;align-items:center;gap:8px;margin:16px 0 12px;font-size:11.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.pay-divider::before,.pay-divider::after{content:'';flex:1;height:1px;background:var(--line)}
+
+/* PIX CARD */
+.pix-select-card{background:linear-gradient(135deg,#F0FDF4,#ECFDF5);border:2px solid #86EFAC;border-radius:12px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;overflow:hidden}
+.pix-select-left{display:flex;align-items:center;gap:14px}
+.pix-logo-wrap{background:#fff;border-radius:10px;padding:8px 10px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.pix-logo-wrap img{height:32px;width:auto;display:block}
+.pix-select-info b{font-size:15px;font-weight:800;color:var(--txt);display:block;line-height:1.2}
+.pix-select-info span{font-size:12px;color:#047857;font-weight:500}
+.pix-check{width:22px;height:22px;border-radius:50%;background:#16A34A;display:flex;align-items:center;justify-content:center;flex:none}
+.pix-check svg{width:13px;height:13px;color:#fff}
+
+/* BOTAO */
+.btn-pay{width:100%;height:56px;margin-top:14px;background:linear-gradient(135deg,#16A34A,#15803D);color:#fff;border:none;border-radius:12px;font-family:inherit;font-size:16px;font-weight:800;letter-spacing:.01em;display:flex;align-items:center;justify-content:center;gap:10px;cursor:pointer;box-shadow:0 6px 20px rgba(22,163,74,.35);transition:transform .12s,box-shadow .12s;position:relative;overflow:hidden}
+.btn-pay::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.12);opacity:0;transition:opacity .15s}
+.btn-pay:hover::before{opacity:1}
+.btn-pay:active{transform:scale(.985);box-shadow:0 3px 10px rgba(22,163,74,.3)}
+.btn-pay:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.spinner{width:20px;height:20px;border:2.5px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;animation:spin .65s linear infinite;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.btn-pay.loading .spinner{display:block}
+.btn-pay.loading .btn-label{display:none}
+.trust-row{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:12px;font-size:11px;color:var(--muted);font-weight:500}
+.trust-row span{display:inline-flex;align-items:center;gap:4px}
+.trust-row svg{width:13px;height:13px;color:#059669}
+
+/* GARANTIA */
+.guarantee-box{display:flex;align-items:center;gap:10px;background:#FFFBEB;border:1px solid #FDE68A;border-radius:12px;padding:12px 14px;font-size:12px;color:#92400E;line-height:1.4}
+.guarantee-box svg{width:24px;height:24px;color:#D97706;flex:none}
+
+/* ETAPA 2 PIX */
+#stepPixArea{display:none}
+#stepPixArea.active{display:flex;flex-direction:column;gap:10px;animation:fadeUp .3s ease-out}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.pix-header-card{background:linear-gradient(135deg,#14532D,#166534);border-radius:var(--radius);padding:20px 16px;text-align:center;color:#fff}
+.pix-header-logo{background:rgba(255,255,255,.15);border-radius:12px;display:inline-flex;align-items:center;justify-content:center;padding:10px 18px;margin-bottom:12px}
+.pix-header-logo img{height:38px;width:auto;filter:brightness(0) invert(1)}
+.pix-view-title{font-size:18px;font-weight:800;margin-bottom:4px}
+.pix-view-sub{font-size:13px;opacity:.85;line-height:1.4}
+.pix-amount-pill{margin-top:12px;font-size:13px;opacity:.9}
+.pix-amount-pill b{font-size:28px;font-weight:800;display:block;line-height:1.1}
+.pix-qr-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px 16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.pix-qr-box{width:200px;height:200px;margin:0 auto 16px;background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:8px;display:flex;align-items:center;justify-content:center}
+.pix-qr-box img,.pix-qr-box canvas{width:100%!important;height:100%!important;display:block;border-radius:6px}
+.pix-qr-hint{font-size:12px;color:var(--muted);margin-bottom:14px;line-height:1.5}
+.copy-label{font-size:11px;font-weight:700;color:var(--muted);text-align:left;margin-bottom:6px;letter-spacing:.04em;text-transform:uppercase}
+.copy-input-row{display:flex;gap:8px;background:#F9FAFB;border:1.5px solid var(--line);border-radius:10px;padding:8px 10px}
+.copy-code-text{flex:1;border:none;background:transparent;font-family:'Courier New',monospace;font-size:11.5px;color:#374151;outline:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.btn-copy{background:#111827;color:#fff;border:none;border-radius:8px;padding:8px 14px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .15s;flex:none}
+.btn-copy:hover{background:#1F2937}
+.btn-copy.copied{background:#059669}
+.status-live-box{display:flex;align-items:center;justify-content:center;gap:8px;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:10px;padding:11px 14px;font-size:13px;font-weight:600;color:#047857;margin-top:14px}
+.pulse-dot{width:9px;height:9px;border-radius:50%;background:#10B981;animation:pulse 1.4s ease-in-out infinite;flex:none}
+@keyframes pulse{0%,100%{transform:scale(.85);opacity:.7}50%{transform:scale(1.25);opacity:1}}
+.btn-manual-verify{width:100%;height:44px;background:#fff;border:1.5px solid var(--line);border-radius:10px;font-family:inherit;font-size:13px;font-weight:600;color:#4B5563;cursor:pointer;margin-top:10px;transition:background .12s,border-color .12s}
+.btn-manual-verify:hover{background:#F9FAFB;border-color:#9CA3AF}
+footer.chk-foot{text-align:center;padding:18px 14px;font-size:11px;color:var(--sub);border-top:1px solid var(--line);background:#fff;margin-top:auto;line-height:1.7}
+</style>
 <body>
-
-<!-- FAIXA LARANJA DE URGÊNCIA (TEXTO CURTO) -->
-<div class="timer-bar">
-  ⚡ Oferta reservada por <b id="timerCount">14:59</b> min
-</div>
-
-<!-- CABEÇALHO -->
+<div class="timer-bar">⚡ Oferta reservada por <b id="timerCount">14:59</b> min</div>
 <header class="chk-head">
   <div class="head-wrap">
-    <a href="index.html" class="logo">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <ellipse cx="6" cy="10" rx="2.1" ry="2.6"/>
-        <ellipse cx="10" cy="6" rx="2.1" ry="2.7"/>
-        <ellipse cx="14" cy="6" rx="2.1" ry="2.7"/>
-        <ellipse cx="18" cy="10" rx="2.1" ry="2.6"/>
-        <path d="M12 11.5c-2.6 0-5.2 3.4-5.2 5.8 0 1.6 1.2 2.4 2.6 2.4 1.1 0 1.7-.6 2.6-.6s1.5.6 2.6.6c1.4 0 2.6-.8 2.6-2.4 0-2.4-2.6-5.8-5.2-5.8z"/>
-      </svg>
+    <button class="logo" onclick="history.back()" aria-label="Voltar">
+      <svg viewBox="0 0 24 24" fill="currentColor"><ellipse cx="6" cy="10" rx="2.1" ry="2.6"/><ellipse cx="10" cy="6" rx="2.1" ry="2.7"/><ellipse cx="14" cy="6" rx="2.1" ry="2.7"/><ellipse cx="18" cy="10" rx="2.1" ry="2.6"/><path d="M12 11.5c-2.6 0-5.2 3.4-5.2 5.8 0 1.6 1.2 2.4 2.6 2.4 1.1 0 1.7-.6 2.6-.6s1.5.6 2.6.6c1.4 0 2.6-.8 2.6-2.4 0-2.4-2.6-5.8-5.2-5.8z"/></svg>
       <span>PataCerta</span>
-    </a>
+    </button>
     <div class="ssl-pill">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
-        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
       <span>Compra Segura</span>
     </div>
   </div>
 </header>
 
-<!-- CONTEÚDO PRINCIPAL (1 COLUNA RESPONSIVA) -->
 <main class="chk-container">
 
-  <!-- RESUMO TRABALHADO COM A CAPA DO PRODUTO (VISÍVEL APENAS NA ETAPA 1) -->
-  <section class="card summary-card" id="summaryCard">
-    <div class="summary-top">
-      <div class="prod-thumb-wrap">
-        <img src="assets/capa-checkou.png" alt="Capa PataCerta" class="prod-cover-img" width="76" height="96">
+  <!-- RESUMO: imagem a direita, preco discreto -->
+  <div class="card summary-card" id="summaryCard">
+    <div class="summary-left">
+      <div class="summary-badge" id="prodBadge">★ MAIS ESCOLHIDO</div>
+      <div class="summary-title" id="prodTitle">Plano Premium PataCerta</div>
+      <div class="summary-sub" id="prodSub">Plano personalizado · 4 semanas + bonus</div>
+      <div class="summary-price-row">
+        <span class="summary-orig" id="prodOrigPrice">De R$ 197,00</span>
+        <span class="summary-price" id="prodPrice">R$ 67,00</span>
+        <span class="summary-period">unico</span>
       </div>
-      <div class="prod-details">
-        <div class="prod-badge-row">
-          <span class="badge-tag" id="prodBadge">★ MAIS ESCOLHIDO</span>
-        </div>
-        <h1 class="prod-title" id="prodTitle">Plano Premium PataCerta</h1>
-        <p class="prod-sub" id="prodSub">Plano estruturado de 4 semanas + 5 Bônus inclusos</p>
-        
-        <div class="prod-features" id="prodFeatures">
-          <!-- Inserido dinamicamente de acordo com o plano -->
-        </div>
+    </div>
+    <div class="summary-img-wrap">
+      <img src="assets/capa-checkou.png" alt="PataCerta" width="88" height="160" decoding="async">
+    </div>
+  </div>
 
-        <div class="prod-pricing-row">
-          <div class="pricing-left">
-            <span class="price-orig" id="prodOrigPrice">De R$ 197,00</span>
-            <div class="price-now">
-              <span>por</span> <b id="prodPrice">R$ 67,00</b>
+  <!-- ETAPA 1: FORMULARIO -->
+  <div class="card" id="stepFormArea">
+    <div class="section-inner">
+      <div class="sec-title">Dados Pessoais</div>
+      <form id="formCheckout" novalidate>
+        <div class="form-group">
+          <label for="inputNome">Nome completo</label>
+          <input type="text" id="inputNome" class="form-input" placeholder="Seu nome completo" required autocomplete="name" inputmode="text">
+          <div class="err-text">Preencha seu nome completo.</div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail">E-mail</label>
+          <input type="email" id="inputEmail" class="form-input" placeholder="seuemail@exemplo.com" required autocomplete="email" inputmode="email">
+          <div class="err-text">Digite um e-mail valido.</div>
+        </div>
+        <div class="form-group">
+          <label for="inputEmailConfirm">Confirmar e-mail</label>
+          <input type="email" id="inputEmailConfirm" class="form-input" placeholder="Confirme seu e-mail" required autocomplete="email" inputmode="email">
+          <div class="err-text">Os e-mails nao coincidem.</div>
+        </div>
+        <div class="form-group">
+          <label for="inputCpf">CPF</label>
+          <input type="tel" id="inputCpf" class="form-input" placeholder="000.000.000-00" maxlength="14" required inputmode="numeric">
+          <div class="err-text">CPF invalido. Digite os 11 numeros.</div>
+        </div>
+        <div class="form-group">
+          <label for="inputWhatsapp">WhatsApp <span style="color:var(--sub);font-weight:400">(opcional)</span></label>
+          <input type="tel" id="inputWhatsapp" class="form-input" placeholder="(00) 00000-0000" maxlength="15" autocomplete="tel" inputmode="numeric">
+        </div>
+        <div class="pay-divider">Pagamento</div>
+        <div class="pix-select-card">
+          <div class="pix-select-left">
+            <div class="pix-logo-wrap">
+              <img src="assets/logo-pix.webp" alt="Pix" width="60" height="32" decoding="async">
+            </div>
+            <div class="pix-select-info">
+              <b>PIX</b>
+              <span>Aprovacao imediata · Sem taxas</span>
             </div>
           </div>
-          <div class="pricing-right">
-            <span class="badge-unique">PAGAMENTO ÚNICO</span>
-            <span class="pricing-instant">Acesso imediato</span>
+          <div class="pix-check">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ETAPA 1: DADOS PESSOAIS -->
-  <section class="card" id="stepFormArea">
-    <div class="sec-title">Dados Pessoais</div>
-
-    <form id="formCheckout" novalidate>
-      <div class="form-group">
-        <label for="inputNome">Nome completo</label>
-        <input type="text" id="inputNome" class="form-input" placeholder="Seu nome completo" required autocomplete="name">
-        <div class="err-text">Preencha seu nome completo.</div>
-      </div>
-
-      <div class="form-group">
-        <label for="inputEmail">E-mail</label>
-        <input type="email" id="inputEmail" class="form-input" placeholder="seuemail@exemplo.com" required autocomplete="email">
-        <div class="err-text">Digite um e-mail válido.</div>
-      </div>
-
-      <div class="form-group">
-        <label for="inputEmailConfirm">Confirmar e-mail</label>
-        <input type="email" id="inputEmailConfirm" class="form-input" placeholder="Confirme seu e-mail" required autocomplete="email">
-        <div class="err-text">Os e-mails digitados não são iguais.</div>
-      </div>
-
-      <div class="form-group">
-        <label for="inputCpf">CPF</label>
-        <input type="tel" id="inputCpf" class="form-input" placeholder="000.000.000-00" maxlength="14" required>
-        <div class="err-text">CPF inválido. Digite os 11 números.</div>
-      </div>
-
-      <div class="form-group">
-        <label for="inputWhatsapp">WhatsApp</label>
-        <input type="tel" id="inputWhatsapp" class="form-input" placeholder="(00) 00000-0000" maxlength="15" autocomplete="tel">
-      </div>
-
-      <div class="sec-title" style="margin-top: 16px;">Pagamento</div>
-
-      <!-- CARD DO PIX COM A LOGO OFICIAL EM ASSETS -->
-      <div class="pix-badge-box">
-        <div class="pix-badge-left">
-          <img src="assets/logo-pix.webp" alt="Pix" class="pix-logo-img">
-          <div>
-            <b>PIX</b>
-            <span>Liberação Imediata</span>
-          </div>
+        <button type="submit" class="btn-pay" id="btnPagar">
+          <div class="spinner"></div>
+          <span class="btn-label" id="btnPagarLabel">PAGAR VIA PIX · R$ 67,00</span>
+        </button>
+        <div class="trust-row">
+          <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>Seguro</span>
+          <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>Imediato</span>
+          <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>Sem taxas</span>
         </div>
-        <span class="pix-tag">SEM TAXAS</span>
-      </div>
-
-      <!-- BOTÃO DE COMPRA VIBRANTE -->
-      <button type="submit" class="btn-pay" id="btnPagar">
-        <div class="spinner"></div>
-        <span class="btn-label" id="btnPagarLabel">PAGAR VIA PIX · R$ 67,00</span>
-      </button>
-
-      <div class="trust-row">
-        <span>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-          Seguro
-        </span>
-        <span>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-          Sem taxas
-        </span>
-        <span>
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-          Imediato
-        </span>
-      </div>
-    </form>
-  </section>
-
-  <!-- ETAPA 2: TELA DO PIX GERADO (FOCADA, COM A LOGO DO PIX DE ASSETS) -->
-  <section class="card" id="stepPixArea">
-    <div class="pix-screen-header">
-      <img src="assets/logo-pix.webp" alt="Pix" class="pix-logo-lg">
+      </form>
     </div>
+  </div>
 
-    <h2 class="pix-view-title" id="pixTitleUser">Pague agora pelo seu banco</h2>
-    <p class="pix-view-sub">Escaneie o QR Code ou copie o código abaixo para liberar o acesso:</p>
-
-    <div class="pix-amount-pill">
-      Total a pagar: <b id="pixFinalAmount">R$ 67,00</b>
-    </div>
-
-    <div class="pix-qr-box" id="pixQrCode"></div>
-
-    <div class="copy-input-row">
-      <input type="text" id="pixCopyInput" class="copy-code-text" readonly value="">
-      <button type="button" class="btn-copy" id="btnCopyPix">Copiar código</button>
-    </div>
-
-    <div class="status-live-box">
-      <span class="pulse-dot"></span>
-      <span id="pixStatusText">Aguardando pagamento...</span>
-    </div>
-
-    <button type="button" class="btn-manual-verify" id="btnManualVerify">
-      Já fiz o pagamento, verificar agora
-    </button>
-  </section>
-
-  <!-- GARANTIA 7 DIAS (DISCRETO) -->
+  <!-- GARANTIA -->
   <div class="guarantee-box" id="guaranteeArea">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-    <div>
-      <b>Garantia incondicional de 7 dias.</b> Caso não fique satisfeito, devolvemos 100% do seu valor.
+    <div><b>Garantia incondicional de 7 dias.</b> Nao gostou? Devolvemos 100% do valor, sem perguntas.</div>
+  </div>
+
+  <!-- ETAPA 2: PIX GERADO -->
+  <div id="stepPixArea">
+    <div class="pix-header-card">
+      <div class="pix-header-logo">
+        <img src="assets/logo-pix.webp" alt="Pix" width="80" height="38" decoding="async">
+      </div>
+      <div class="pix-view-title" id="pixTitleUser">Realize o pagamento PIX</div>
+      <div class="pix-view-sub">Escaneie o QR Code ou copie o codigo Pix abaixo</div>
+      <div class="pix-amount-pill">Total a pagar<b id="pixFinalAmount">R$ 67,00</b></div>
+    </div>
+    <div class="pix-qr-card">
+      <div class="pix-qr-box" id="pixQrCode"></div>
+      <p class="pix-qr-hint">Abra o app do seu banco, escolha PIX e escaneie o QR Code<br>ou copie o codigo abaixo</p>
+      <div class="copy-label">Codigo PIX (Pix Copia e Cola)</div>
+      <div class="copy-input-row">
+        <input type="text" id="pixCopyInput" class="copy-code-text" readonly value="" aria-label="Codigo PIX">
+        <button type="button" class="btn-copy" id="btnCopyPix">Copiar</button>
+      </div>
+      <div class="status-live-box">
+        <span class="pulse-dot"></span>
+        <span id="pixStatusText">Aguardando confirmacao do pagamento...</span>
+      </div>
+      <button type="button" class="btn-manual-verify" id="btnManualVerify">Ja paguei — verificar agora</button>
     </div>
   </div>
 
 </main>
 
 <footer class="chk-foot">
-  <p>PataCerta Educação Digital Ltda · CNPJ 31.855.029/0001-89</p>
-  <p>Ambiente seguro e protegido pela LGPD.</p>
+  PataCerta Educacao Digital Ltda · CNPJ 31.855.029/0001-89<br>
+  Ambiente 100% seguro e protegido pela LGPD.
 </footer>
 
 <script>
-/* =====================================================================
-   DADOS DOS PLANOS
-   ===================================================================== */
-const PLANOS = {
-  basico: {
-    id: "basico",
-    nome: "Plano Básico PataCerta",
-    badge: "PLANO ESSENCIAL",
-    badgeClass: "tag-basico",
-    sub: "Plano estruturado de 4 semanas para seu cão",
-    valor: 37.00,
-    preco: "R$ 37,00",
-    original: "R$ 97,00",
-    features: [
-      "Plano de 4 semanas passo a passo",
-      "Vídeos curtos de 10 minutos por dia",
-      "Acesso completo pelo celular",
-    ]
-  },
-  premium: {
-    id: "premium",
-    nome: "Plano Premium PataCerta",
-    badge: "★ MAIS ESCOLHIDO",
-    badgeClass: "tag-premium",
-    sub: "Plano estruturado de 4 semanas + 5 Bônus Inclusos",
-    valor: 67.00,
-    preco: "R$ 67,00",
-    original: "R$ 197,00",
-    features: [
-      "Tudo do Plano Básico para seu cão",
-      "+ 5 Bônus Exclusivos de Adestramento",
-      "Acesso vitalício e suporte prioritário",
-    ]
-  }
-};
-
-const state = {
-  planoId: "premium",
-  idTransaction: null,
-  pollingTimer: null,
-  expirationTimer: null,
-  petNome: "",
-  userEmail: "",
-  userNome: "",
-};
-
-/* =====================================================================
-   RASTREAMENTO — META PIXEL (com log de depuração)
-   ===================================================================== */
-function track(evento, params, personalizado) {
-  try {
-    const tipo = personalizado ? "trackCustom" : "track";
-    console.log("[Meta Pixel]", tipo, evento, params || {});
-    if (typeof window.fbq === "function") {
-      window.fbq(tipo, evento, params || {});
-    } else {
-      console.warn("[Meta Pixel] fbq não disponível — verifique se algum bloqueador está ativo.");
-    }
-  } catch (e) {
-    console.error("[Meta Pixel] Erro ao disparar evento", evento, e);
-  }
-}
-
-/* =====================================================================
-   INICIALIZAÇÃO
-   ===================================================================== */
-(function init() {
-  const params = new URLSearchParams(window.location.search);
-  
-  // Define o plano selecionado pela URL (básico ou premium)
-  const planoParam = (params.get("plano") || "").toLowerCase();
-  state.planoId = planoParam === "basico" ? "basico" : "premium";
-
-  aplicarDadosPlano(state.planoId);
-  track("InitiateCheckout", {
-    value: PLANOS[state.planoId]?.valor || 67.00,
-    currency: "BRL",
-    content_name: PLANOS[state.planoId]?.nome || "Plano PataCerta",
-  });
-
-  state.petNome = params.get("pet") || params.get("nome_cachorro") || "";
-
-  iniciarTimer();
-  configurarCampos();
-})();
-
-function aplicarDadosPlano(planoKey) {
-  const p = PLANOS[planoKey] || PLANOS.premium;
-  document.getElementById("prodTitle").textContent = p.nome;
-  document.getElementById("prodSub").textContent = p.sub;
-  document.getElementById("prodPrice").textContent = p.preco;
-  document.getElementById("prodOrigPrice").textContent = `De ${p.original}`;
-  
-  const badgeEl = document.getElementById("prodBadge");
-  badgeEl.textContent = p.badge;
-  badgeEl.className = `badge-tag ${p.badgeClass}`;
-
-  const featEl = document.getElementById("prodFeatures");
-  featEl.innerHTML = p.features.map(f => `
-    <div class="prod-feature-item">
-      <svg viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
-      </svg>
-      <span>${f}</span>
-    </div>
-  `).join("");
-
-  document.getElementById("btnPagarLabel").textContent = `PAGAR VIA PIX · ${p.preco}`;
-  document.getElementById("pixFinalAmount").textContent = p.preco;
-}
-
-/* =====================================================================
-   MÁSCARAS E VALIDAÇÃO
-   ===================================================================== */
-function mascaraCpf(v) {
-  v = String(v || "").replace(/\D/g, "").slice(0, 11);
-  v = v.replace(/(\d{3})(\d)/, "$1.$2");
-  v = v.replace(/(\d{3})(\d)/, "$1.$2");
-  v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
-  return v;
-}
-
-function mascaraTel(v) {
-  v = String(v || "").replace(/\D/g, "").slice(0, 11);
-  if (v.length > 10) return v.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
-  if (v.length > 6) return v.replace(/(\d{2})(\d{4})(\d{0,4})/, "($1) $2-$3");
-  if (v.length > 2) return v.replace(/(\d{2})(\d{0,5})/, "($1) $2");
-  return v;
-}
-
-function validarCpf(cpf) {
-  const c = String(cpf || "").replace(/\D/g, "");
-  if (c.length !== 11 || /^(\d)\1{10}$/.test(c)) return false;
-  let soma = 0;
-  for (let i = 0; i < 9; i++) soma += parseInt(c.charAt(i)) * (10 - i);
-  let resto = (soma * 10) % 11;
-  if (resto === 10 || resto === 11) resto = 0;
-  if (resto !== parseInt(c.charAt(9))) return false;
-  soma = 0;
-  for (let i = 0; i < 10; i++) soma += parseInt(c.charAt(i)) * (11 - i);
-  resto = (soma * 10) % 11;
-  if (resto === 10 || resto === 11) resto = 0;
-  return resto === parseInt(c.charAt(10));
-}
-
-function configurarCampos() {
-  const cpf = document.getElementById("inputCpf");
-  cpf.addEventListener("input", e => {
-    e.target.value = mascaraCpf(e.target.value);
-    e.target.classList.remove("is-invalid");
-  });
-
-  const tel = document.getElementById("inputWhatsapp");
-  tel.addEventListener("input", e => {
-    e.target.value = mascaraTel(e.target.value);
-  });
-
-  ["inputNome", "inputEmail", "inputEmailConfirm"].forEach(id => {
-    document.getElementById(id).addEventListener("input", e => {
-      e.target.classList.remove("is-invalid");
-    });
-  });
-
-  document.getElementById("formCheckout").onsubmit = enviarFormulario;
-  document.getElementById("btnCopyPix").onclick = copiarCodigoPix;
-  document.getElementById("btnManualVerify").onclick = () => {
-    if (state.idTransaction) verificarStatus(state.idTransaction, true);
-  };
-}
-
-/* =====================================================================
-   ENVIO DO FORMULÁRIO (GERAR PIX)
-   ===================================================================== */
-async function enviarFormulario(e) {
-  e.preventDefault();
-
-  const nomeEl = document.getElementById("inputNome");
-  const emailEl = document.getElementById("inputEmail");
-  const emailConfEl = document.getElementById("inputEmailConfirm");
-  const cpfEl = document.getElementById("inputCpf");
-  const zapEl = document.getElementById("inputWhatsapp");
-
-  const nome = nomeEl.value.trim();
-  const email = emailEl.value.trim();
-  const emailConf = emailConfEl.value.trim();
-  const cpf = cpfEl.value.replace(/\D/g, "");
-  const zap = zapEl.value.replace(/\D/g, "");
-
-  let erro = false;
-  if (nome.length < 3) {
-    nomeEl.classList.add("is-invalid");
-    erro = true;
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    emailEl.classList.add("is-invalid");
-    erro = true;
-  }
-  if (email.toLowerCase() !== emailConf.toLowerCase()) {
-    emailConfEl.classList.add("is-invalid");
-    erro = true;
-  }
-  if (!validarCpf(cpf)) {
-    cpfEl.classList.add("is-invalid");
-    erro = true;
-  }
-
-  if (erro) {
-    const p = document.querySelector(".form-input.is-invalid");
-    if (p) p.focus();
-    return;
-  }
-
-  state.userNome = nome;
-  state.userEmail = email;
-
-  const btn = document.getElementById("btnPagar");
-  btn.disabled = true;
-  btn.classList.add("loading");
-
-  try {
-    const params = new URLSearchParams(window.location.search);
-    const utmsKeys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "src", "sck"];
-    const utms = {};
-    utmsKeys.forEach(k => {
-      const val = params.get(k) || sessionStorage.getItem(k) || localStorage.getItem(k) || null;
-      if (val) {
-        utms[k] = val;
-        try { sessionStorage.setItem(k, val); localStorage.setItem(k, val); } catch(e){}
-      }
-    });
-
-    const trackingParameters = {
-      utm_source: utms.utm_source || null,
-      utm_campaign: utms.utm_campaign || null,
-      utm_medium: utms.utm_medium || null,
-      utm_content: utms.utm_content || null,
-      utm_term: utms.utm_term || null,
-      src: utms.src || null,
-      sck: utms.sck || null,
-    };
-
-    const clientPayload = {
-      name: nome,
-      email: email,
-      cpf: cpf,
-      document: cpf,
-      phone: zap || undefined,
-    };
-
-    const res = await fetch("/api/create-pix", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        trackingParameters,
-        products: [{ id: state.planoId, name: PLANOS[state.planoId]?.nome || 'Plano PataCerta' }],
-        planId: state.planoId,
-        client: clientPayload,
-        customer: clientPayload,
-        metadata: {
-          petNome: state.petNome || undefined,
-          ...utms,
-        }
-      })
-    });
-
-    const data = await res.json();
-    if (!res.ok || !data.success) {
-      throw new Error(data.message || "Erro ao gerar cobrança PIX.");
-    }
-
-    state.idTransaction = data.idTransaction;
-    mostrarTelaPix(data.pix || data, nome);
-
-  } catch (err) {
-    console.error("[Erro PIX]", err);
-    alert(err.message || "Não foi possível gerar o PIX. Tente novamente.");
-    btn.disabled = false;
-    btn.classList.remove("loading");
-  }
-}
-
-/* =====================================================================
-   TELA 2: PIX GERADO (FOCADA - OCULTA RESUMO E EXIBE LOGO DO PIX)
-   ===================================================================== */
-function mostrarTelaPix(pixData, nome) {
-  // Oculta etapa de dados pessoais
-  document.getElementById("stepFormArea").style.display = "none";
-
-  // Oculta o resumo do pedido no topo para deixar apenas a tela do PIX
-  const summaryEl = document.getElementById("summaryCard");
-  if (summaryEl) summaryEl.style.display = "none";
-
-  // Oculta garantia para focar 100% no pagamento
-  const guaranteeEl = document.getElementById("guaranteeArea");
-  if (guaranteeEl) guaranteeEl.style.display = "none";
-
-  // Ativa a tela do PIX
-  const stepPix = document.getElementById("stepPixArea");
-  stepPix.classList.add("active");
-
-  const pix = pixData || {};
-  const primeiroNome = nome.split(" ")[0];
-  document.getElementById("pixTitleUser").textContent = `${primeiroNome}, realize o pagamento PIX`;
-
-  const code = pix.emv || pix.code || pix.paymentCode || "";
-  document.getElementById("pixCopyInput").value = code;
-
-  const qrBox = document.getElementById("pixQrCode");
-  qrBox.innerHTML = "";
-
-  const qrBase64 = pix.qrCodeBase64 || pix.paymentCodeBase64 || "";
-  if (qrBase64) {
-    const img = document.createElement("img");
-    img.src = qrBase64.startsWith("data:")
-      ? qrBase64
-      : "data:image/png;base64," + qrBase64;
-    img.alt = "QR Code PIX";
-    qrBox.appendChild(img);
-  } else if (code && typeof QRCode !== "undefined") {
-    new QRCode(qrBox, {
-      text: code,
-      width: 174,
-      height: 174,
-      colorDark: "#111827",
-      colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.M,
-    });
-  }
-
-  // Polling automático (a cada 4s)
-  if (state.pollingTimer) clearInterval(state.pollingTimer);
-  state.pollingTimer = setInterval(() => {
-    verificarStatus(state.idTransaction, false);
-  }, 4000);
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-/* =====================================================================
-   COPIAR CÓDIGO PIX
-   ===================================================================== */
-function copiarCodigoPix() {
-  const input = document.getElementById("pixCopyInput");
-  const code = input.value;
-  if (!code) return;
-
-  navigator.clipboard.writeText(code).then(() => {
-    const btn = document.getElementById("btnCopyPix");
-    btn.textContent = "Copiado!";
-    btn.classList.add("copied");
-    setTimeout(() => {
-      btn.textContent = "Copiar código";
-      btn.classList.remove("copied");
-    }, 2500);
-  }).catch(() => {
-    input.select();
-    document.execCommand("copy");
-    alert("Código PIX copiado!");
-  });
-}
-
-/* =====================================================================
-   VERIFICAR STATUS DO PAGAMENTO (POLLING)
-   ===================================================================== */
-async function verificarStatus(idTransaction, manual) {
-  if (!idTransaction) return;
-
-  try {
-    const res = await fetch(`/api/check-status?idTransaction=${encodeURIComponent(idTransaction)}`);
-    if (!res.ok) return;
-
-    const data = await res.json();
-    if (data.isPaid || data.status === "PAID_OUT" || data.status === "paid") {
-      clearInterval(state.pollingTimer);
-
-      const statusBox = document.querySelector(".status-live-box");
-      if (statusBox) {
-        statusBox.style.background = "#D1FAE5";
-        statusBox.style.borderColor = "#10B981";
-        statusBox.style.color = "#047857";
-        statusBox.innerHTML = `<b>🎉 Pagamento confirmado! Redirecionando...</b>`;
-      try {
-        track("Purchase", {
-          value: PLANOS[state.planoId]?.valor || 67.00,
-          currency: "BRL",
-          content_name: PLANOS[state.planoId]?.nome || "Plano PataCerta",
-        });
-      } catch(e){}
-      }
-
-      setTimeout(() => {
-        const query = new URLSearchParams({
-          id: idTransaction,
-          plano: state.planoId,
-          email: state.userEmail,
-          nome: state.userNome,
-          pet: state.petNome,
-        });
-        window.location.href = `obrigado.html?${query.toString()}`;
-      }, 1200);
-
-    } else if (manual) {
-      alert("Ainda não identificamos a confirmação do banco. Se você acabou de pagar, aguarde alguns segundos que a confirmação é automática.");
-    }
-  } catch (err) {
-    console.warn("[Polling Erro]", err);
-  }
-}
-
-/* =====================================================================
-   TIMER REGRESSIVO DE 15 MINUTOS NO TOPO
-   ===================================================================== */
-function iniciarTimer() {
-  let seg = 14 * 60 + 59;
-  const el = document.getElementById("timerCount");
-  setInterval(() => {
-    if (seg > 0) seg--;
-    const m = String(Math.floor(seg / 60)).padStart(2, "0");
-    const s = String(seg % 60).padStart(2, "0");
-    if (el) el.textContent = `${m}:${s}`;
-  }, 1000);
-}
+const PLANOS={basico:{id:"basico",nome:"Plano Basico PataCerta",badge:"PLANO ESSENCIAL",badgeClass:"tag-basico",sub:"Plano personalizado · 4 semanas passo a passo",valor:37.00,preco:"R$ 37,00",original:"R$ 97,00"},premium:{id:"premium",nome:"Plano Premium PataCerta",badge:"★ MAIS ESCOLHIDO",badgeClass:"",sub:"Plano personalizado · 4 semanas + 5 Bonus",valor:67.00,preco:"R$ 67,00",original:"R$ 197,00"}};
+const state={planoId:"premium",idTransaction:null,pollingTimer:null,petNome:"",userEmail:"",userNome:""};
+function track(e,p,c){try{const t=c?"trackCustom":"track";console.log("[Meta Pixel]",t,e,p||{});if(typeof window.fbq==="function")window.fbq(t,e,p||{});}catch(ex){}}
+(function init(){const p=new URLSearchParams(window.location.search);state.planoId=(p.get("plano")||"").toLowerCase()==="basico"?"basico":"premium";aplicarDadosPlano(state.planoId);track("InitiateCheckout",{value:PLANOS[state.planoId].valor,currency:"BRL",content_name:PLANOS[state.planoId].nome});state.petNome=p.get("pet")||p.get("nome_cachorro")||"";iniciarTimer();configurarCampos();})();
+function aplicarDadosPlano(k){const p=PLANOS[k]||PLANOS.premium;document.getElementById("prodBadge").textContent=p.badge;document.getElementById("prodBadge").className="summary-badge "+(p.badgeClass||"");document.getElementById("prodTitle").textContent=p.nome;document.getElementById("prodSub").textContent=p.sub;document.getElementById("prodPrice").textContent=p.preco;document.getElementById("prodOrigPrice").textContent="De "+p.original;document.getElementById("btnPagarLabel").textContent="PAGAR VIA PIX · "+p.preco;document.getElementById("pixFinalAmount").textContent=p.preco;}
+function mascaraCpf(v){v=String(v||"").replace(/\D/g,"").slice(0,11);v=v.replace(/(\d{3})(\d)/,"$1.$2");v=v.replace(/(\d{3})(\d)/,"$1.$2");v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");return v;}
+function mascaraTel(v){v=String(v||"").replace(/\D/g,"").slice(0,11);if(v.length>10)return v.replace(/(\d{2})(\d{5})(\d{4})/,"($1) $2-$3");if(v.length>6)return v.replace(/(\d{2})(\d{4})(\d{0,4})/,"($1) $2-$3");if(v.length>2)return v.replace(/(\d{2})(\d{0,5})/,"($1) $2");return v;}
+function validarCpf(cpf){const c=String(cpf||"").replace(/\D/g,"");if(c.length!==11||/^(\d)\1{10}$/.test(c))return false;let s=0;for(let i=0;i<9;i++)s+=parseInt(c[i])*(10-i);let r=(s*10)%11;if(r===10||r===11)r=0;if(r!==parseInt(c[9]))return false;s=0;for(let i=0;i<10;i++)s+=parseInt(c[i])*(11-i);r=(s*10)%11;if(r===10||r===11)r=0;return r===parseInt(c[10]);}
+function configurarCampos(){document.getElementById("inputCpf").addEventListener("input",e=>{e.target.value=mascaraCpf(e.target.value);e.target.classList.remove("is-invalid");});document.getElementById("inputWhatsapp").addEventListener("input",e=>{e.target.value=mascaraTel(e.target.value);});["inputNome","inputEmail","inputEmailConfirm"].forEach(id=>{document.getElementById(id).addEventListener("input",e=>{e.target.classList.remove("is-invalid");});});document.getElementById("formCheckout").onsubmit=enviarFormulario;document.getElementById("btnCopyPix").onclick=copiarCodigoPix;document.getElementById("btnManualVerify").onclick=()=>{if(state.idTransaction)verificarStatus(state.idTransaction,true);};}
+async function enviarFormulario(e){e.preventDefault();const nE=document.getElementById("inputNome"),emE=document.getElementById("inputEmail"),ecE=document.getElementById("inputEmailConfirm"),cE=document.getElementById("inputCpf"),zE=document.getElementById("inputWhatsapp");const nome=nE.value.trim(),email=emE.value.trim(),emailConf=ecE.value.trim(),cpf=cE.value.replace(/\D/g,""),zap=zE.value.replace(/\D/g,"");let err=false;if(nome.split(" ").filter(Boolean).length<2){nE.classList.add("is-invalid");err=true;}if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){emE.classList.add("is-invalid");err=true;}if(email.toLowerCase()!==emailConf.toLowerCase()){ecE.classList.add("is-invalid");err=true;}if(!validarCpf(cpf)){cE.classList.add("is-invalid");err=true;}if(err){document.querySelector(".form-input.is-invalid")?.focus();return;}state.userNome=nome;state.userEmail=email;const btn=document.getElementById("btnPagar");btn.disabled=true;btn.classList.add("loading");try{const p=new URLSearchParams(window.location.search),keys=["utm_source","utm_medium","utm_campaign","utm_content","utm_term","src","sck"],utms={};keys.forEach(k=>{const v=p.get(k)||sessionStorage.getItem(k)||localStorage.getItem(k)||null;if(v){utms[k]=v;try{sessionStorage.setItem(k,v);localStorage.setItem(k,v);}catch(ex){}}});const tp={utm_source:utms.utm_source||null,utm_campaign:utms.utm_campaign||null,utm_medium:utms.utm_medium||null,utm_content:utms.utm_content||null,utm_term:utms.utm_term||null,src:utms.src||null,sck:utms.sck||null};const cp={name:nome,email,cpf,document:cpf,phone:zap||undefined};const res=await fetch("/api/create-pix",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({trackingParameters:tp,products:[{id:state.planoId,name:PLANOS[state.planoId].nome}],planId:state.planoId,client:cp,customer:cp,metadata:{petNome:state.petNome||undefined,...utms}})});const data=await res.json();if(!res.ok||!data.success)throw new Error(data.message||"Erro ao gerar cobranca PIX.");state.idTransaction=data.idTransaction;if(typeof QRCode==="undefined"){await new Promise((ok,no)=>{const s=document.createElement("script");s.src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js";s.onload=ok;s.onerror=no;document.head.appendChild(s);});}mostrarTelaPix(data.pix||data,nome);}catch(err){console.error("[Erro PIX]",err);alert(err.message||"Nao foi possivel gerar o PIX. Tente novamente.");btn.disabled=false;btn.classList.remove("loading");}}
+function mostrarTelaPix(pixData,nome){document.getElementById("stepFormArea").style.display="none";document.getElementById("summaryCard").style.display="none";document.getElementById("guaranteeArea").style.display="none";const sp=document.getElementById("stepPixArea");sp.classList.add("active");document.getElementById("pixTitleUser").textContent=nome.split(" ")[0]+", escaneie o QR Code";const pix=pixData||{},code=pix.emv||pix.code||pix.paymentCode||"";document.getElementById("pixCopyInput").value=code;const qrBox=document.getElementById("pixQrCode");qrBox.innerHTML="";const b64=pix.qrCodeBase64||pix.paymentCodeBase64||"";if(b64){const img=document.createElement("img");img.src=b64.startsWith("data:")?b64:"data:image/png;base64,"+b64;img.alt="QR Code PIX";qrBox.appendChild(img);}else if(code&&typeof QRCode!=="undefined"){new QRCode(qrBox,{text:code,width:184,height:184,colorDark:"#111827",colorLight:"#ffffff",correctLevel:QRCode.CorrectLevel.M});}if(state.pollingTimer)clearInterval(state.pollingTimer);state.pollingTimer=setInterval(()=>verificarStatus(state.idTransaction,false),4000);window.scrollTo({top:0,behavior:"smooth"});}
+function copiarCodigoPix(){const input=document.getElementById("pixCopyInput"),code=input.value;if(!code)return;navigator.clipboard.writeText(code).then(()=>{const btn=document.getElementById("btnCopyPix");btn.textContent="Copiado!";btn.classList.add("copied");setTimeout(()=>{btn.textContent="Copiar";btn.classList.remove("copied");},2500);}).catch(()=>{input.select();document.execCommand("copy");});}
+async function verificarStatus(idTransaction,manual){if(!idTransaction)return;try{const res=await fetch("/api/check-status?idTransaction="+encodeURIComponent(idTransaction));if(!res.ok)return;const data=await res.json();if(data.isPaid||data.status==="PAID_OUT"||data.status==="paid"){clearInterval(state.pollingTimer);const sb=document.querySelector(".status-live-box");if(sb){sb.style.background="#D1FAE5";sb.style.borderColor="#10B981";sb.style.color="#047857";sb.innerHTML="<b>Pagamento confirmado! Redirecionando...</b>";}track("Purchase",{value:PLANOS[state.planoId].valor,currency:"BRL",content_name:PLANOS[state.planoId].nome});setTimeout(()=>{const q=new URLSearchParams({id:idTransaction,plano:state.planoId,email:state.userEmail,nome:state.userNome,pet:state.petNome});window.location.href="obrigado.html?"+q.toString();},1200);}else if(manual){alert("Ainda nao identificamos o pagamento. Aguarde — a confirmacao e automatica.");}}catch(err){console.warn("[Polling Erro]",err);}}
+function iniciarTimer(){let seg=14*60+59;const el=document.getElementById("timerCount");setInterval(()=>{if(seg>0)seg--;const m=String(Math.floor(seg/60)).padStart(2,"0"),s=String(seg%60).padStart(2,"0");if(el)el.textContent=m+":"+s;},1000);}
 </script>
 </body>
 </html>
