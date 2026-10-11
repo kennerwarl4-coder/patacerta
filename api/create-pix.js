@@ -43,18 +43,22 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const { planId = "premium", client = {}, utms = {}, petName = "" } = req.body || {};
+    const body = req.body || {};
+    const { planId = "premium", client, customer, utms = {}, metadata = {}, petName = "" } = body;
 
     const plano = PRECOS_PLANOS[planId] || PRECOS_PLANOS.premium;
 
-    const nome = String(client.name || "").trim();
-    const email = String(client.email || "").trim().toLowerCase();
-    const documento = String(client.document || "").replace(/\D/g, "");
+    // Aceita customer ou client ou campos diretos no body
+    const dadosCliente = customer || client || body;
+    const nome = String(dadosCliente.name || dadosCliente.nome || "").trim();
+    const email = String(dadosCliente.email || "").trim().toLowerCase();
+    const documento = String(dadosCliente.cpf || dadosCliente.document || dadosCliente.documento || "").replace(/\D/g, "");
+    const telefone = String(dadosCliente.phone || dadosCliente.whatsapp || dadosCliente.telefone || "").replace(/\D/g, "");
 
-    if (!nome || nome.split(" ").length < 2) {
+    if (!nome || nome.length < 2) {
       return res.status(400).json({
         success: false,
-        message: "Por favor, informe seu nome e sobrenome completos.",
+        message: "Por favor, informe seu nome.",
       });
     }
 
@@ -85,6 +89,7 @@ module.exports = async function handler(req, res) {
         name: nome,
         email,
         document: documento,
+        phone: telefone || undefined,
       },
       external_reference: externalRef,
       notification_url: notificationUrl,
@@ -106,6 +111,12 @@ module.exports = async function handler(req, res) {
       idTransaction: resultado.idTransaction,
       paymentCode: resultado.paymentCode,
       paymentCodeBase64: resultado.paymentCodeBase64,
+      pix: {
+        code: resultado.paymentCode,
+        emv: resultado.paymentCode,
+        qrCodeBase64: resultado.paymentCodeBase64,
+        expiration: resultado.expiration || 1800,
+      },
       amount: resultado.amount,
       planName: plano.nome,
       expiration: resultado.expiration,
@@ -114,7 +125,7 @@ module.exports = async function handler(req, res) {
         name: nome,
         email,
       },
-      petName: petName || "",
+      petName: petName || metadata.petNome || "",
     });
   } catch (error) {
     console.error("[LofyPay create-pix error]", {

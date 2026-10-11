@@ -869,17 +869,21 @@ async function enviarFormulario(e) {
       if (params.has(k)) utms[k] = params.get(k);
     });
 
+    const clientPayload = {
+      name: nome,
+      email: email,
+      cpf: cpf,
+      document: cpf,
+      phone: zap || undefined,
+    };
+
     const res = await fetch("/api/create-pix", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         planId: state.planoId,
-        customer: {
-          name: nome,
-          email: email,
-          cpf: cpf,
-          phone: zap || undefined,
-        },
+        client: clientPayload,
+        customer: clientPayload,
         metadata: {
           petNome: state.petNome || undefined,
           ...utms,
@@ -893,7 +897,7 @@ async function enviarFormulario(e) {
     }
 
     state.idTransaction = data.idTransaction;
-    mostrarTelaPix(data.pix, nome);
+    mostrarTelaPix(data.pix || data, nome);
 
   } catch (err) {
     console.error("[Erro PIX]", err);
@@ -906,25 +910,27 @@ async function enviarFormulario(e) {
 /* =====================================================================
    TELA 2: PIX GERADO
    ===================================================================== */
-function mostrarTelaPix(pix, nome) {
+function mostrarTelaPix(pixData, nome) {
   document.getElementById("stepFormArea").style.display = "none";
   const stepPix = document.getElementById("stepPixArea");
   stepPix.classList.add("active");
 
+  const pix = pixData || {};
   const primeiroNome = nome.split(" ")[0];
   document.getElementById("pixTitleUser").textContent = `${primeiroNome}, realize o pagamento PIX`;
 
-  const code = pix.emv || pix.code || "";
+  const code = pix.emv || pix.code || pix.paymentCode || "";
   document.getElementById("pixCopyInput").value = code;
 
   const qrBox = document.getElementById("pixQrCode");
   qrBox.innerHTML = "";
 
-  if (pix.qrCodeBase64) {
+  const qrBase64 = pix.qrCodeBase64 || pix.paymentCodeBase64 || "";
+  if (qrBase64) {
     const img = document.createElement("img");
-    img.src = pix.qrCodeBase64.startsWith("data:")
-      ? pix.qrCodeBase64
-      : "data:image/png;base64," + pix.qrCodeBase64;
+    img.src = qrBase64.startsWith("data:")
+      ? qrBase64
+      : "data:image/png;base64," + qrBase64;
     img.alt = "QR Code PIX";
     qrBox.appendChild(img);
   } else if (code && typeof QRCode !== "undefined") {
