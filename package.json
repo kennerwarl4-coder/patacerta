@@ -5,5 +5,8 @@
   "description": "Funil de Quiz e Vendas PataCerta com checkout PIX nativo LofyPay",
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
   }
 }
