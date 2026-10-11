@@ -854,6 +854,23 @@ const state = {
 };
 
 /* =====================================================================
+   RASTREAMENTO — META PIXEL (com log de depuração)
+   ===================================================================== */
+function track(evento, params, personalizado) {
+  try {
+    const tipo = personalizado ? "trackCustom" : "track";
+    console.log("[Meta Pixel]", tipo, evento, params || {});
+    if (typeof window.fbq === "function") {
+      window.fbq(tipo, evento, params || {});
+    } else {
+      console.warn("[Meta Pixel] fbq não disponível — verifique se algum bloqueador está ativo.");
+    }
+  } catch (e) {
+    console.error("[Meta Pixel] Erro ao disparar evento", evento, e);
+  }
+}
+
+/* =====================================================================
    INICIALIZAÇÃO
    ===================================================================== */
 (function init() {
@@ -864,15 +881,11 @@ const state = {
   state.planoId = planoParam === "basico" ? "basico" : "premium";
 
   aplicarDadosPlano(state.planoId);
-  try {
-    if (typeof fbq === 'function') {
-      fbq('track', 'InitiateCheckout', {
-        value: PLANOS[state.planoId]?.valor || 67.00,
-        currency: 'BRL',
-        content_name: PLANOS[state.planoId]?.nome || 'Plano PataCerta'
-      });
-    }
-  } catch(e){}
+  track("InitiateCheckout", {
+    value: PLANOS[state.planoId]?.valor || 67.00,
+    currency: "BRL",
+    content_name: PLANOS[state.planoId]?.nome || "Plano PataCerta",
+  });
 
   state.petNome = params.get("pet") || params.get("nome_cachorro") || "";
 
@@ -1176,13 +1189,11 @@ async function verificarStatus(idTransaction, manual) {
         statusBox.style.color = "#047857";
         statusBox.innerHTML = `<b>🎉 Pagamento confirmado! Redirecionando...</b>`;
       try {
-        if (typeof fbq === 'function') {
-          fbq('track', 'Purchase', {
-            value: PLANOS[state.planoId]?.valor || 67.00,
-            currency: 'BRL',
-            content_name: PLANOS[state.planoId]?.nome || 'Plano PataCerta',
-          }, { eventID: idTransaction });
-        }
+        track("Purchase", {
+          value: PLANOS[state.planoId]?.valor || 67.00,
+          currency: "BRL",
+          content_name: PLANOS[state.planoId]?.nome || "Plano PataCerta",
+        });
       } catch(e){}
       }
 

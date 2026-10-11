@@ -1246,6 +1246,23 @@ let currentEtapaIdx = 0;
 let travado = false;
 let quizIniciado = false;
 
+/* =================================================================
+   RASTREAMENTO — META PIXEL (com fallback CAPI server-side)
+   ================================================================= */
+function track(evento, params, personalizado) {
+  try {
+    const tipo = personalizado ? "trackCustom" : "track";
+    console.log("[Meta Pixel]", tipo, evento, params || {});
+    if (typeof window.fbq === "function") {
+      window.fbq(tipo, evento, params || {});
+    } else {
+      console.warn("[Meta Pixel] fbq não disponível — verifique se algum bloqueador está ativo.");
+    }
+  } catch (e) {
+    console.error("[Meta Pixel] Erro ao disparar evento", evento, e);
+  }
+}
+
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const ucfirst = s => s ? s.charAt(0).toLocaleUpperCase("pt-BR") + s.slice(1) : "";
 const semAcento = s => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
